@@ -1,0 +1,110 @@
+<view class="body">
+
+    <block wx:if="{{isReady}}">
+
+
+        <scroll-view scroll-y="true" class="mainBody">
+            <view class="box datepickerBox datepicker">
+                <view><text style="padding-left:10px">游玩时间</text></view>
+                <view style="width:220px; margin-left:20px">
+                    <picker style="height:100%; width:300px" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                        <view class="picker">
+                            {{begintime}}
+                        </view>
+                    </picker>
+                </view>
+            </view>
+
+            <view style="margin-left:10px; margin-top:10px; margin-right:10px; line-height:1.6">
+                <text class="validTime descFlag">{{validTime}}</text>
+                <text class="descFlag verifyTime" wx:if="{{verifyTime!=''}}">{{verifyTime}}</text>
+                <text class="descFlag refund_rule">{{refund_rule_text}}</text>
+                <text class="descFlag batch_check_rule" wx:if="{{batch_day && batch_day!=0}}">{{batch_day}}</text>
+                <text class="descFlag refund_ruleBtn" wx:if="{{refund_rule && refund_rule!=2}}">退票规则</text>
+            </view>
+
+            <view class="box ticketListUl ticketListBox">
+                <view class="item" wx:for="{{ticketList}}">
+                    <view class="minBox">
+                        <view class="tit">{{item.title}}</view>
+                        <view class="bcon">
+                            <view class="conBox price">单价：<text class="yen">¥</text><text class="num">{{item.jsprice}}</text></view>
+                            <view class="store" wx:if="{{item.store!=-1}}">
+                                库存：<text class="storeNum">{{item.store}}</text>
+                            </view>
+                            <view>
+                                <view class="countBox">
+                                    <text
+                                            bindtap="onCountBtnTap" data-id="{{item.pid+'-'+item.aid}}" data-ismain="{{index==0}}"
+                                            data-buyup="{{item.buy_up}}"
+                                            data-buylow="{{item.buy_low}}"
+                                            data-type="minus"
+                                            data-store="{{item.store}}"
+                                            data-value="{{item.value}}"
+                                            data-ismain="{{index==0}}"
+                                            class="btn minus">-</text>
+                                    <text class="inp">{{item.value}}</text>
+                                    <text
+                                            bindtap="onCountBtnTap" data-id="{{item.pid+'-'+item.aid}}" data-ismain="{{index==0}}"
+                                            data-buyup="{{item.buy_up}}"
+                                            data-buylow="{{item.buy_low}}"
+                                            data-store="{{item.store}}"
+                                            data-value="{{item.value}}"
+                                            data-ismain="{{index==0}}"
+                                            data-type="add" class="btn add">+</text>
+                                </view>
+
+                            </view>
+                        </view>
+                        <view wx:if="{{item.buy_low!=-1 || item.buy_up!=-1}}" style="margin-top:3px; text-align:right; font-size:12px; color:#777777">
+                            <text wx:if="{{item.buy_low!=-1 && item.buy_low!=1}}">{{item.buy_low}}张起买，</text>
+                            <text wx:if="{{item.buy_up!=-1}}">最高限购{{item.buy_up}}张</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+
+            <view class="box userInfoBox userInfo">
+                <view class="line" style="margin-bottom:1px">
+                    <view class="lt">联系人</view>
+                    <view class="rt">
+                        <input type="text" bindblur="onOrderNameInpBlur" bindinput="onOrderNameInpChange" name="" value="{{ordername}}" class="usernameInp" id="usernameInp" placeholder="取票人姓名"/>
+                    </view>
+                    <view class="errorTip" wx:if="{{orderNameErrTipShow}}"><text style="color:red">!必填</text></view>
+                    <!--<view class="addUserInfo"><text class="text">+</text></view>-->
+                </view>
+                <view class="line">
+                    <view class="lt">手机号</view>
+                    <view class="rt"><input type="number" bindblur="onContacttelInpBlur" bindinput="onContacttelInpChange" name="" value="{{contacttel}}" class="mobileInp" id="mobileInp" placeholder="取票人手机号"/></view>
+                    <view class="errorTip" wx:if="{{!!contacttelErrTipShow}}" style="margin-right:5px"><text style="color:red">!格式错误</text></view>
+                </view>
+                <view wx:if="{{needID==1}}" style="margin-top:1px" class="line">
+                    <view class="lt">身份证</view>
+                    <view class="rt"><input type="number" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}" class="idCardInp" id="idCardInp" placeholder="身份证"/></view>
+                    <view class="errorTip" wx:if="{{!!needIDErrTipShow}}" style="margin-right:5px"><text style="color:red">!格式错误</text></view>
+                </view>
+            </view>
+
+        </scroll-view>
+
+
+        <view class="box totalBar">
+            <view class="totalBarCon">
+                <view>
+                    <text class="totalT">总金额：</text>
+                    <text class="totalBox">
+                        <text class="totalYen">¥</text>
+                        <text class="totalNum">{{totalMoney}}</text>
+                    </text>
+                </view>
+                <view bindtap="onSubmit" data-cansubmit="{{canSubmit}}" class="submitBtn {{canSubmit ? '' : 'disable'}}">提交</view>
+            </view>
+        </view>
+
+
+    </block>
+
+
+
+</view>

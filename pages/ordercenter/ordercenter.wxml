@@ -1,0 +1,100 @@
+<view class="tabHead">
+    <view bindtap="onTabClick" data-tab="unuse" class="tab unuse {{currentTab=='unuse' ? 'active' : ''}}">未使用订单</view>
+    <view bindtap="onTabClick" data-tab="history" class="tab history {{currentTab=='history' ? 'active' : ''}}">历史订单</view>
+</view>
+<view class="mainBody">
+    <view class="scrollWrap unuse {{currentTab=='unuse' ? '' : 'hide'}}">
+        <block wx:if="{{unuse_showRefreshLoading}}">
+            <text style="height:300px; line-height:300px; background:#ffffff; text-align:center" class="loading">努力加载中...</text>
+        </block>
+        <block wx:elif="{{list.unuse.length==0}}">
+            <view style="height:300px; line-height:300px; text-align:center; background:#ffffff;">暂无订单</view>
+        </block>
+        <block wx:else>
+            <scroll-view class="scrollView" data-type="unuse" scroll-y="true" bindscrolltolower="scrollToLower">
+                <block wx:for="{{list.unuse}}" wx:for-item="order">
+                    <view class="item unuse">
+                        <view class="topBox">
+                            <image class="photo" mode="aspectFit" data-type="unuse" data-ordernum="{{order.ordernum}}" binderror="onImageError" src="{{order.imgpath}}"></image>
+                            <view class="rtTextBox">
+                                <view class="title">{{order.ltitle}}</view>
+                                <block wx:for="{{order.tickets}}" wx:for-item="ticket">
+                                    <view class="ticketLi">
+                                        <text class="ticTitle">{{ticket.title}}</text>
+                                        <text class="star"> * </text>
+                                        <text class="tnum">{{ticket.tnum}}</text>张
+                                    </view>
+                                </block>
+                            </view>
+                        </view>
+                        <view class="infoBox">
+                            <view class="infoLine">
+                                <text class="lt">有效期：</text>
+                                <text class="rt">{{order.begintime}} 至 {{order.endtime}}</text>
+                            </view>
+                            <view class="infoLine">
+                                <text class="lt">{{order.paystatus!=1? '支付状态：' : '订单状态：'}}</text>
+                                <text class="rt paystatusText status_{{order.paystatus}}" wx:if="{{order.paystatus!=1 && !order.hasCancel}}">{{order.paystatusText}}</text>
+                                <text class="rt paystatusText" style="color:#7e7e7e" wx:elif="{{order.hasCancel}}">已取消</text>
+                                <text style="color:{{order.status_config[order.status]['color']}}" class="rt" wx:else>{{order.status_config[order.status]["name"]}}</text>
+                            </view>
+                            <view class="infoLine">
+                                <text class="lt">凭证码：</text>
+                                <textn class="rt maCode">{{order.code}}</textn>
+                            </view>
+                        </view>
+                        <view class="btnGroup">
+                            <block wx:if="{{!order.hasCancel}}">
+                                <text bindtap="onPayBtnTap" wx:if="{{order.pay==1}}" class="btn pay" data-ordernum="{{order.ordernum}}">支付</text>
+                                <block wx:if="{{order.cancel==1}}">
+                                    <text wx:if="{{order.status==101}}" class="btn" data-ordernum="{{order.ordernum}}">退票中</text>
+                                    <text bindtap="onCancelBtnTap" wx:else class="btn cancel" data-ordernum="{{order.ordernum}}">取消订单</text>
+                                </block>
+                                <block wx:else>
+                                    <text data-disable="1" class="btn cancel disable">不可取消</text>
+                                </block>
+                            </block>
+                            <block wx:else><text data-disable="1" class="btn cancel disable">已取消</text></block>
+
+                        </view>
+                    </view>
+
+                </block>
+                <view class="loadMoreWrap" wx:if="{{!unuse_showRefreshLoading && list.unuse.length>0}}">
+                    <text wx:if="{{unuse_hasMore}}"><text style="margin-right:3px" class="weui-loading"/>努力加载中...</text>
+                    <text wx:else>没有更多了...</text>
+                </view>
+            </scroll-view>
+        </block>
+    </view>
+    <view class="scrollWrap history {{currentTab=='history' ? '' : 'hide'}}">
+        <block wx:if="{{history_showRefreshLoading}}">
+            <text style="height:300px; line-height:300px; background:#ffffff; text-align:center" class="loading">努力加载中...</text>
+        </block>
+        <block wx:elif="{{list.history.length==0}}">
+            <view style="height:300px; line-height:300px; text-align:center; background:#ffffff;">暂无订单</view>
+        </block>
+        <block wx:else>
+            <scroll-view class="scrollView" data-type="history" scroll-y="true" bindscrolltolower="scrollToLower">
+                <block wx:for="{{list.history}}" wx:for-item="order">
+                    <view class="item history">
+                        <view class="title">{{order.ltitle}}</view>
+                        <block wx:for="{{order.tickets}}" wx:for-item="ticket">
+                            <view class="ticketLi">
+                                <text class="ticName">{{ticket.title}}</text>
+                                <text class="star"> * </text>
+                                <text class="tnum">{{ticket.tnum}}</text> 张
+                            </view>
+                        </block>
+                        <view class="time">验证时间：{{order.verifytime}}</view>
+                    </view>
+                </block>
+                <view class="loadMoreWrap" wx:if="{{!history_showRefreshLoading && list.history.length>0}}">
+                    <text wx:if="{{history_hasMore}}"><text style="margin-right:3px" class="weui-loading"/>努力加载中...</text>
+                    <text wx:else>没有更多了...</text>
+                </view>
+            </scroll-view>
+        </block>
+    </view>
+</view>
+

@@ -1,0 +1,223 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 750rpx;
+  background-color: #f0f4f5;
+  font-size : 24rpx;
+  height: 100%;
+} 
+
+
+
+/*banner*/
+.banner-box{
+  width: 100%;
+  height: 428rpx ;
+  position:relative;
+  overflow: hidden
+}
+.banner-box .img-box{
+  width: 100%
+}
+.banner-box .img-box image{
+  width: 100%
+}
+.banner-box .info-box{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 16rpx 20rpx;
+    font-size: 40rpx;
+    line-height: 40rpx;
+    background: rgba(0,0,0,.4);
+    color: #fff;
+}
+.banner-box .info-box text.land-name{
+    font-size: 24rpx;
+    font-weight: bold;
+}
+.banner-box .info-box text.land-adress{
+    font-size: 24rpx;
+}
+.banner-box .info-box icon {
+  float:right;
+  margin-top:10rpx;
+
+}
+
+
+
+/*tab-title*/
+.tab-title-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #fff;
+  border-bottom: 1rpx solid #e5e5e5 ;
+  height: 92rpx ;
+  line-height: 92rpx ;
+  font-size: 28rpx;
+  z-index: 10;
+}
+.tab-title-box.fixed{
+  position: fixed;
+  width: 100%;
+  top:0;
+  box-shadow: 0 1px 1px rgba(50,50,50,.1)
+}
+.tab-title-box .tab-title{
+  padding: 5px;
+  width: 20%;
+  text-align: center;
+}
+.tab-title-box .tab-title.active{
+  border-bottom: 6rpx solid #0797d9 ;
+  color: #0797d9 ;
+  font-weight: bold;
+}
+
+/*ticket-list-box*/
+.ticket-list-box{
+  background-color: #fff
+}
+.ticket-list-box .more-tickets{
+    height: 64rpx;
+    line-height: 58rpx;
+    text-align: center;
+    background: #fff;
+    border-bottom: 1rpx solid #dbdbdb;
+    font-size: 24rpx
+}
+.ticket-list-box .ticket-list-item{
+  padding: 20rpx 4%;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx solid #e5e5e5 ;
+  justify-content: space-between;
+  align-items: center
+}
+.ticket-list-box .ticket-list-item .lt{
+  width:70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+.ticket-list-box .ticket-list-item .lt text.t-title{
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.ticket-list-box .ticket-list-item .lt text.t-desc{
+  margin: 10rpx 0;
+  font-size: 24rpx;
+  color: #92a0ab;
+  text-align: justify;
+}
+.ticket-list-box .ticket-list-item .lt .t-desc-box{
+  margin: 10rpx 0;
+}
+.ticket-list-box .ticket-list-item .lt text.t-tag{
+  padding: 10rpx;
+  font-size: 24rpx;
+  background-color: #f5f5f5;
+  color :#0797d9 ;
+  margin-right: 8rpx;
+  margin-top: 6rpx;
+  display: inline-block
+}
+.ticket-list-box .ticket-list-item .rt{
+  width:26%;
+  text-align: right;
+  display: filex;
+  flex-direction: column;
+  justify-content: center
+}
+.ticket-list-box .ticket-list-item .rt .original-price{
+  font-size: 24rpx;
+  margin-bottom: 10rpx;
+  text-decoration: line-through;
+  color: #92a0ab;
+}
+.ticket-list-box .ticket-list-item .rt .discount-price{
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  color: #f07845;
+}
+.ticket-list-box .ticket-list-item .rt .book-btn{
+  font-size:30rpx;
+  color:#fff;
+  background-color:#f07845;
+  line-height:60rpx;
+  padding:4rpx 30rpx;
+  background:#f07845;
+  text-align: center
+}
+
+/*taopiao_about*/
+.taopiao-about{
+  margin-top: 20rpx;
+}
+.taopiao-about .switch-btn{
+
+  position: relative;
+  height: 86rpx;
+  line-height: 86rpx;
+  border-bottom: 1rpx solid #dbdbdb;
+  padding: 0 20rpx;
+  background: #fff;
+}
+
+/*p-desc-box*/
+.p-desc-box{
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.p-desc-box .desc-title{
+  height: 86rpx;
+  line-height: 86rpx;
+  padding: 0 20rpx;
+  font-size: 24rpx;
+  font-weight: bold;
+  border-bottom: 1rpx solid #e5e5e5;
+}
+.p-desc-box .desc-con{
+  padding: 20rpx;
+  background: #fff;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  overflow: hidden;
+}
+.p-desc-box .desc-con image{
+  width:710rpx
+}
+.p-desc-box .desc-con text{
+  text-align:justify
+}
+
+/*footer*/
+.footer{
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

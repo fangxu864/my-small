@@ -1,0 +1,135 @@
+<view class="container">
+
+    <view class="top-box">
+        <icon type="success_no_circle" size="45" color="#3eba40"/>
+        <text class="tip">下单成功</text>
+    </view>
+
+    <template is="{{whitchTemplate}}" data="{{infoData}}"/>
+
+    <view class="qrcode-container">
+        <view class="topt">凭证码: <text class="code">{{infoData.qrcode}}</text> </view>
+        <view id="qrcodeBox" class="qrcode-box">
+            <canvas  style="width: 200px;height: 200px;" canvas-id="qrcodeCanvas"/>
+        </view>
+    </view>
+    <view class="footer">
+        <view bindtap="goToIndex">继续购票</view>
+    </view>
+
+    <!--酒店-->
+    <template name="hotel" >
+        <view class="info-box">
+                <view class="landTitle">{{infoData.landTitle}}</view>
+                <view class="line">
+                    <view class="lt">房型:</view>
+                    <view class="rt">
+                        <block wx:for="{{infoData.tickets}}">
+                            <view><text>{{item.title+" "+item.num}}张</text></view>
+                        </block>
+                    </view>
+                </view>
+                <view class="line">
+                    <view class="lt">金额:</view>
+                    <view class="rt">{{infoData.totalmoney}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">住店时间:</view>
+                    <view class="rt">{{infoData.extra.date}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">联系人:</view>
+                    <view class="rt">{{infoData.ordername+" "+infoData.ordertel}}</view>
+                </view>
+            </view>
+    </template>
+
+    <!--景区-->
+    <template name="scenic" >
+        <view class="info-box">
+                <view class="landTitle">{{infoData.landTitle}}</view>
+                <view class="line">
+                    <view class="lt">门票:</view>
+                    <view class="rt">
+                        <block wx:for="{{infoData.tickets}}">
+                            <view><text>{{item.title+" "+item.num}}张</text></view>
+                        </block>
+                    </view>
+                </view>
+                <view class="line">
+                    <view class="lt">金额:</view>
+                    <view class="rt">{{infoData.totalmoney}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">有效期:</view>
+                    <view class="rt">{{infoData.extra.date}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">联系人:</view>
+                    <view class="rt">{{infoData.ordername+" "+infoData.ordertel}}</view>
+                </view>
+            </view>
+    </template>
+
+    <!--演出-->
+    <template name="show" >
+        <view class="info-box">
+                <view class="landTitle">{{infoData.landTitle}}</view>
+                <view class="line">
+                    <view class="lt">门票:</view>
+                    <view class="rt">
+                        <block wx:for="{{infoData.tickets}}">
+                            <view><text>{{item.title+" "+item.num}}张</text></view>
+                        </block>
+                    </view>
+                </view>
+                <view class="line">
+                    <view class="lt">金额:</view>
+                    <view class="rt">{{infoData.totalmoney}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">演出时间:</view>
+                    <view class="rt">{{infoData.extra.date}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">座位:</view>
+                    <view class="rt">{{infoData.extra.seat}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">联系人:</view>
+                    <view class="rt">{{infoData.ordername+" "+infoData.ordertel}}</view>
+                </view>
+            </view>
+    </template>
+
+     <!--线路-->
+    <template name="route" >
+        <view class="info-box">
+                <view class="landTitle">{{infoData.landTitle}}</view>
+                <view class="line">
+                    <view class="lt">票类:</view>
+                    <view class="rt">
+                        <block wx:for="{{infoData.tickets}}">
+                            <view><text>{{item.title+" "+item.num}}张</text></view>
+                        </block>
+                    </view>
+                </view>
+                <view class="line">
+                    <view class="lt">金额:</view>
+                    <view class="rt">{{infoData.totalmoney}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">集合日期:</view>
+                    <view class="rt">{{infoData.extra.date}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">集合地点:</view>
+                    <view class="rt">{{infoData.extra.station}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">联系人:</view>
+                    <view class="rt">{{infoData.ordername+" "+infoData.ordertel}}</view>
+                </view>
+            </view>
+    </template>
+</view>

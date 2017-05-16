@@ -1,0 +1,34 @@
+{
+  "pages":[
+	"pages/index/index",
+	"pages/ordercenter/ordercenter",
+	"pages/booking/booking",
+	"pages/pay/pay",
+	"pages/paysuccess/paysuccess",
+	"pages/pdetail/pdetail"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#268dcd",
+    "navigationBarTitleText": "鼓浪屿核心景点",
+    "navigationBarTextStyle":"white"
+  },
+	"tabBar": {
+	"color": "#666",
+		"selectedColor": "#268dcd",
+		"borderStyle": "white",
+		"backgroundColor": "#fafafa",
+		"list": [{
+		"pagePath": "pages/index/index",
+		"iconPath": "image/ing.png",
+		"selectedIconPath": "image/ing-active.png",
+		"text": "产品预订"
+	},{
+		"pagePath": "pages/ordercenter/ordercenter",
+		"iconPath": "image/coming.png",
+		"selectedIconPath": "image/coming-active.png",
+		"text": "我的订单"
+	}]
+},
+    "debug": false
+}

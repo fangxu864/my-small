@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 750rpx;
+    background-color: #fff;
+    font-size : 24rpx;
+    height: 100%;
+}
+
+
+/*top-box*/
+.top-box{
+    height:160rpx;
+    line-height:160rpx;
+    text-align:center;
+    color:#3eba40;
+    padding:40rpx;
+    border-bottom:1rpx solid #e5e5e5;
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items:center;
+}
+.top-box .tip{
+    font-size:40rpx;
+}
+.top-box icon{
+    margin-top: 60rpx;
+}
+
+
+/*info-box*/
+.info-box{
+    box-sizing: border-box;
+    margin: 40rpx;
+    background-color: #fafafa;
+    line-height: 40rpx;
+    font-size: 24rpx;
+}
+.info-box .line{
+    display: flex;
+    flex-direction: row;
+}
+
+.qrcode-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.qrcode-container .code{
+    color :#f5530c;
+    font-size: 36rpx;
+}
+.qrcode-container .qrcode-box{
+    
+    width: 200px;
+    height: 200px;
+}

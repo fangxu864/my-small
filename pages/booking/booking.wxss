@@ -1,0 +1,58 @@
+/**index.wxss**/
+.body{
+    height: 100%;
+    background: #f5f5f5;
+    font-size:14px;
+    color:#444444;
+}
+.box.datepicker{
+  height: 44px;
+  line-height: 44px;
+  flex-direction: row;
+  display:flex;
+  background: #fff;
+  font-size:14px;
+}
+.picker{ height:44px; width:100%}
+
+
+.mainBody{ position:absolute; top:0; left:0; right:0; bottom:60px;}
+
+.ticketListUl{ padding:0; margin:10px 0}
+
+.ticketListUl .item{ padding:15px; background:#fff; margin-top:10px}
+
+.ticketListUl .item .tit{ font-size:16px; font-weight:bold; margin-bottom:5px}
+.ticketListUl .item .price,.ticketListUl .item .store{ font-size:14px; color:#878787}
+.ticketListUl .item .price .yen,.ticketListUl .item .price .num{ color:#f37138}
+.ticketListUl .item .price .num{ font-size:16px; font-weight:bold}
+.ticketListUl .item .storeNum{ color:#777777; font-weight:bold}
+
+.ticketListUl .bcon{ display:flex; flex-direction:row; justify-content: space-between; align-items: center;}
+
+.ticketListUl .countBox{ display:flex; flex-direction:row; border:1px solid #258cc9}
+.ticketListUl .countBox .inp{ width:65px; text-align:center; color:#258cc9; line-height:28px}
+.ticketListUl .countBox .btn{ width:38px; height:28px; line-height:28px; color:#258cc9; text-align:center}
+.ticketListUl .countBox .btn.add{  border-left:1px solid #258cc9;}
+.ticketListUl .countBox .btn.minus{  border-right:1px solid #258cc9;}
+
+
+.userInfoBox{ margin:10px 0}
+.userInfoBox .line{ height:48px; display:flex; flex-direction:row; align-items:center; background:#fff}
+.userInfoBox .line .lt{ flex:1; margin-left:10px}
+.userInfoBox .line .rt{ flex:4; }
+.userInfoBox .addUserInfo{ width:38px; text-align:center;  margin-right:5px;}
+.userInfoBox .addUserInfo .text{ color:#258cc9; font-size:28px; font-weight:bold;}
+
+
+.totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;  }
+.totalBar .totalBarCon{  display:flex;  height:100%;  align-items:center;  justify-content:space-between;  }
+.totalBar .totalT{ margin-left:10px;}
+.totalBar .totalBox{ color:#f37138; font-size:14px}
+.totalBar .totalBox .totalNum{ font-size:18px; font-weight:bold}
+.totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f37138; color:#ffffff}
+.totalBar .submitBtn.disable{ background:#999999; color:#555555}
+
+.descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin-right:10px}
+
+

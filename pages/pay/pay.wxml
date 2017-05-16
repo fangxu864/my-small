@@ -1,0 +1,39 @@
+<view class="pageBody">
+
+    <view class="successTitle">订单提交成功</view>
+    <view class="payTip">
+        <text class="time">{{payParams.expireTime}}</text>分钟内未支付，系统将自动取消该订单
+    </view>
+
+    <view class="orderInfoBox">
+        <view class="land">{{detail.landTitle}}</view>
+        <block wx:for="{{detail.tickets}}">
+            <view class="ticket">
+                <text class="name">{{item.title}}</text> * <text class="tnum">{{item.num}}</text> 张
+            </view>
+        </block>
+        <view class="effectTime">
+            <text class="lt">有效期：</text>
+            <text class="date">{{detail.extra.date}}</text>
+        </view>
+        <view class="user">
+            <text class="lt">联系人：</text>
+            <text class="rt">{{detail.ordername}} {{detail.ordertel}}</text>
+        </view>
+    </view>
+
+    <view class="totalMoneyBox">
+        <text class="lt">本次订单实付总额：</text>
+        <view class="rt">
+            <text class="yen">¥</text>
+            <text class="num">{{detail.totalmoney}}</text>
+        </view>
+    </view>
+
+    <view bindtap="onPay" class="payBox">
+        <image class="wxPayIcon" src="../../image/weixin.png"></image>
+        <text class="t">点击支付</text>
+    </view>
+
+
+</view>

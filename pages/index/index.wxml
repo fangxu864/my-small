@@ -1,0 +1,50 @@
+<view class="search">
+    <icon type="search" size="12" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
+    <input type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" value="{{searchVal}}" />
+    <view hidden="{{!isClearShow}}" bindtap="clearSearch">
+        <icon type="clear" size="12" class="search-clear"></icon>
+    </view>
+    <button size="mini" class="search-btn" bindtap="search">搜索</button>
+</view>
+<view class="scroll-view-wrap">
+    <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="scrollToLower">
+        <view class="plist">
+            <block wx:for="{{plist}}" wx:key="pid" wx:for-item="p">
+                <view class="item itemBox">
+                    <view class="con" bindtap="navigateToDetail" data-lid="{{p.lid}}" data-ptype="" data-topic="">
+                        <view class="photoBox">
+                            <image mode="widthFix" src="{{p.imgpath == 'images/defaultThum.jpg' ? 'http://www.12301.cc/' + p.imgpath : p.imgpath}}"></image>
+                            <text class="title gtextoverflow">{{p.title}}</text>
+                        </view>
+                        <view class="bCon">
+                            <view class="price">
+                                <text class="yen">¥</text>
+                                <text class="num">{{p.jsprice}}</text>
+                                <text class="qi">起</text>
+                            </view>
+                            <view class="price tprice">
+                                <text class="yen">¥</text>
+                                <text class="num">{{p.tprice}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class="load-more-wrap">
+            <view class="load-content" hidden="{{!isLoading}}">
+                <text class="weui-loading"/><text class="loading-text">玩命加载中</text>
+            </view>
+            <view wx:if="{{!hasMore}}" hidden="{{isHasMoreHidden}}" class="no-more">
+                <text>没有更多内容了</text>
+            </view>
+        </view>
+        <view class="nodata" hidden="{{!noData}}">
+            没有
+            <block hidden="{{!hasKeyword}}">
+                关键词为{{lastSearch}}
+            </block>
+            数据
+        </view>
+    </scroll-view>
+</view>
