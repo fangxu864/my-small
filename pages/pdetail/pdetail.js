@@ -8,7 +8,7 @@ Page({
         isfixed : "" ,
         floor_1_active: "active" ,
         title : "产品详情页",
-        land :{} ,
+        land :{},
         ticketList: [] ,
         taoPiaoTicketList: [] ,
         isRenderTaoPiaoList: true ,
@@ -210,9 +210,10 @@ Page({
      * 打开地图查看位置
      */
     openMap: function(){
-         wx.openLocation({
-            latitude: 24.456348,
-            longitude: 118.071909,
+        let land = this.data.land;
+        wx.openLocation({
+            latitude: land.latitude,
+            longitude: land.longitude,
             scale: 28
         })
     }
