@@ -3,6 +3,17 @@
 var Common = require("../../utils/common.js");
 var app = getApp();
 Page({
+    onShareAppMessage: function () {
+        return {
+            title: '鼓浪屿五大核心景点联票',
+            path: 'pages/pdetail/pdetail?lid=5322',
+            success: function(res) {
+            },
+            fail: function(res) {
+                // 转发失败
+            }
+        }
+    },
     data: {
         scroll_into_view : "" ,
         isfixed : "" ,
@@ -151,7 +162,7 @@ Page({
                 Common.hideLoading();
             },
             success: function (res) {
-                console.log(res);
+                //console.log(res);
                 _this.setData({
                     ticketList : res.data.list,
                 })
@@ -212,8 +223,8 @@ Page({
     openMap: function(){
         let land = this.data.land;
         wx.openLocation({
-            latitude: land.latitude,
-            longitude: land.longitude,
+            latitude: parseFloat(land.latitude) ,
+            longitude: parseFloat(land.longitude),
             scale: 28
         })
     }

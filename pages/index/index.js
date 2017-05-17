@@ -4,6 +4,17 @@ var app = getApp(),
     common = require('../../utils/common.js');
 
 Page({
+     onShareAppMessage: function () {
+        return {
+            title: '鼓浪屿核心景点',
+            path: 'pages/pdetail/pdetail?lid=5322',
+            success: function(res) {
+            },
+            fail: function(res) {
+                // 转发失败
+            }
+        }
+    },
     data: {
         plist:          [],
         hasMore:        true,
@@ -33,83 +44,6 @@ Page({
 
             success: function ( res ) {
                 common.hideLoading();
-
-                // var res = {
-                //     data: {
-                //         list: [
-                //             {
-                //                 lid: '1',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '2',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题2',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '3',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '4',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '5',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '6',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '7',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '8',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '9',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             },
-                //             {
-                //                 lid: '10',
-                //                 imgpath: 'http://www.12301.cc/images/defaultThum.jpg',
-                //                 title: '标题1',
-                //                 jsprice: 0.2,
-                //                 tprice: 0.3
-                //             }
-                //         ]
-                //     }
-                // }
 
                 that.setData({
                     plist: res.data.list,
