@@ -5,8 +5,8 @@
  */
 var Config = require("./config.js");
 var Common = {
-	appId : "wx4d73897c041728aa",
-	REQUEST_HOST : "https://api.12301.cc/index.php",
+  appId: "wxd1e8494ae3b6d821",
+	REQUEST_HOST : "https://api.12301dev.com/index.php",
 	SESSION_STORAGE_KEY : "pft-session-storage",
 	SESSION_STORAGE_EXPIRE_KEY : "pft-session-storage-expire",  //session过期时长的key
 	SESSION_STORAGE_AT_TIME : "pft-session-storage-attime",
@@ -101,7 +101,7 @@ var Common = {
 							"Small-App" : account
 						},
 						data : {
-							account : "123999",
+              account: account,
 							code : code
 						},
 						success : function(res){

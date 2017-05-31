@@ -4,9 +4,9 @@
             <image src="{{land.imgpath}}"></image>
         </view>
         <view class="info-box" bindtap="openMap">
-            <view>
+            <!--<view>
                 <text class="land-name">{{land.title}}</text>
-            </view>
+            </view>-->
             <view>
                 <text class="land-adress">{{land.address}}</text>
                 <icon type="info_circle" size="15"/>

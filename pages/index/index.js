@@ -2,12 +2,13 @@
 //获取应用实例
 var app = getApp(),
     common = require('../../utils/common.js');
-
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 Page({
      onShareAppMessage: function () {
         return {
-            title: '鼓浪屿核心景点',
-            path: 'pages/pdetail/pdetail?lid=5322',
+            title: '票付通',
+            path: 'pages/index/index',
             success: function(res) {
             },
             fail: function(res) {
@@ -30,7 +31,9 @@ Page({
         lastSearch:     ''
     },
     onLoad: function () {
-    
+       qqmapsdk = new QQMapWX({
+          key: '55VBZ-XBTR4-KA3UD-XYWNM-IJJHE-KIFIY'
+       });
         var that = this;
 
         this.getData({
@@ -215,5 +218,43 @@ Page({
     //去除前后空格
     trim: function( str ) {
         return str.replace(/(^\s*)|(\s*$)/g, '');
+    },
+    //地图搜索
+    onShow: function(){
+      // 调用接口
+      qqmapsdk.search({
+        keyword: '酒店',
+        success: function (res) {
+          console.log(res);
+        },
+        fail: function (res) {
+          console.log(res);
+        },
+        complete: function (res) {
+          console.log(res);
+        }
+      })
+    },
+    //定位
+    getLocation: function(){
+      wx.getLocation({
+        type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+        success: function (res) {
+          var latitude = res.latitude
+          var longitude = res.longitude
+          console.log("longtitude:" + longitude + ";latitude:"+latitude);
+          // wx.openLocation({
+          //   latitude: latitude,
+          //   longitude: longitude,
+          //   scale: 28
+          // })
+        }
+      });
+        // wx.getLocation({
+        //   success: function(res) {
+        //     console.log(res);
+        //   },
+        // });
     }
+
 })

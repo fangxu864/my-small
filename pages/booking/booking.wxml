@@ -81,7 +81,7 @@
                 </view>
                 <view wx:if="{{needID==1}}" style="margin-top:1px" class="line">
                     <view class="lt">身份证</view>
-                    <view class="rt"><input type="number" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}" class="idCardInp" id="idCardInp" placeholder="身份证"/></view>
+                    <view class="rt"><input type="text" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}" class="idCardInp" id="idCardInp" placeholder="身份证"/></view>
                     <view class="errorTip" wx:if="{{!!needIDErrTipShow}}" style="margin-right:5px"><text style="color:red">!格式错误</text></view>
                 </view>
             </view>

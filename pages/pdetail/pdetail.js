@@ -3,17 +3,6 @@
 var Common = require("../../utils/common.js");
 var app = getApp();
 Page({
-    onShareAppMessage: function () {
-        return {
-            title: '鼓浪屿五大核心景点联票',
-            path: 'pages/pdetail/pdetail?lid=5322',
-            success: function(res) {
-            },
-            fail: function(res) {
-                // 转发失败
-            }
-        }
-    },
     data: {
         scroll_into_view : "" ,
         isfixed : "" ,
@@ -23,7 +12,8 @@ Page({
         ticketList: [] ,
         taoPiaoTicketList: [] ,
         isRenderTaoPiaoList: true ,
-        imgSrcArr :[]
+        imgSrcArr :[],
+        storage: false
     },
 
 
@@ -86,73 +76,86 @@ Page({
     onLoad: function( opt ) {
         var lid = opt.lid;
         var _this = this;
-        //banner，景区信息请求
+        // var storageKey = 'land:'+ lid;
+        // var landData = wx.getStorageSync(storageKey)
+        // if (landData) {
+        //     _this.setData({
+        //          land : landData,
+        //     });
+        // }
+        // else {
+            
+        // }
         Common.request({
-            url: "/r/Mall_Product/getLandInfo/",
-            data: {
-                // lid: "2107"
-                lid: lid
-            },
-            loading: function () {
-                Common.showLoading()
-            },
-            complete: function () {
-                Common.hideLoading();
-            },
-            success: function (res) {
-                if(res.code == 200 ){
-                    //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                    res.data.jqts = res.data.jqts.replace(/\<br[^\<\>]+\>/g , "\n" );
-                    res.data.jqts = res.data.jqts.replace(/\<[^\<\>]+\>/g , "" );
-                    res.data.jqts = res.data.jqts.replace(/\n[\s\n]+/g , "\n" );
-                    
-                    //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                    res.data.jtzn = res.data.jtzn.replace(/\<br[^\<\>]+\>/g , "\n" );
-                    res.data.jtzn = res.data.jtzn.replace(/\<[^\<\>]+\>/g , "" );
-                    res.data.jtzn = res.data.jtzn.replace(/\n[\s\n]+/g , "\n" );
-                    
-                    //抽出图片
-                    var imgSrcArr = res.data.bhjq.match(/src\=\"[^\"]+\"/g );
-                    var srcarr = [];
-                    if(imgSrcArr){
-                        for(var i= 0 ; i<imgSrcArr.length ; i++){
-                            var str = imgSrcArr[i].replace(/src\=\"/g,"")
-                            srcarr.push( str.replace(/\"/g,"") )
-                        }
-                        _this.setData({
-                            imgSrcArr : srcarr,
-                        })
-                    }
-                    //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                    res.data.bhjq = res.data.bhjq.replace(/\<br[^\<\>]+\>/g , "\n" );
-                    res.data.bhjq = res.data.bhjq.replace(/\<[^\<\>]+\>/g , "" );
-                    res.data.bhjq = res.data.bhjq.replace(/\n[\s\n]+/g , "\n" );
-                    //替换空格
-                    res.data.bhjq = res.data.bhjq.replace(/\&nbsp;+/g , " " );
-                    _this.setData({
-                        land : res.data,
-                    })
+          url: "/r/Mall_Product/getLandInfo/",
+          data: {
+            // lid: "2107"
+            lid: lid
+          },
+          loading: function () {
+            Common.showLoading()
+          },
+          complete: function () {
+            Common.hideLoading();
+          },
+          success: function (res) {
+            if (res.code == 200) {
+              //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
+              res.data.jqts = res.data.jqts.replace(/\<br[^\<\>]+\>/g, "\n");
+              res.data.jqts = res.data.jqts.replace(/\<[^\<\>]+\>/g, "");
+              res.data.jqts = res.data.jqts.replace(/\n[\s\n]+/g, "\n");
 
-                }else{
-                    wx.showModal({
-                        title: '提示',
-                        content: res.msg,
-                        // success: function(res) {
-                        //     if (res.confirm) {
-                        //     console.log('用户点击确定')
-                        //     }
-                        // }
-                    })
-                    
+              //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
+              res.data.jtzn = res.data.jtzn.replace(/\<br[^\<\>]+\>/g, "\n");
+              res.data.jtzn = res.data.jtzn.replace(/\<[^\<\>]+\>/g, "");
+              res.data.jtzn = res.data.jtzn.replace(/\n[\s\n]+/g, "\n");
+
+              //抽出图片
+              var imgSrcArr = res.data.bhjq.match(/src\=\"[^\"]+\"/g);
+              var srcarr = [];
+              if (imgSrcArr) {
+                for (var i = 0; i < imgSrcArr.length; i++) {
+                  var str = imgSrcArr[i].replace(/src\=\"/g, "")
+                  srcarr.push(str.replace(/\"/g, ""))
                 }
-               
+                _this.setData({
+                  imgSrcArr: srcarr,
+                })
+              }
+              //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
+              res.data.bhjq = res.data.bhjq.replace(/\<br[^\<\>]+\>/g, "\n");
+              res.data.bhjq = res.data.bhjq.replace(/\<[^\<\>]+\>/g, "");
+              res.data.bhjq = res.data.bhjq.replace(/\n[\s\n]+/g, "\n");
+              //替换空格
+              res.data.bhjq = res.data.bhjq.replace(/\&nbsp;+/g, " ");
+              _this.setData({
+                land: res.data,
+              })
+              try {
+                wx.setStorageSync(storageKey, res.data)
+              } catch (e) {
+                console.log(e);
+              }
+            } else {
+              wx.showModal({
+                title: '提示',
+                content: res.msg,
+                // success: function(res) {
+                //     if (res.confirm) {
+                //     console.log('用户点击确定')
+                //     }
+                // }
+              })
+
             }
+
+          }
         });
+        //查询是否有缓存
         //票列表请求
         Common.request({
             url: "/r/Mall_Product/getTicketList/",
             data: {
-                // lid: "2107"
                 lid: lid
             },
             loading: function () {
@@ -169,30 +172,29 @@ Page({
             }
         });
         //套票数据
-        Common.request({
-            url: "/r/Mall_Product/getRelatedPackage/",
-            data: {
-                // lid: "2107"
-                lid: lid
-            },
-            loading: function () {
-                Common.showLoading()
-            },
-            complete: function () {
-                Common.hideLoading();
-            },
-            success: function (res) {
-                console.log(res);
-                _this.setData({
-                    taoPiaoTicketList : res.data
-                });
-                if(res.data.length == 0){
-                    _this.setData({
-                        isRenderTaoPiaoList : false
-                    })
-                }
-            }
-        })
+        // Common.request({
+        //     url: "/r/Mall_Product/getRelatedPackage/",
+        //     data: {
+        //         lid: lid
+        //     },
+        //     loading: function () {
+        //         Common.showLoading()
+        //     },
+        //     complete: function () {
+        //         Common.hideLoading();
+        //     },
+        //     success: function (res) {
+        //         console.log(res);
+        //         _this.setData({
+        //             taoPiaoTicketList : res.data
+        //         });
+        //         if(res.data.length == 0){
+        //             _this.setData({
+        //                 isRenderTaoPiaoList : false
+        //             })
+        //         }
+        //     }
+        // })
     },
 
 
@@ -202,7 +204,7 @@ Page({
     onReady : function(){
         let that = this;
         wx.setNavigationBarTitle({
-            title: that.data.title
+            title: that.data.land.title
         });
     },
 
@@ -227,5 +229,16 @@ Page({
             longitude: parseFloat(land.longitude),
             scale: 28
         })
+    },
+     onShareAppMessage: function () {
+        return {
+            title: this.data.land.title,
+            path: 'pages/pdetail/pdetail?lid='+this.data.land.id,
+            success: function(res) {
+            },
+            fail: function(res) {
+                // 转发失败
+            }
+        }
     }
 });

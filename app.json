@@ -10,7 +10,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#268dcd",
-    "navigationBarTitleText": "鼓浪屿核心景点",
+    "navigationBarTitleText": "票付通",
     "navigationBarTextStyle":"white"
   },
 	"tabBar": {
