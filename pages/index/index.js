@@ -78,7 +78,8 @@ Page({
                     type: 'all',
                     city: '',
                     pageSize: this.data.pageSize,
-                    lastPos: this.data.lastPos
+                    lastPos: this.data.lastPos,
+                    scenCode:'wxApp#oBvKZ9',
                 },
                 debug: false,
                 loading : function(){

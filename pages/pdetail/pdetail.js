@@ -156,7 +156,8 @@ Page({
         Common.request({
             url: "/r/Mall_Product/getTicketList/",
             data: {
-                lid: lid
+                lid: lid,
+                scenCode:"wxApp#oBvKZ9",
             },
             loading: function () {
                 Common.showLoading()

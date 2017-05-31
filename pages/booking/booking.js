@@ -176,7 +176,8 @@ Page({
 			url : "/r/Mall_Product/getBookInfo/",
 			data : {
 				pid : pid,
-				aid : aid
+				aid : aid,
+        scenCode:"wxApp#oBvKZ9"
 			},
 			loading : function(){
 				Common.showLoading()
