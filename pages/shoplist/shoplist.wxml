@@ -1,0 +1,116 @@
+<view class="top-title">当前定位地址:福州</view>
+<view class="top-tips">附近的购票处</view>
+
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注这里是备注这里是</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+<view class="shop-item clearfix">
+    <image class="shop-img" src="../../image/gly.jpg"></image>
+    <view class="rt">
+        <view class="shop-name">福州去哪儿旅行社</view>
+        <view class="summary">这里是备注</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>

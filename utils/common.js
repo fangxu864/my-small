@@ -13,6 +13,7 @@ var Common = {
 	getAccount : function(){
 		return Config.account;
 	},
+
 	orderStatus : {
 		0 : {
 			name : "未使用",
@@ -55,6 +56,7 @@ var Common = {
 			color : "#e12424"
 		}
 	},
+
 	//全局显示loading状态
 	showLoading : function(text){
 		wx.showToast({
@@ -63,10 +65,12 @@ var Common = {
 			duration : 10 * 1000
 		})
 	},
+
 	//隐藏loading
 	hideLoading : function(){
 		wx.hideToast();
 	},
+
 	/**
 	 * 弹窗显示错误信息
 	 * @param errMsg  错误信息  必填
@@ -79,6 +83,7 @@ var Common = {
 			showCancel : false
 		})
 	},
+
 	/**
 	 * 登录微信 然后用返回的code去服务器取sessionKey
 	 */
@@ -101,10 +106,11 @@ var Common = {
 							"Small-App" : account
 						},
 						data : {
-              account: account,
+                            account: account,
 							code : code
 						},
 						success : function(res){
+							console.log(res);
 							var _res = res.data;
 							var data = _res.data;
 							var code = _res.code;
@@ -114,24 +120,24 @@ var Common = {
 								wx.setStorage({
 									key : sessionKey,
 									data : sessionValue
-								})
+								});
 								wx.setStorage({
 									key : expireKey,
 									data : expireValue
-								})
+								});
 								//把当前登录成功后换回session的时间点存下来
 								//用于后面比对是否过期
 								wx.setStorage({
 									key : atTimeKey,
 									data : (+new Date())
-								})
+								});
 								callback && callback(sessionValue,expireValue);
 							}else{
-								showError(res.msg);
+								showError(_res.msg);
 							}
 						},
 						fail : function(err){
-							console.log(err)
+							console.log(err);
 							console.log("请求后端接口：https://api.12301dev.com/index.php?c=Mall_Member&a=smallAppLogin");
 							console.log(JSON.stringify(err));
 							//showError("code换session出错");
@@ -147,6 +153,7 @@ var Common = {
 			}
 		})
 	},
+
 	/**
 	 * 每次发ajax请求给后端时，需要先判断是否已经微信登录
 	 * 如果已登录，接着判断登录session有没有过期，如果过期需重新登录
@@ -172,6 +179,7 @@ var Common = {
 			wx.getStorage({
 				key : atTimeKey,
 				success : function(res){
+
 					var lastTime = res.data;
 					if(lastTime){
 						wx.getStorage({
@@ -198,29 +206,33 @@ var Common = {
 					}
 				},
 				fail : function(){
+
 					failCallback();
 				}
 			})
 		};
-		//登录微信 然后用返回的code去服务器取sessionKey
 
+		//登录微信 然后用返回的code去服务器取sessionKey
 		wx.getStorage({
 			key : sessionKey,
 			success : function(res){ //如果存在
 				var session = res.data;
 
 				//判断此session是否过期
-				isOverTime(function(result){
-					if(result.isOver){ //已过期,则重新登录去获取session
-						that.login(function(session,expire){
-							callback && callback(session,expire);
-						});
-					}else{ //未过期
-						callback && callback(session,result.expire);
-					}
-				},function(){
-					showError("判断是否过期失败");
-				})
+				isOverTime(
+					//判断有结果返回
+					function(result){
+						if(result.isOver){ //已过期,则重新登录去获取session
+							that.login(function(session,expire){
+								callback && callback(session,expire);
+							});
+						}else{ //未过期
+							callback && callback(session,result.expire);
+						}
+					},
+					function(){
+						showError("判断是否过期失败");
+					})
 			},
 			fail : function(err){ //不存在 则重新登录
 				that.login(function(session,expire){
@@ -229,6 +241,7 @@ var Common = {
 			}
 		})
 	},
+
 	/**
 	 * 封装wx.request
 	 * 这里已为每个请求附带flag、account两个参数
@@ -254,7 +267,10 @@ var Common = {
 	 */
 	request : function(opt){
 		var that = this;
+
+		//默认参数
 		var defaults = {
+			debug: false,
 			url : "",
 			method : "POST",
 			dataType : "json",
@@ -279,6 +295,7 @@ var Common = {
 			complete : function(){}
 		};
 
+		//混合默认参数和新参数
 		var newOpt = {};
 		for(var i in defaults){
 			if(typeof opt[i]=="undefined"){
@@ -288,14 +305,17 @@ var Common = {
 			}
 		}
 
+		//设置header的small-app
 		newOpt.header["Small-App"] = this.getAccount();
+		
+		// 执行loading函数，显示动画
+		// newOpt.loading();
 
-		newOpt.loading();
-
+		//开发debug
 		if(newOpt.debug) return setTimeout(function(){
 			newOpt.complete();
 			newOpt.success();
-		},1000)
+		},1000);
 
 		var url = newOpt.url;
 		if(!url) return false;
@@ -324,7 +344,7 @@ var Common = {
 					showCancel : false
 				})
 			}
-		}
+		};
 
 		//success中间件
 		var _success = newOpt.success;
@@ -352,7 +372,7 @@ var Common = {
 					showCancel : false
 				})
 			}
-		}
+		};
 
 		//权限校验中间件
 		this.auth(function(session,expire){
@@ -361,6 +381,7 @@ var Common = {
 
 		})
 	},
+
 	getToday : function(){
 		var date = new Date();
 		var y = date.getFullYear();
@@ -370,6 +391,7 @@ var Common = {
 		if(d<10) d = "0" + d;
 		return y+"-"+m+"-"+d;
 	},
+
 	MinueToDayTime : function(daytime){
 		var day = daytime/(24*60);
 		var day_init = String(day).split(".")[0] * 1;
@@ -382,6 +404,7 @@ var Common = {
 		var mine_text = mine_init!=0 ? (mine_init + "分钟") : "";
 		return day_text+hour_text+mine_text;
 	},
+
 	//验证身份证
 	validateIDCard : function(code){
 		var city={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江 ",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北 ",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏 ",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外 "};
