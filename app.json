@@ -1,12 +1,14 @@
 {
   "pages":[
-	  "pages/shoplist/shoplist",
+
 	  "pages/index/index",
 	  "pages/ordercenter/ordercenter",
 	  "pages/booking/booking",
 	  "pages/pay/pay",
 	  "pages/paysuccess/paysuccess",
-	  "pages/pdetail/pdetail"
+	  "pages/pdetail/pdetail",
+	  "pages/shoplist/shoplist"
+
   ],
   "window":{
      "backgroundTextStyle":"light",
