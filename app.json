@@ -9,6 +9,8 @@
 	  "pages/pdetail/pdetail",
 	  "pages/shoplist/shoplist"
 
+
+
   ],
   "window":{
      "backgroundTextStyle":"light",

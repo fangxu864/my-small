@@ -25,6 +25,8 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo:null,
+    //当前的ScenCode
+    curScenCode: ""
   }
-})
+});

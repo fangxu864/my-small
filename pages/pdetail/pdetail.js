@@ -74,6 +74,8 @@ Page({
      *  初始化页面
      */
     onLoad: function( opt ) {
+
+      console.log(getCurrentPages())
         var lid = opt.lid;
         var _this = this;
         // var storageKey = 'land:'+ lid;

@@ -5,7 +5,7 @@ var app = getApp(),
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 Page({
-     onShareAppMessage: function () {
+    onShareAppMessage: function () {
         return {
             title: '票付通',
             path: 'pages/index/index',
@@ -30,42 +30,15 @@ Page({
         hasKeyword:     false,
         lastSearch:     ''
     },
-    onLoad: function () {
-       qqmapsdk = new QQMapWX({
-          key: '55VBZ-XBTR4-KA3UD-XYWNM-IJJHE-KIFIY'
-       });
-        var that = this;
+    onLoad: function (opt) {
+        //如果用户是扫码进来的话
+        var scenCode = opt.scenCode;
 
-        this.getData({
-            keyword: '',
-
-            loading: function() {
-                common.showLoading();
-            },
-
-            complete: function ( res ) {},
-
-            success: function ( res ) {
-                common.hideLoading();
-
-                that.setData({
-                    plist: res.data.list,
-                    lastPos: res.data.lastPos
-                })
-
-                if( res.data.list.length ) {
-
-                } else {
-                    that.setData({
-                        noData: true
-                    })
-                }
-            }
-        })
     },
     getData: function( opt ) {
         var that = this,
-            keyword = opt.keyword || '';
+            keyword = opt.keyword || '',
+            scenCode = opt.scenCode || '';
 
         if (!this.data.hasMore) return;
 
@@ -79,7 +52,7 @@ Page({
                     city: '',
                     pageSize: this.data.pageSize,
                     lastPos: this.data.lastPos,
-                    scenCode:'wxApp#oBvKZ9',
+                    scenCode: scenCode,
                 },
                 debug: false,
                 loading : function(){
@@ -104,8 +77,6 @@ Page({
                             isLoading: false
                         });
                     }
-
-
 
                     opt.success && opt.success( res );
                 }
@@ -222,27 +193,63 @@ Page({
     },
     //地图搜索
     onShow: function(){
-      // 调用接口
-      qqmapsdk.search({
-        keyword: '酒店',
-        success: function (res) {
-          console.log(res);
-        },
-        fail: function (res) {
-          console.log(res);
-        },
-        complete: function (res) {
-          console.log(res);
-        }
-      })
+        var scenCode = app.globalData.curScenCode;
+        console.log(scenCode);
+
+
+        // qqmapsdk = new QQMapWX({
+        //    key: '55VBZ-XBTR4-KA3UD-XYWNM-IJJHE-KIFIY'
+        // });
+        var that = this;
+
+        this.getData({
+            keyword: '',
+            scenCode: scenCode,
+            loading: function() {
+                common.showLoading();
+            },
+
+            complete: function ( res ) {},
+
+            success: function ( res ) {
+                common.hideLoading();
+
+                that.setData({
+                    plist: res.data.list,
+                    lastPos: res.data.lastPos
+                });
+
+                if( res.data.list.length ) {
+
+                } else {
+                    that.setData({
+                        noData: true
+                    })
+                }
+            }
+        });
+
+
+      // qqmapsdk.search({
+      //   keyword: '酒店',
+      //   success: function (res) {
+      //     console.log(res);
+      //   },
+      //   fail: function (res) {
+      //     console.log(res);
+      //   },
+      //   complete: function (res) {
+      //     console.log(res);
+      //   }
+      // })
     },
     //定位
     getLocation: function(){
       wx.getLocation({
         type: 'gcj02', //返回可以用于wx.openLocation的经纬度
         success: function (res) {
-          var latitude = res.latitude
-          var longitude = res.longitude
+          var latitude = res.latitude;
+          var longitude = res.longitude;
           console.log("longtitude:" + longitude + ";latitude:"+latitude);
           // wx.openLocation({
           //   latitude: latitude,
@@ -256,6 +263,13 @@ Page({
         //     console.log(res);
         //   },
         // });
+    },
+
+    //当切换店铺时
+    onSwitchShop: function () {
+        wx.navigateTo({
+            url: '../shoplist/shoplist'
+        })
     }
 
-})
+});
