@@ -5,7 +5,7 @@
  */
 var Config = require("./config.js");
 var Common = {
-  appId: "wxd1e8494ae3b6d821",
+  appId: "wx5605b231e666f425",
 	REQUEST_HOST : "https://api.12301dev.com/index.php",
 	SESSION_STORAGE_KEY : "pft-session-storage",
 	SESSION_STORAGE_EXPIRE_KEY : "pft-session-storage-expire",  //session过期时长的key
