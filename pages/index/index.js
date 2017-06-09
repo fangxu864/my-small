@@ -41,7 +41,7 @@ Page({
 
     getData: function( opt ) {
         var that = this,
-            keyword = opt.keyword || ''
+            keyword = opt.keyword || '';
 
         if (!this.data.hasMore) return;
 

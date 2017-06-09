@@ -27,6 +27,16 @@ App({
   globalData:{
     userInfo:null,
     //当前的ScenCode
-    curScenCode: ""
+    curScenCode: "",
+    //当前的经度
+    curLatitude: "",
+    //当前的纬度
+    curLongitude: ""
+  },
+  
+  //缓存仓库
+  cacheHub: {
+    //店铺列表页面
+    shopList: {}
   }
 });

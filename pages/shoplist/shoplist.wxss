@@ -26,7 +26,8 @@ page{
     position: absolute;
     top: 0;
     right: 0;
-    font-size:24rpx;
+    font-size:30rpx;
+    color: #616161;
 }
 .top-title .choose-location:active{
   background-color: #e5e5e5;
@@ -35,7 +36,7 @@ page{
     width: 38rpx;
     height: 38rpx;
     position: relative;
-    top: 7rpx;
+    top: 9rpx;
 }
 
 
@@ -69,7 +70,14 @@ page{
     padding: 10rpx 20rpx ;
 }
 
-
+.page-status{
+    background-color:#fff;
+    line-height:168rpx;
+    text-align:center;
+    font-size:28rpx;
+    color:#c3c3c3;
+    margin-top:40rpx;
+}
 
 
 
