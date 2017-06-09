@@ -3,7 +3,7 @@
     {{locationText}}
     <view class="choose-location" bindtap="onTopTitleTap">选择></view>
 </view>
-<view class="top-tips" >附近的购票处</view>
+<view class="top-tips" >附近的景点、旅行社、门票代理</view>
 
 <view class="shop-item clearfix" wx:for="{{shopListArr}}" bindtap = "onShopItemTap" data-scencode="{{item.scenCode}}">
     <image class="shop-img" src="{{item.img}}"></image>

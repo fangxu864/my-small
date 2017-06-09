@@ -177,7 +177,7 @@ Page({
 			data : {
 				pid : pid,
 				aid : aid,
-        scenCode:"wxApp#oBvKZ9"
+                scenCode: app.globalData.curScenCode
 			},
 			loading : function(){
 				Common.showLoading()
