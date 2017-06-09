@@ -22,6 +22,26 @@
     background: rgba(0,0,0,.4);
     color: #fff;
 }
+.banner-box .shop-name{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  text-align:center;
+  line-height:88rpx;
+  color:#ffffff;
+  font-size:32rpx;
+  font-weight:bold;
+
+}
+
+.banner-box .shop-name .arrow-bottom{
+  width: 40rpx;
+  height: 40rpx;
+  position:relative;
+  top:10rpx;
+
+}
 .scroll-view-wrap {
   position: absolute;
   left: 0;

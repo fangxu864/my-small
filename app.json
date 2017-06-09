@@ -1,17 +1,22 @@
 {
   "pages":[
-	"pages/index/index",
-	"pages/ordercenter/ordercenter",
-	"pages/booking/booking",
-	"pages/pay/pay",
-	"pages/paysuccess/paysuccess",
-	"pages/pdetail/pdetail"
+
+	  "pages/index/index",
+	  "pages/ordercenter/ordercenter",
+	  "pages/booking/booking",
+	  "pages/pay/pay",
+	  "pages/paysuccess/paysuccess",
+	  "pages/pdetail/pdetail",
+	  "pages/shoplist/shoplist"
+
+
+
   ],
   "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#268dcd",
-    "navigationBarTitleText": "票付通",
-    "navigationBarTextStyle":"white"
+     "backgroundTextStyle":"light",
+     "navigationBarBackgroundColor": "#268dcd",
+     "navigationBarTitleText": "票付通",
+     "navigationBarTextStyle":"white"
   },
 	"tabBar": {
 	"color": "#666",

@@ -74,6 +74,8 @@ Page({
      *  初始化页面
      */
     onLoad: function( opt ) {
+
+      console.log(getCurrentPages())
         var lid = opt.lid;
         var _this = this;
         // var storageKey = 'land:'+ lid;
@@ -157,7 +159,7 @@ Page({
             url: "/r/Mall_Product/getTicketList/",
             data: {
                 lid: lid,
-                scenCode:"wxApp#oBvKZ9",
+                scenCode: app.globalData.curScenCode,
             },
             loading: function () {
                 Common.showLoading()

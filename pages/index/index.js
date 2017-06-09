@@ -5,7 +5,7 @@ var app = getApp(),
 var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 Page({
-     onShareAppMessage: function () {
+    onShareAppMessage: function () {
         return {
             title: '票付通',
             path: 'pages/index/index',
@@ -16,6 +16,7 @@ Page({
             }
         }
     },
+
     data: {
         plist:          [],
         hasMore:        true,
@@ -30,39 +31,14 @@ Page({
         hasKeyword:     false,
         lastSearch:     ''
     },
-    onLoad: function () {
-       qqmapsdk = new QQMapWX({
-          key: '55VBZ-XBTR4-KA3UD-XYWNM-IJJHE-KIFIY'
-       });
-        var that = this;
 
-        this.getData({
-            keyword: '',
-
-            loading: function() {
-                common.showLoading();
-            },
-
-            complete: function ( res ) {},
-
-            success: function ( res ) {
-                common.hideLoading();
-
-                that.setData({
-                    plist: res.data.list,
-                    lastPos: res.data.lastPos
-                })
-
-                if( res.data.list.length ) {
-
-                } else {
-                    that.setData({
-                        noData: true
-                    })
-                }
-            }
-        })
+    onLoad: function (opt) {
+        //如果用户是扫码进来的话,会有scenCode,则将scenCode缓存至app.globalData.curScenCode
+        if(opt.scenCode){
+            app.globalData.curScenCode = opt.scenCode;
+        }
     },
+
     getData: function( opt ) {
         var that = this,
             keyword = opt.keyword || '';
@@ -79,7 +55,7 @@ Page({
                     city: '',
                     pageSize: this.data.pageSize,
                     lastPos: this.data.lastPos,
-                    scenCode:'wxApp#oBvKZ9',
+                    scenCode: app.globalData.curScenCode
                 },
                 debug: false,
                 loading : function(){
@@ -105,8 +81,6 @@ Page({
                         });
                     }
 
-
-
                     opt.success && opt.success( res );
                 }
             })
@@ -114,6 +88,7 @@ Page({
             console.log('正在请求  请稍后');
         }
     },
+
     //事件处理函数
     navigateToDetail: function( e ) {
         var currentTarget = e.currentTarget,
@@ -126,6 +101,8 @@ Page({
           url: '../pdetail/pdetail?lid=' + e.currentTarget.dataset.lid
         });
     },
+
+    //滚动到底部时
     scrollToLower: function( e ) {
         var that = this;
 
@@ -138,7 +115,7 @@ Page({
                 that.setData({
                     plist: that.data.plist.concat( res.data.list ),
                     lastPos: res.data.lastPos
-                })
+                });
 
                 if( res.data.lastPos == that.data.lastPos ) {
                     that.setData({
@@ -148,15 +125,17 @@ Page({
             }
         })
     },
+
     searchIconTap: function(){
         this.setData({
             searchInpFocus: true
         })
     },
+
     searchInput: function( e ) {
         this.setData({
             searchVal: e.detail.value
-        })
+        });
 
         if( this.trim( e.detail.value )!='' ) {
             this.setData({
@@ -170,6 +149,7 @@ Page({
             })
         }
     },
+
     clearSearch: function() {
         this.setData({
             searchVal: '',
@@ -177,6 +157,8 @@ Page({
             isClearShow: false
         })
     },
+
+    //搜索时
     search :function() {
         var that = this;
 
@@ -188,7 +170,6 @@ Page({
 
         that.getData({
             keyword: this.data.searchVal,
-
             loading: function() {
                 that.setData({
                     noData: false
@@ -216,46 +197,75 @@ Page({
             }
         })
     },
+
     //去除前后空格
     trim: function( str ) {
         return str.replace(/(^\s*)|(\s*$)/g, '');
     },
-    //地图搜索
+
+    //当页面显示时
     onShow: function(){
-      // 调用接口
-      qqmapsdk.search({
-        keyword: '酒店',
-        success: function (res) {
-          console.log(res);
-        },
-        fail: function (res) {
-          console.log(res);
-        },
-        complete: function (res) {
-          console.log(res);
+        var that = this;
+
+        console.log("scenCode",app.globalData.curScenCode);
+        //如果有scenCode,获取数据；没有，跳到附近的店铺列表
+        if(app.globalData.curScenCode){
+            this.getData({
+                keyword: '',
+                loading: function() {
+                    common.showLoading();
+                },
+
+                complete: function ( res ) {},
+
+                success: function ( res ) {
+                    common.hideLoading();
+
+                    that.setData({
+                        plist: res.data.list,
+                        lastPos: res.data.lastPos
+                    });
+
+                    if( res.data.list.length ) {
+
+                    } else {
+                        that.setData({
+                            noData: true
+                        })
+                    }
+                }
+            });
+        }else{
+            wx.navigateTo({
+                url: '../shoplist/shoplist'
+            })
         }
-      })
     },
-    //定位
-    getLocation: function(){
-      wx.getLocation({
-        type: 'gcj02', //返回可以用于wx.openLocation的经纬度
-        success: function (res) {
-          var latitude = res.latitude
-          var longitude = res.longitude
-          console.log("longtitude:" + longitude + ";latitude:"+latitude);
-          // wx.openLocation({
-          //   latitude: latitude,
-          //   longitude: longitude,
-          //   scale: 28
-          // })
-        }
-      });
-        // wx.getLocation({
-        //   success: function(res) {
-        //     console.log(res);
-        //   },
-        // });
+
+    //当切换店铺时
+    onSwitchShop: function () {
+        wx.navigateTo({
+            url: '../shoplist/shoplist'
+        })
     }
 
-})
+});
+
+/**
+ * 下面是干嘛用的，先备注起来
+ */
+// qqmapsdk = new QQMapWX({
+//    key: '55VBZ-XBTR4-KA3UD-XYWNM-IJJHE-KIFIY'
+// });
+// qqmapsdk.search({
+//   keyword: '酒店',
+//   success: function (res) {
+//     console.log(res);
+//   },
+//   fail: function (res) {
+//     console.log(res);
+//   },
+//   complete: function (res) {
+//     console.log(res);
+//   }
+// })

@@ -1,0 +1,21 @@
+<view class="top-title">
+    <image class="location-icon" src="http://static.12301.cc/assets/build/images/pft-samllapp/location.png?v3.0"></image>
+    {{locationText}}
+    <view class="choose-location" bindtap="onTopTitleTap">选择 ></view>
+</view>
+
+
+<view style="display: {{shopListShow}}">
+<view class="top-tips" >附近的景点、旅行社、门票代理</view>
+<view class="shop-item clearfix" wx:for="{{shopListArr}}" bindtap = "onShopItemTap" data-scencode="{{item.scenCode}}">
+    <image class="shop-img" src="{{item.img}}"></image>
+    <view class="rt">
+        <view class="shop-name">{{item.name}}</view>
+        <view class="summary">这里是备注这里是备注这里是</view>
+        <view class="bottom">这里是补充</view>
+    </view>
+</view>
+</view>
+
+<view class="page-status" style="display: {{pageStatusShow}}">{{pageStatusText}}</view>
+

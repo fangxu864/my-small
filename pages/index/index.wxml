@@ -1,19 +1,23 @@
-<scroll-view class="container" scroll-y="true" scroll-into-view="{{scroll_into_view}}" bindscroll="onScroll" style="margin-top: {{isfixed =='fixed' ? '92rpx' : ''}}">
-    <view class="banner-box">
-        <view class="img-box">
-            <image src="../../image/gly.jpg"></image>
-        </view>
-        <view class="info-box">
-            <view>
-                <text class="banner-text">hello world</text>
-            </view>
+
+<view class="banner-box">
+    <view class="img-box">
+        <image src="../../image/gly.jpg"></image>
+    </view>
+    <view class="info-box">
+        <view>
+            <text class="banner-text">hello world</text>
         </view>
     </view>
-</scroll-view>
-<!--<view class="location-wrap">
-      <button size="mini" class="" bindtap="onShow">搜索</button>
-      <button size="mini" class="" bindtap="getLocation">定位</button>
-</view>-->
+    <view class="shop-name" bindtap="onSwitchShop">
+        店铺名字店铺名字
+        <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
+    </view>
+</view>
+
+<!--<view class="location-wrap">-->
+      <!--<button size="mini" class="" bindtap="onShow">搜索</button>-->
+      <!--<button size="mini" class="" bindtap="getLocation">定位</button>-->
+<!--</view>-->
 <view class="search">
     <icon type="search" size="12" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
     <input type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" value="{{searchVal}}" />
