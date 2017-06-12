@@ -12,7 +12,7 @@
     <view class="rt">
         <view class="shop-name">{{item.name}}</view>
         <view class="summary">{{item.aboutus}}</view>
-        <div class="distance">距我{{item.dist}}km</div>
+        <div class="distance">距您{{item.dist}}km</div>
     </view>
 </view>
 </view>
