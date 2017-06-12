@@ -26,7 +26,7 @@ page{
     position: absolute;
     top: 0;
     right: 0;
-    font-size:30rpx;
+    font-size:28rpx;
     color: #616161;
 }
 .top-title .choose-location:active{
