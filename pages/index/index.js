@@ -137,7 +137,7 @@ Page({
             searchVal: e.detail.value
         });
 
-        if( this.trim( e.detail.value )!='' ) {
+        if( this.trim( e.detail.value ) != '' ) {
             this.setData({
                 hasKeyword: true,
                 isClearShow: true
@@ -166,7 +166,7 @@ Page({
             hasMore: true,
             lastPos: 0,
             lastSearch: this.data.searchVal
-        })
+        });
 
         that.getData({
             keyword: this.data.searchVal,
@@ -186,7 +186,7 @@ Page({
                 that.setData({
                     plist: res.data.list,
                     lastPos: res.data.lastPos
-                })
+                });
 
                 if( res.data.list.length ) {
                 } else {
@@ -206,6 +206,21 @@ Page({
     //当页面显示时
     onShow: function(){
         var that = this;
+        //重置下数据
+        that.setData({
+            plist:          [],
+            hasMore:        true,
+            isHasMoreHidden: false,
+            isLoading:      false,
+            pageSize:       10,
+            lastPos:        0,
+            searchInpFocus: false,
+            searchVal:      '',
+            isClearShow:    false,
+            noData:         false,
+            hasKeyword:     false,
+            lastSearch:     ''
+        });
 
         console.log("scenCode",app.globalData.curScenCode);
         //如果有scenCode,获取数据；没有，跳到附近的店铺列表

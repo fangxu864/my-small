@@ -22,6 +22,9 @@
     background: rgba(0,0,0,.4);
     color: #fff;
 }
+.banner-box .info-box .banner-text{
+  font-size: 28rpx;
+}
 .banner-box .shop-name{
   position:absolute;
   top:0;
@@ -32,7 +35,7 @@
   color:#ffffff;
   font-size:32rpx;
   font-weight:bold;
-
+  background: rgba(0, 0, 0, 0.1);
 }
 
 .banner-box .shop-name .arrow-bottom{
@@ -196,6 +199,7 @@
   padding: 0 0 10px;
   text-align: center;
   color: #999;
+  font-size: 24rpx;
 }
 
 .search {

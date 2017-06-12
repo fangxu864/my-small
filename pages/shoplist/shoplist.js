@@ -99,7 +99,6 @@ Page({
             dealRes(app.cacheHub.shopList[cacheKey]);
             return false;
         }
-        console.log("请求" ,longitude ,latitude);
         Common.request({
             url: "/r/Mall_Mall/getNearbyShop/",
             data: {
