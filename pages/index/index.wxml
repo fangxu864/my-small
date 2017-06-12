@@ -1,33 +1,35 @@
 
-<view class="banner-box">
-    <view class="img-box">
-        <image src="{{shopInfo.img}}"></image>
-    </view>
-    <view class="info-box">
-        <view>
-            <text class="banner-text">联系电话:{{shopInfo.tel}}</text>
-        </view>
-    </view>
-    <view class="shop-name" bindtap="onSwitchShop">
-        {{shopInfo.name}}
-        <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
-    </view>
-</view>
+
 
 <!--<view class="location-wrap">-->
       <!--<button size="mini" class="" bindtap="onShow">搜索</button>-->
       <!--<button size="mini" class="" bindtap="getLocation">定位</button>-->
 <!--</view>-->
-<view class="search">
-    <icon type="search" size="12" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
-    <input type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" value="{{searchVal}}" />
-    <view hidden="{{!isClearShow}}" bindtap="clearSearch">
-        <icon type="clear" size="12" class="search-clear"></icon>
-    </view>
-    <button size="mini" class="search-btn" bindtap="search">搜索</button>
-</view>
+
 <view class="scroll-view-wrap">
     <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="scrollToLower">
+        <view class="banner-box">
+            <view class="img-box">
+                <image src="{{shopInfo.img}}"></image>
+            </view>
+            <view class="info-box">
+                <view>
+                    <text class="banner-text">联系电话:{{shopInfo.tel}}</text>
+                </view>
+            </view>
+            <view class="shop-name" bindtap="onSwitchShop">
+                {{shopInfo.name}}
+                <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
+            </view>
+        </view>
+        <view class="search">
+            <icon type="search" size="12" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
+            <input type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" value="{{searchVal}}" />
+            <view hidden="{{!isClearShow}}" bindtap="clearSearch">
+                <icon type="clear" size="12" class="search-clear"></icon>
+            </view>
+            <button size="mini" class="search-btn" bindtap="search">搜索</button>
+        </view>
         <view class="plist">
             <block wx:for="{{plist}}" wx:key="pid" wx:for-item="p">
                 <view class="item itemBox">
