@@ -8,11 +8,11 @@
 <view style="display: {{shopListShow}}">
 <view class="top-tips" >附近的景点、旅行社、门票代理</view>
 <view class="shop-item clearfix" wx:for="{{shopListArr}}" bindtap = "onShopItemTap" data-scencode="{{item.scenCode}}">
-    <image class="shop-img" src="{{item.img}}"></image>
+    <image class="shop-img" src="{{item.img}}" mode="aspectFit"></image>
     <view class="rt">
         <view class="shop-name">{{item.name}}</view>
-        <view class="summary">这里是备注这里是备注这里是</view>
-        <view class="bottom">这里是补充</view>
+        <view class="summary">{{item.abountus}}</view>
+        <div class="distance">距我{{item.dist}}km</div>
     </view>
 </view>
 </view>

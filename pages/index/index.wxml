@@ -1,15 +1,15 @@
 
 <view class="banner-box">
     <view class="img-box">
-        <image src="../../image/gly.jpg"></image>
+        <image src="{{shopInfo.img}}"></image>
     </view>
     <view class="info-box">
         <view>
-            <text class="banner-text">hello world</text>
+            <text class="banner-text">联系电话:{{shopInfo.tel}}</text>
         </view>
     </view>
     <view class="shop-name" bindtap="onSwitchShop">
-        店铺名字店铺名字
+        {{shopInfo.name}}
         <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
     </view>
 </view>

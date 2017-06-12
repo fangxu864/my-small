@@ -223,7 +223,8 @@ Page({
 
                     that.setData({
                         plist: res.data.list,
-                        lastPos: res.data.lastPos
+                        lastPos: res.data.lastPos,
+                        shopInfo: res.data.shopInfo
                     });
 
                     if( res.data.list.length ) {

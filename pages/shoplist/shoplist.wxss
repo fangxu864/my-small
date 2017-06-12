@@ -46,10 +46,12 @@ page{
 .shop-item{
     background-color: #ffffff;
     margin-bottom: 20rpx;
+    position: relative;
 }
 
 .shop-item .shop-img{
-    width: 160rpx;
+    box-sizing: border-box;
+    width: 20%;
     padding: 20rpx;
     height:160rpx;
     float: left;
@@ -57,17 +59,28 @@ page{
 
 .shop-item .rt{
     float: left;
+    width: 70%;
 }
 .shop-item .rt .shop-name{
     font-size: 28rpx;
     font-weight: bold;
-    padding: 20rpx ;
+    padding:20rpx 0 0 20rpx;
 }
 .shop-item .rt .summary{
     padding: 10rpx 20rpx ;
+    color:#666666;
+}
+.shop-item .rt .distance{
+    position: absolute;
+    color:#666666;
+    font-size: 24rpx;
+    right: 20rpx;
+    bottom:10rpx;
 }
 .shop-item .rt .bottom{
     padding: 10rpx 20rpx ;
+    position: absolute;
+    bottom:6rpx;
 }
 
 .page-status{
