@@ -131,7 +131,7 @@ Page({
             if( code == 200 ){
                 if(Common.judgeTrue(data)){
                     res.data.forEach(function (item) {
-                        item.abountus = Common.ellipsis( item.abountus , 30 );
+                        item.aboutus = Common.ellipsis( item.aboutus , 30 );
                         item.dist = Number(item.dist).toFixed(2)
                     });
                     _this.setData({

@@ -11,7 +11,7 @@
     <image class="shop-img" src="{{item.img}}" mode="aspectFit"></image>
     <view class="rt">
         <view class="shop-name">{{item.name}}</view>
-        <view class="summary">{{item.abountus}}</view>
+        <view class="summary">{{item.aboutus}}</view>
         <div class="distance">距我{{item.dist}}km</div>
     </view>
 </view>
