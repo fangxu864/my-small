@@ -48,6 +48,9 @@ page{
     margin-bottom: 20rpx;
     position: relative;
 }
+.shop-item:active{
+    background-color: #e5e5e5;
+}
 
 .shop-item .shop-img{
     box-sizing: border-box;
