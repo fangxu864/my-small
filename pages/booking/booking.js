@@ -299,15 +299,16 @@ Page({
 		var contacttel = oData.contacttel;
 		var ordername = oData.ordername;
 		var sfz = oData.sfz;
-
-
+    
+    //console.log("scenCode", app.globalData.curScenCode);
 		var submitData = {
 			pid : oData.pid,
 			aid : oData.aid,
 			tnum : ticketList[0]["value"],   //主票购买张数
 			begintime : oData.begintime,     //开始时间
 			contacttel : oData.contacttel,   //取票人手机号
-			ordername : oData.ordername      //联系人姓名
+			ordername : oData.ordername,      //联系人姓名,
+      scenCode  : app.globalData.curScenCode //店铺唯一编码
 		};
 		if(oData.needID==1) submitData["sfz"] = oData.sfz; //需要一张身份证
 
