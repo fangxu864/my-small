@@ -76,6 +76,8 @@ Page({
             cancel: function () {
             },
             success: function (res) {
+                app.globalData.curLatitude = res.latitude;
+                app.globalData.curLongitude = res.longitude;
                 _this.setData({
                     locationText: Common.ellipsis( res.name || res.address , 15 )
                 });
