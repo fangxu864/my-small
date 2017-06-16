@@ -131,8 +131,13 @@ Page({
               //替换空格
               res.data.bhjq = res.data.bhjq.replace(/\&nbsp;+/g, " ");
               _this.setData({
-                land: res.data,
-              })
+                  land: res.data,
+                  title: res.data.title
+
+              });
+                wx.setNavigationBarTitle({
+                    title: _this.data.land.title
+                });
               try {
                 wx.setStorageSync(storageKey, res.data)
               } catch (e) {
@@ -205,9 +210,9 @@ Page({
      * onReady
      */
     onReady : function(){
-        let that = this;
+        var _this = this;
         wx.setNavigationBarTitle({
-            title: that.data.land.title
+            title: _this.data.land.title
         });
     },
 

@@ -6,8 +6,9 @@ var QQMapWX = require('../../utils/qqmap-wx-jssdk.min.js');
 var qqmapsdk;
 Page({
     onShareAppMessage: function () {
+        var _this = this;
         return {
-            title: '票付通',
+            title: _this.curShopName,
             path: 'pages/index/index',
             success: function(res) {
             },
@@ -29,7 +30,9 @@ Page({
         isClearShow:    false,
         noData:         false,
         hasKeyword:     false,
-        lastSearch:     ''
+        lastSearch:     '',
+        //当前店铺名称
+        curShopName: ''
     },
 
     onLoad: function (opt) {
@@ -239,8 +242,13 @@ Page({
                     that.setData({
                         plist: res.data.list,
                         lastPos: res.data.lastPos,
-                        shopInfo: res.data.shopInfo
+                        shopInfo: res.data.shopInfo,
+                        curShopName: res.data.shopInfo.name
                     });
+                    wx.setNavigationBarTitle({
+                        title: res.data.shopInfo.name
+                    });
+
 
                     if( res.data.list.length ) {
 
