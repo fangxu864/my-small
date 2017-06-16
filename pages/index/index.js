@@ -37,8 +37,8 @@ Page({
 
     onLoad: function (opt) {
         //如果用户是扫码进来的话,会有scenCode,则将scenCode缓存至app.globalData.curScenCode
-        if(opt.scenCode){
-            app.globalData.curScenCode = opt.scenCode;
+        if(opt.scene){
+            app.globalData.curScenCode = opt.scene;
         }
     },
 
