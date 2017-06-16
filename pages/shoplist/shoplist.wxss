@@ -54,9 +54,9 @@ page{
 
 .shop-item .shop-img{
     box-sizing: border-box;
-    width: 20%;
+    width: 200rpx;
     padding: 20rpx;
-    height:160rpx;
+    height:150rpx;
     float: left;
 }
 
