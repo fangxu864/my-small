@@ -74,8 +74,11 @@ Page({
      *  初始化页面
      */
     onLoad: function( opt ) {
+        //如果用户是扫码进来的话,会有scenCode,则将scenCode缓存至app.globalData.curScenCode
+        if(opt.scenCode){
+            app.globalData.curScenCode = opt.scenCode;
+        }
 
-      console.log(getCurrentPages())
         var lid = opt.lid;
         var _this = this;
         // var storageKey = 'land:'+ lid;
@@ -241,7 +244,7 @@ Page({
      onShareAppMessage: function () {
         return {
             title: this.data.land.title,
-            path: 'pages/pdetail/pdetail?lid='+this.data.land.id,
+            path: 'pages/pdetail/pdetail?lid='+this.data.land.id + "&scenCode=" + app.globalData.curScenCode,
             success: function(res) {
             },
             fail: function(res) {
