@@ -8,8 +8,9 @@
                 <text class="land-name">{{land.title}}</text>
             </view>-->
             <view>
-                <text class="land-adress">{{land.address}}</text>
-                <icon type="info_circle" size="15"/>
+                <icon class="icon-address iconfont"></icon>
+                <text class="land-adress ">{{land.address}}</text>
+                <icon class="icon-you iconfont"></icon>
             </view>
         </view>
     </view>

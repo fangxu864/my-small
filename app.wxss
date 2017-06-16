@@ -32,3 +32,23 @@ page{
     transform: rotate3d(0, 0, 1, 360deg);
   }
 }
+
+@font-face {font-family: "iconfont";
+  src: url('//at.alicdn.com/t/font_j1hzihze6ppq4cxr.eot?t=1497586588496'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_j1hzihze6ppq4cxr.eot?t=1497586588496#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_j1hzihze6ppq4cxr.woff?t=1497586588496') format('woff'), /* chrome, firefox */
+  url('//at.alicdn.com/t/font_j1hzihze6ppq4cxr.ttf?t=1497586588496') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_j1hzihze6ppq4cxr.svg?t=1497586588496#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-you:before { content: "\e63c"; }
+
+.icon-address:before { content: "\e60a"; }
