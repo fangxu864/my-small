@@ -183,6 +183,7 @@ Page({
 				Common.showLoading()
 			},
 			complete : function(){
+				console.log("第一ge")
 				Common.hideLoading();
 			},
 			success : function(res){
@@ -381,7 +382,7 @@ Page({
 				date : date
 			},
 			loading : function(){
-				Common.showLoading("请求库存价格..");
+				// Common.showLoading("请求库存价格..");
 			},
 			complete : function(){
 				Common.hideLoading();
