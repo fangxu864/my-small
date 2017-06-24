@@ -36,7 +36,6 @@
   font-size:32rpx;
   font-weight:bold;
 }
-
 .banner-box .shop-name .arrow-bottom{
   width:36rpx;
   height:36rpx;

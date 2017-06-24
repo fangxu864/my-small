@@ -18,7 +18,7 @@
                 </view>
             </view>
             <view class="shop-name" bindtap="onSwitchShop">
-                {{shopInfo.name}}
+                <text class="show-name-text">{{shopInfo.name}}</text>
                 <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
             </view>
         </view>
