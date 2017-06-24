@@ -35,7 +35,9 @@
   color:#ffffff;
   font-size:32rpx;
   font-weight:bold;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0));
 }
+
 .banner-box .shop-name .arrow-bottom{
   width:36rpx;
   height:36rpx;

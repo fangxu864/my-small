@@ -12,11 +12,11 @@
             <view class="img-box">
                 <image src="{{shopInfo.img}}"></image>
             </view>
-            <view class="info-box">
+            <!--<view class="info-box">
                 <view>
                     <text class="banner-text">联系电话:{{shopInfo.tel}}</text>
                 </view>
-            </view>
+            </view>-->
             <view class="shop-name" bindtap="onSwitchShop">
                 <text class="show-name-text">{{shopInfo.name}}</text>
                 <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
