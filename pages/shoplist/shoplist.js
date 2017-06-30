@@ -2,6 +2,24 @@ var Common = require("../../utils/common.js");
 var app = getApp();
 
 
+const date = new Date()
+const years = []
+const months = []
+const days = []
+
+for (let i = 1990; i <= date.getFullYear(); i++) {
+  years.push(i)
+}
+
+for (let i = 1; i <= 12; i++) {
+  months.push(i)
+}
+
+for (let i = 1; i <= 31; i++) {
+  days.push(i)
+}
+
+
 /**
  * 店铺列表页
  */
@@ -12,7 +30,16 @@ Page({
         shopListArr: [],
         //是否显示状态提示框
         pageStatusShow: "none",
-        pageStatusText:"页面状态文本"
+        pageStatusText:"页面状态文本",
+
+         years: years,
+        year: date.getFullYear(),
+        months: months,
+        month: 2,
+        days: days,
+        day: 2,
+        year: date.getFullYear(),
+        value: [9999, 1, 1],
     },
 
     onLoad: function () {
@@ -74,6 +101,7 @@ Page({
         var _this = this;
         wx.chooseLocation({
             cancel: function () {
+              console.log("cancel")
             },
             success: function (res) {
                 app.globalData.curLatitude = res.latitude;
@@ -84,7 +112,13 @@ Page({
                 });
                 _this.getShopListData(res.longitude , res.latitude);
             },
-            fail: function () {
+            fail: function ( e ) {
+                console.log( e.errMsg );
+                //如果用户拒绝了授权地理位置 'chooseLocation:fail auth deny'
+                if( /deny/g.test( e.errMsg )){
+                    console.log("ddd")
+                }
+              
             }
         })
     },
