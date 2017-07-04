@@ -7,9 +7,10 @@ var qqmapsdk;
 Page({
     onShareAppMessage: function () {
         var _this = this;
+        console.log(app.globalData.curScenCode);
         return {
             title: _this.curShopName,
-            path: 'pages/index/index',
+            path: 'pages/index/index?scene=' + app.globalData.curScenCode,
             success: function(res) {
             },
             fail: function(res) {
