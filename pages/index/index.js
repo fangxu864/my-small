@@ -271,6 +271,18 @@ Page({
         wx.navigateTo({
             url: '../shoplist/shoplist'
         })
+    },
+
+    //当二维码点击时
+    onQrCodeTap: function () {
+        var data = {
+            account: common.getAccount(),
+            scenCode: app.globalData.curScenCode
+        };
+
+        wx.navigateTo({
+            url: '../qrcode/qrcode?' + common.urlStringify( data )
+        });
     }
 
 });

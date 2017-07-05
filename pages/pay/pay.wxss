@@ -1,5 +1,8 @@
 .pageBody{ padding:10px 15px}
-.wxPayIcon{ width:70px; height:70px}
+.wxPayIcon{
+  color: #59b64c;
+  font-size:80rpx;
+}
 
 .successTitle{ font-size:22px; color:#3eba40; font-weight:bold; margin-top:10px; margin-bottom:5px}
 

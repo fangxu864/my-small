@@ -31,7 +31,7 @@
     </view>
 
     <view bindtap="onPay" class="payBox">
-        <image class="wxPayIcon" src="../../image/weixin.png"></image>
+        <icon class="icon-weixinzhifu iconfont wxPayIcon"></icon>
         <text class="t">点击支付</text>
     </view>
 

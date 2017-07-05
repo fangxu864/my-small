@@ -74,7 +74,7 @@ Page({
      *  初始化页面
      */
     onLoad: function( opt ) {
-        //如果用户是扫码进来的话,会有scenCode,则将scenCode缓存至app.globalData.curScenCode
+        //转发进来的会有scenCode参数
         if(opt.scenCode){
             app.globalData.curScenCode = opt.scenCode;
         }

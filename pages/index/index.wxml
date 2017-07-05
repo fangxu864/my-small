@@ -19,7 +19,8 @@
             </view>-->
             <view class="shop-name" bindtap="onSwitchShop">
                 {{shopInfo.name}}
-                <image class="arrow-bottom" src="http://static.12301.cc/assets/build/images/pft-samllapp/arrow-bottom.png"></image>
+                <icon class="icon-arrowdown iconfont"></icon>
+                <icon class="icon-erweima1 iconfont" catchtap="onQrCodeTap"></icon>
             </view>
         </view>
         <view class="search">

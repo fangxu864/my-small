@@ -39,11 +39,17 @@
 }
   
 
-.banner-box .shop-name .arrow-bottom{
-  width:36rpx;
-  height:36rpx;
+.banner-box .shop-name .icon-arrowdown{
   position:relative;
-  top:10rpx;
+  top:4rpx;
+}
+
+.banner-box .shop-name .icon-erweima1{
+  position:absolute;
+  right:0px;
+  width:88rpx;
+  height:88rpx;
+  font-size: 38rpx;
 }
 .scroll-view-wrap {
   position: absolute;

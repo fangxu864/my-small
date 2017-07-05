@@ -1,0 +1,18 @@
+page{
+  background-color: #e8e8e8;
+  font-size: 24rpx;
+}
+
+.qr-img-box{
+  padding: 10px;
+  background:#fff;
+  margin-top:10px;
+}
+.qr-img-box .qr-img{
+  width: 100%;
+}
+
+.save-btn {
+  margin-top: 50rpx;
+  width: 80%;
+}

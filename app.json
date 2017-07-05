@@ -7,9 +7,8 @@
 	  "pages/pay/pay",
 	  "pages/paysuccess/paysuccess",
 	  "pages/pdetail/pdetail",
-	  "pages/shoplist/shoplist"
-
-
+	  "pages/shoplist/shoplist",
+	  "pages/qrcode/qrcode"
 
   ],
   "window":{
