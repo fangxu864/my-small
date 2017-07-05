@@ -27,7 +27,7 @@ Page({
                 Common.showLoading("二维码加载中");
             },
             complete: function () {
-                Common.hideLoading();
+
             },
             success: function ( res ) {
                 _this.setData({
@@ -47,6 +47,13 @@ Page({
         wx.previewImage({
             urls: urls // 需要预览的图片http链接列表
         })
+    },
+
+    /**
+     * 图片加载完成
+     */
+    onQrImgLoadEnd: function () {
+        Common.hideLoading();
     }
     
     

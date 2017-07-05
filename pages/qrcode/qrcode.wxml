@@ -1,5 +1,5 @@
 <view class="qr-img-box">
-    <image mode="aspectFit" src="{{qrImgSrc}}" class="qr-img" bindtap="onPreviewImage"></image>
+    <image mode="aspectFit" src="{{qrImgSrc}}" class="qr-img" bindtap="onPreviewImage" bindload="onQrImgLoadEnd"></image>
 </view>
 
 <button type="primary" class="save-btn" bindtap="onPreviewImage">分享保存</button>
