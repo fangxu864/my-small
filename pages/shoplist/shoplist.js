@@ -32,25 +32,25 @@ Page({
         pageStatusShow: "none",
         pageStatusText:"页面状态文本",
 
-         years: years,
-        year: date.getFullYear(),
-        months: months,
-        month: 2,
-        days: days,
-        day: 2,
-        year: date.getFullYear(),
-        value: [9999, 1, 1],
+        //  years: years,
+        // year: date.getFullYear(),
+        // months: months,
+        // month: 2,
+        // days: days,
+        // day: 2,
+        // year: date.getFullYear(),
+        // value: [9999, 1, 1],
     },
 
-    bindChange: function (e) {
-      console.log(e.detail);
-      const val = e.detail.value;
-      this.setData({
-        year: this.data.years[val[0]],
-        month: this.data.months[val[1]],
-        day: this.data.days[val[2]]
-      })
-    },
+    // bindChange: function (e) {
+    //   console.log(e.detail);
+    //   const val = e.detail.value;
+    //   this.setData({
+    //     year: this.data.years[val[0]],
+    //     month: this.data.months[val[1]],
+    //     day: this.data.days[val[2]]
+    //   })
+    // },
 
     onLoad: function () {
 
