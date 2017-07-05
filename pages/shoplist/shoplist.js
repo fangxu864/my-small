@@ -42,6 +42,16 @@ Page({
         value: [9999, 1, 1],
     },
 
+    bindChange: function (e) {
+      console.log(e.detail);
+      const val = e.detail.value;
+      this.setData({
+        year: this.data.years[val[0]],
+        month: this.data.months[val[1]],
+        day: this.data.days[val[2]]
+      })
+    },
+
     onLoad: function () {
 
 
