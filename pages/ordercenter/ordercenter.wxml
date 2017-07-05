@@ -45,7 +45,7 @@
                         </view>
                         <view class="btnGroup">
                             <block wx:if="{{!order.hasCancel}}">
-                                <text bindtap="onPayBtnTap" wx:if="{{order.pay==1}}" class="btn pay" data-ordernum="{{order.ordernum}}">支付</text>
+                                <text bindtap="onPayBtnTap" wx:if="{{order.pay==1}}" class="btn pay" data-ordernum="{{order.ordernum}}" data-pcode="{{order.code}}">支付</text>
                                 <block wx:if="{{order.cancel==1}}">
                                     <text wx:if="{{order.status==101}}" class="btn" data-ordernum="{{order.ordernum}}">退票中</text>
                                     <text bindtap="onCancelBtnTap" wx:else class="btn cancel" data-ordernum="{{order.ordernum}}">取消订单</text>

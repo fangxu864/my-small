@@ -6,20 +6,24 @@
     </view>
 
     <view class="orderInfoBox">
+
         <view class="land">{{detail.landTitle}}</view>
         <block wx:for="{{detail.tickets}}">
             <view class="ticket">
                 <text class="name">{{item.title}}</text> * <text class="tnum">{{item.num}}</text> 张
             </view>
         </block>
+
         <view class="effectTime">
             <text class="lt">有效期：</text>
             <text class="date">{{detail.extra.date}}</text>
         </view>
+
         <view class="user">
             <text class="lt">联系人：</text>
             <text class="rt">{{detail.ordername}} {{detail.ordertel}}</text>
         </view>
+
     </view>
 
     <view class="totalMoneyBox">

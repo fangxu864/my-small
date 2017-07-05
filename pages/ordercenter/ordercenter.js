@@ -98,8 +98,9 @@ Page({
 	},
 	onPayBtnTap : function(e){
 		var ordernum = e.currentTarget.dataset.ordernum;
+		var pcode = e.currentTarget.dataset.pcode; // 凭证码
 		if(!ordernum) return false;
-		wx.navigateTo({url:"../pay/pay?ordernum="+ordernum});
+		wx.navigateTo({ url:"../pay/pay?ordernum="+ordernum + '&pcode=' + pcode });
 	},
 	onCancelBtnTap : function(e){
 		var that = this;

@@ -6,7 +6,11 @@ Page({
 	onReady : function(){},
 	onLoad : function(option){
 		var ordernum = option.ordernum || "3317783";
-		this.setData({ordernum:ordernum});
+		var pcode = option.pcode || "3317783";
+		this.setData({
+			ordernum: ordernum,
+			pcode: pcode
+		});
 		wx.setNavigationBarTitle({title:"支付"});
 		this.queryOrderInfo(ordernum,Common.getAccount());
 	},
@@ -31,6 +35,7 @@ Page({
 				var msg = res.msg;
 				var data = res.data;
 				if(code==200){
+					console.log(res);
 					that.setData(data);
 				}else{
 					ShowError(msg);
@@ -38,10 +43,16 @@ Page({
 			}
 		})
 	},
-	//支付
+
+	/**
+	 * 点击微信支付时
+	 */
 	onPay : function(){
 		var payParams = this.data.payParams;
 		var ordernum = this.data.ordernum;
+		var pcode = this.data.pcode;
+		console.log(pcode);
+		var detail = this.data.detail;
 		Common.request({
 			url : "/r/pay_WxPay/order/",
 			data : {
@@ -57,13 +68,34 @@ Page({
 				var status = res.status;
 				var msg = res.msg;
 				var data = res.data || {};
-
-
 				data["success"] = function(res){
 
-					wx.navigateTo({url:"../paysuccess/paysuccess?ordernum="+ordernum});
+					//支付成功后，请求向用户发送微信消息
+					Common.request({
+						url: "/r/Mall_Mall/sendMsgAfterPay",
+						data: {
+							account: Common.getAccount(),
+							openid: payParams.openid,
+							prepayId: data.package.match(/(?:prepay_id=)(\w+)/)[1],
+							title: detail.landTitle, //景区名称
+							code: pcode, //凭证码
+							orderNum: ordernum, // 订单号
+							orderTime: '', // 下单时间
+							endTime: detail.extra.date,//有效期
+							tips: ''
+						},
+						loading : function(){ Common.showLoading()},
+						complete : function(){ Common.hideLoading()},
+						success : function(res){
+						}
+					});
 
-				}
+					setTimeout(function () {
+						//跳转至支付成功页面
+						wx.navigateTo({url:"../paysuccess/paysuccess?ordernum="+ordernum});
+					},1000)
+
+				};
 
 				if(status=="ok"){
 					wx.requestPayment(data);
