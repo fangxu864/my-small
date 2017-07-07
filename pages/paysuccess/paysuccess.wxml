@@ -14,7 +14,7 @@
         </view>
     </view>
     <view class="footer">
-        <view bindtap="goToIndex">继续购票</view>
+        <button bindtap="goToIndex">继续购票</button>
     </view>
 
     <!--酒店-->

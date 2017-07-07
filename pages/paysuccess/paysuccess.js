@@ -123,8 +123,8 @@ Page({
 	 * goToIndex
 	 */
     goToIndex : function(){
-		wx.navigateTo({
-            url: '../index/index'
-        });
+		wx.switchTab({
+			url: '../index/index'
+		});
 	}
 })

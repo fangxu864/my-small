@@ -39,8 +39,8 @@
                                 <text style="color:{{order.status_config[order.status]['color']}}" class="rt" wx:else>{{order.status_config[order.status]["name"]}}</text>
                             </view>
                             <view class="infoLine" >
-                                <text class="lt" wx:if="order.paystatus != 2">凭证码：</text>
-                                <textn class="rt maCode" wx:if="order.paystatus != 2">{{order.code}}</textn>
+                                <text class="lt" wx:if="{{order.paystatus != 2}}">凭证码：</text>
+                                <textn class="rt maCode" wx:if="{{order.paystatus != 2}}">{{order.code}}</textn>
                             </view>
                         </view>
                         <view class="btnGroup">
