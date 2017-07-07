@@ -81,7 +81,7 @@ Page({
 							code: pcode, //凭证码
 							orderNum: ordernum, // 订单号
 							orderTime: Common.getToday(), // 下单时间
-							endTime: detail.extra.date,//有效期
+							endTime: detail.extra.date.replace(/\~|\～/g , "至"),//有效期
 							tips: ''
 						},
 						loading : function(){ Common.showLoading()},
