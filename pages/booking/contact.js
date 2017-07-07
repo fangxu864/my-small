@@ -17,6 +17,8 @@ module.exports = {
         if( Object.prototype.toString.call( contactData[ data.tel ] ) !== "[object Object]" ){
             contactData[ data.tel ] = {};
         }
+        // 如果手机号或者姓名为空的话，不存
+        if (data.tel == '' || data.name== '') return false;
         contactData[ data.tel ]["name"] = data.name || '';
         contactData[ data.tel ]["tel"] = data.tel || '';
         contactData[ data.tel ]["id"] = data.id || '';
