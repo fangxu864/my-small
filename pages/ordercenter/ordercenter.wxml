@@ -38,9 +38,9 @@
                                 <text class="rt paystatusText" style="color:#7e7e7e" wx:elif="{{order.hasCancel}}">已取消</text>
                                 <text style="color:{{order.status_config[order.status]['color']}}" class="rt" wx:else>{{order.status_config[order.status]["name"]}}</text>
                             </view>
-                            <view class="infoLine" wx:if="order.paystatus != 2">
-                                <text class="lt">凭证码：</text>
-                                <textn class="rt maCode">{{order.code}}</textn>
+                            <view class="infoLine" >
+                                <text class="lt" wx:if="order.paystatus != 2">凭证码：</text>
+                                <textn class="rt maCode" wx:if="order.paystatus != 2">{{order.code}}</textn>
                             </view>
                         </view>
                         <view class="btnGroup">
