@@ -78,7 +78,7 @@ Page({
 							openid: payParams.openid,
 							prepayId: data.package.match(/(?:prepay_id=)(\w+)/)[1],
 							title: detail.landTitle, //景区名称
-							code: pcode, //凭证码
+							code: detail.qrcode, //凭证码
 							orderNum: ordernum, // 订单号
 							orderTime: Common.getToday(), // 下单时间
 							endTime: detail.extra.date.replace(/\~|\～/g , "至"),//有效期
