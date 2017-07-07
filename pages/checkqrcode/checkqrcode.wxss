@@ -1,0 +1,25 @@
+.qrcode-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.qrcode-container .topt{
+  margin-top: 100rpx;
+}
+.qrcode-container .code{
+  //color :#f5530c;
+  color :#4caf50;
+  font-size:40rpx;
+  font-weight:bold;
+
+
+}
+.qrcode-container .qrcode-box{
+
+  width: 200px;
+  height: 200px;
+}
+.bottom-tip{
+  font-size:26rpx;
+  color: #787878;
+}

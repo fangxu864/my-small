@@ -13,6 +13,9 @@ page{ background:#fafafa}
 .loadMoreWrap{ height:40px; line-height:40px; text-align:center; margin-bottom:5px }
 
 .scrollView .item.unuse{ padding:10px; background:#ffffff; margin-bottom:10px}
+.scrollView .item.cantap:active{
+  background-color: #f2f2f2;
+}
 .scrollView .item.unuse .topBox{ display:flex; flex-direction:row;}
 .scrollView .item.unuse .photo{ width:100px; height:70px}
 .scrollView .item.unuse .rtTextBox{ margin-left:8px}

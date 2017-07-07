@@ -1,6 +1,6 @@
 <view class="tabHead">
-    <view bindtap="onTabClick" data-tab="unuse" class="tab unuse {{currentTab=='unuse' ? 'active' : ''}}">未使用订单</view>
-    <view bindtap="onTabClick" data-tab="history" class="tab history {{currentTab=='history' ? 'active' : ''}}">历史订单</view>
+    <view catchtap="onTabClick" data-tab="unuse" class="tab unuse {{currentTab=='unuse' ? 'active' : ''}}">未使用订单</view>
+    <view catchtap="onTabClick" data-tab="history" class="tab history {{currentTab=='history' ? 'active' : ''}}">历史订单</view>
 </view>
 <view class="mainBody">
     <view class="scrollWrap unuse {{currentTab=='unuse' ? '' : 'hide'}}">
@@ -13,7 +13,7 @@
         <block wx:else>
             <scroll-view class="scrollView" data-type="unuse" scroll-y="true" bindscrolltolower="scrollToLower">
                 <block wx:for="{{list.unuse}}" wx:for-item="order">
-                    <view class="item unuse">
+                    <view class="item unuse {{ order.paystatus == 1 ? 'cantap' : ''}}" data-pcode="{{order.code}}" catchtap="{{ order.paystatus == 1 ? 'alreadyPayTap' : ''}}">
                         <view class="topBox">
                             <image class="photo" mode="aspectFit" data-type="unuse" data-ordernum="{{order.ordernum}}" binderror="onImageError" src="{{order.imgpath}}"></image>
                             <view class="rtTextBox">
@@ -38,17 +38,17 @@
                                 <text class="rt paystatusText" style="color:#7e7e7e" wx:elif="{{order.hasCancel}}">已取消</text>
                                 <text style="color:{{order.status_config[order.status]['color']}}" class="rt" wx:else>{{order.status_config[order.status]["name"]}}</text>
                             </view>
-                            <view class="infoLine">
+                            <view class="infoLine" wx:if="order.paystatus != 2">
                                 <text class="lt">凭证码：</text>
                                 <textn class="rt maCode">{{order.code}}</textn>
                             </view>
                         </view>
                         <view class="btnGroup">
                             <block wx:if="{{!order.hasCancel}}">
-                                <text bindtap="onPayBtnTap" wx:if="{{order.pay==1}}" class="btn pay" data-ordernum="{{order.ordernum}}" data-pcode="{{order.code}}">支付</text>
+                                <text catchtap="onPayBtnTap" wx:if="{{order.pay==1}}" class="btn pay" data-ordernum="{{order.ordernum}}" data-pcode="{{order.code}}">支付</text>
                                 <block wx:if="{{order.cancel==1}}">
                                     <text wx:if="{{order.status==101}}" class="btn" data-ordernum="{{order.ordernum}}">退票中</text>
-                                    <text bindtap="onCancelBtnTap" wx:else class="btn cancel" data-ordernum="{{order.ordernum}}">取消订单</text>
+                                    <text catchtap="onCancelBtnTap" wx:else class="btn cancel" data-ordernum="{{order.ordernum}}">取消订单</text>
                                 </block>
                                 <block wx:else>
                                     <text data-disable="1" class="btn cancel disable">不可取消</text>

@@ -261,6 +261,16 @@ Page({
 	},
 	onScroll : function(){
 
+	},
+
+	/**
+	 * 已支付的列表项点击时
+	 */
+	alreadyPayTap: function (e) {
+		var code = e.currentTarget.dataset.pcode;
+		wx.navigateTo({
+			url: '../checkqrcode/checkqrcode?code=' + code
+		});
 	}
 
 })

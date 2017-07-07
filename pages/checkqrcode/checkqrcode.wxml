@@ -1,0 +1,7 @@
+<view class="qrcode-container">
+    <view class="topt">凭证码: <text class="code">{{code}}</text> </view>
+    <view id="qrcodeBox" class="qrcode-box">
+        <canvas  style="width: 200px;height: 200px;" canvas-id="qrcodeCanvas"/>
+    </view>
+    <view class="bottom-tip">此二维码供给闸机扫描使用</view>
+</view>

@@ -118,6 +118,11 @@ Page({
 		this.calTotalMoney();
 
 	},
+
+	/**
+	 * 联系人手机input的blur事件
+	 * @param e
+     */
 	onContacttelInpBlur : function(e){
 		var detail = e.detail;
 		var value = detail.value;
@@ -316,8 +321,8 @@ Page({
 		};
 		if(oData.needID==1) submitData["sfz"] = oData.sfz; //需要一张身份证
 
-		if(contacttel.length!==11 || isNaN(contacttel)) return this.setData({contacttelErrTipShow:true});
-		if(!ordername) return this.setData({orderNameErrTipShow:true});
+		// if(contacttel.length!==11 || isNaN(contacttel)) return this.setData({contacttelErrTipShow:true});
+		// if(!ordername) return this.setData({orderNameErrTipShow:true});
 		if(oData.needID==1 && !Common.validateIDCard(sfz)) return this.setData({needIDErrTipShow:true});
 
 		comContact.addContact({
