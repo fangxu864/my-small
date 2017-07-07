@@ -60,4 +60,8 @@
 
 .footer{
     text-align: center;
+
+}
+.goToIndex{
+    width: 80%;
 }
