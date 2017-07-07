@@ -22,7 +22,7 @@ Page({
         this.setData({
             code: code
         });
-        QR.qrApi.draw( code ,"qrcodeCanvas","200","200");
+        QR.qrApi.draw( code ,"qrcodeCanvas","300","300");
     }
 
 });

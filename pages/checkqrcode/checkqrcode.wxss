@@ -11,13 +11,11 @@
   color :#4caf50;
   font-size:40rpx;
   font-weight:bold;
-
-
 }
 .qrcode-container .qrcode-box{
 
-  width: 200px;
-  height: 200px;
+  width: 300px;
+  height: 300px;
 }
 .bottom-tip{
   font-size:26rpx;
