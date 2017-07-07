@@ -80,7 +80,7 @@ Page({
 							title: detail.landTitle, //景区名称
 							code: pcode, //凭证码
 							orderNum: ordernum, // 订单号
-							orderTime: '', // 下单时间
+							orderTime: Common.getToday(), // 下单时间
 							endTime: detail.extra.date,//有效期
 							tips: ''
 						},

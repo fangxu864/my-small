@@ -52,10 +52,7 @@ Page({
     //   })
     // },
 
-    onLoad: function () {
-
-
-    },
+    onLoad: function () {},
 
     /**
      * 下拉刷新更新经纬度
@@ -73,6 +70,15 @@ Page({
         }else{
             this.getShopListData(app.globalData.curLongitude ,app.globalData.curLatitude);
         }
+
+        wx.getStorageInfo({
+            success: function(res) {
+                console.log(res);
+                console.log(res.keys);
+                console.log(res.currentSize);
+                console.log(res.limitSize)
+            }
+        })
     },
 
     /**
@@ -83,7 +89,6 @@ Page({
         wx.getLocation({
             type: 'gcj02',
             success: function(res) {
-
                 //缓存经纬度
                 _this.setData({
                     locationText: "当前定位地址"

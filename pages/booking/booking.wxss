@@ -41,8 +41,15 @@
 .userInfoBox .line{ height:48px; display:flex; flex-direction:row; align-items:center; background:#fff}
 .userInfoBox .line .lt{ flex:1; margin-left:10px}
 .userInfoBox .line .rt{ flex:4; }
-.userInfoBox .addUserInfo{ width:38px; text-align:center;  margin-right:5px;}
-.userInfoBox .addUserInfo .text{ color:#258cc9; font-size:28px; font-weight:bold;}
+.userInfoBox .add-contact{
+  line-height:30px;
+  text-align:center;
+  color:#258cc9;
+  font-size: 38rpx;
+  font-weight:700;
+  margin-right:20rpx;
+  padding:10rpx;
+}
 
 
 .totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;  }
@@ -54,5 +61,96 @@
 .totalBar .submitBtn.disable{ background:#999999; color:#555555}
 
 .descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin-right:10px}
+
+.common-contact-box{
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 100%;
+}
+
+.common-contact-box .title{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.common-contact-box .bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #258cc9;
+}
+
+.common-contact-box .con .item{
+  height: 45px;
+  line-height: 45px;
+  margin: 0 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+}
+.common-contact-box .con .item .del-btn{
+  color: #99997f;
+  text-align:center;
+  width: 20%;
+
+}
+.common-contact-box .con .item .del-btn:active{
+  color: #258cc9;
+  background: #f2f2f2;
+}
+.common-contact-box .con .name-tel{
+  width:80%;
+  display:inline-block;
+  padding-left:10rpx;
+  box-sizing:border-box;
+
+}
+.common-contact-box .con .name-tel .name{
+  display:inline-block;
+  width:160rpx;
+  overflow:hidden;
+  height:45px;
+  float:left;
+  text-overflow:ellipsis;
+
+}
+
+.common-contact-box .con .name-tel .tel{
+  display:inline-block;
+  padding-left: 20rpx;
+
+}
+
+.common-contact-box .con .name-tel:active{
+  background: #f2f2f2;
+}
+
+.slideInUp{
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: slideInUp;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 60%, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
 
 

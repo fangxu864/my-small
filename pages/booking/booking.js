@@ -1,5 +1,6 @@
 var Common = require("../../utils/common.js");
 var MinueToDayTime = Common.MinueToDayTime;
+var comContact = require("./contact.js");
 var app = getApp();
 Page({
     data: {
@@ -16,7 +17,9 @@ Page({
 		contacttelErrTipShow : false,
 		orderNameErrTipShow : false,
 		ticketList : [],
-		canSubmit : true
+		canSubmit : true,
+		contactDisplay: "none", // 常用联系人是否显示
+		contactData:{}
     },
     onReady : function(){
         var that = this;
@@ -301,7 +304,7 @@ Page({
 		var ordername = oData.ordername;
 		var sfz = oData.sfz;
     
-    //console.log("scenCode", app.globalData.curScenCode);
+        //console.log("scenCode", app.globalData.curScenCode);
 		var submitData = {
 			pid : oData.pid,
 			aid : oData.aid,
@@ -309,13 +312,19 @@ Page({
 			begintime : oData.begintime,     //开始时间
 			contacttel : oData.contacttel,   //取票人手机号
 			ordername : oData.ordername,      //联系人姓名,
-      scenCode  : app.globalData.curScenCode //店铺唯一编码
+            scenCode  : app.globalData.curScenCode //店铺唯一编码
 		};
 		if(oData.needID==1) submitData["sfz"] = oData.sfz; //需要一张身份证
 
 		if(contacttel.length!==11 || isNaN(contacttel)) return this.setData({contacttelErrTipShow:true});
 		if(!ordername) return this.setData({orderNameErrTipShow:true});
 		if(oData.needID==1 && !Common.validateIDCard(sfz)) return this.setData({needIDErrTipShow:true});
+
+		comContact.addContact({
+			name: ordername ,
+			tel: contacttel ,
+			id: sfz
+		});
 
 		var link = {};
 		ticketList.forEach(function(item,index){
@@ -454,8 +463,60 @@ Page({
 		var total = 0;
 		ticketList.forEach(function(item){
 			total += (item.value * item.jsprice);
-		})
+		});
 		this.setData({totalMoney:total});
+	},
+
+	/**
+	 * 关闭常用联系人
+	 */
+	closeCommonContact: function () {
+		this.setData({
+			contactDisplay: "none"
+		})
+	},
+
+	/**
+	 * 点击添加常用联系人
+	 */
+	onAddContactTap: function () {
+		this.setData({
+			contactDisplay: "block",
+			contactData: comContact.getContactArr()
+		})
+	},
+
+	/**
+	 * 点击常用联系人
+	 * 包括选择和删除
+	 */
+	comContactItemTap: function ( e ) {
+		console.log( e );
+		var tel = e.currentTarget.dataset.tel || "";
+		var name = e.currentTarget.dataset.name || "";
+		var id = e.currentTarget.dataset.id || "";
+		this.setData({
+			ordername : name,
+			sfz : id,
+			contacttel: tel,
+			contactDisplay: "none"
+		})
+	},
+
+	/**
+	 * 删除联系人
+	 * @param e
+     */
+	delContactTap: function ( e ) {
+		var _this = this;
+		var tel = e.currentTarget.dataset.tel;
+		comContact.delContact( tel , function () {
+			_this.setData({
+				contactData: comContact.getContactArr()
+			})
+		});
+
 	}
 
-})
+
+});

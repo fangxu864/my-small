@@ -26,9 +26,7 @@ Page({
             loading: function () {
                 Common.showLoading("二维码加载中");
             },
-            complete: function () {
-
-            },
+            complete: function () {},
             success: function ( res ) {
                 _this.setData({
                     qrImgSrc: res.data.url

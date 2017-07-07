@@ -34,6 +34,7 @@ Page({
         lastSearch:     '',
         //当前店铺名称
         curShopName: ''
+      
     },
 
     onLoad: function (opt) {
