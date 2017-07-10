@@ -18,7 +18,7 @@ Page({
     onLoad: function( opt ) {
         var _this = this;
         //凭证码
-        var code = opt.code;
+        var code = decodeURIComponent( opt.code );
         this.setData({
             code: code
         });

@@ -20,8 +20,8 @@ Page({
         Common.request({
             url: "/r/Mall_Mall/getPageAppCode",
             data: {
-                account: opt.account,
-                scenCode: opt.scenCode
+                account: decodeURIComponent( opt.account ),
+                scenCode: decodeURIComponent( opt.scenCode )
             },
             loading: function () {
                 Common.showLoading("二维码加载中");

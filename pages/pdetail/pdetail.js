@@ -76,7 +76,7 @@ Page({
     onLoad: function( opt ) {
         //转发进来的会有scenCode参数
         if(opt.scenCode){
-            app.globalData.curScenCode = opt.scenCode;
+            app.globalData.curScenCode = decodeURIComponent( opt.scenCode );
         }
 
         var lid = opt.lid;
