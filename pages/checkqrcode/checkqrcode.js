@@ -23,6 +23,22 @@ Page({
             code: code
         });
         QR.qrApi.draw( code ,"qrcodeCanvas","300","300");
+    },
+
+
+    /**
+     * 点击二维码图片时
+     */
+    onQrImgTap: function () {
+        wx.canvasToTempFilePath({
+            canvasId: 'qrcodeCanvas',
+            success: function(res) {
+                wx.previewImage({
+                    current: res.tempFilePath, // 当前显示图片的http链接
+                    urls: [res.tempFilePath] // 需要预览的图片http链接列表
+                })
+            }
+        })
     }
 
 });

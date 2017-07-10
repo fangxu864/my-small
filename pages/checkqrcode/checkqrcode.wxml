@@ -1,6 +1,6 @@
 <view class="qrcode-container">
     <view class="topt">凭证码: <text class="code">{{code}}</text> </view>
-    <view id="qrcodeBox" class="qrcode-box">
+    <view id="qrcodeBox" class="qrcode-box" catchtap="onQrImgTap">
         <canvas  style="width: 300px;height: 300px;" canvas-id="qrcodeCanvas"/>
     </view>
     <view class="bottom-tip">设备扫码验证</view>
