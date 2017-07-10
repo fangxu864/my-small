@@ -750,11 +750,14 @@ var QR = (function () {
             var roundedSize = px * (width + 8),
                 offset = Math.floor((size - roundedSize) / 2);
             size = roundedSize;
+
+            //绘制纯白背景
             ctx.clearRect(0, 0, cavW, cavH);
             ctx.setFillStyle('#ffffff');
             ctx.fillRect(0, 0, cavW, cavH);
             ctx.draw(true);
 
+            //绘制黑色二维码
             ctx.setFillStyle('#000000');
 			// ctx.setLineWidth(1);
             for (var i = 0; i < width; i++) {
@@ -765,10 +768,6 @@ var QR = (function () {
                 }
             }
             ctx.draw(true);
-            // wx.drawCanvas({
-          	// 	canvasId: canvas,
-          	// 	actions: ctx.getActions()
-    		// });
         }
     }
 	module.exports = {
