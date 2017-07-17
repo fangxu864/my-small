@@ -10,8 +10,7 @@
             <view>
                 <icon class="icon-address iconfont"></icon>
                 <text class="land-adress ">{{land.address}}</text>
-                <text>导航</text>
-                <!--<icon class="icon-you iconfont"></icon>-->
+                <icon class="icon-icon-system-fi-navigation iconfont"></icon>
             </view>
         </view>
     </view>

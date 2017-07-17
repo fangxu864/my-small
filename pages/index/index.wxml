@@ -23,14 +23,21 @@
                 <icon class="icon-erweima1 iconfont" catchtap="onQrCodeTap"></icon>
             </view>
         </view>
+
+
         <view class="search">
-            <icon type="search" size="12" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
-            <input type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" value="{{searchVal}}" />
-            <view hidden="{{!isClearShow}}" bindtap="clearSearch">
-                <icon type="clear" size="12" class="search-clear"></icon>
+            <view class="search-wrap">
+                <icon type="search" size="14" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
+                <input confirm-type="search" type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" bindconfirm="search" value="{{searchVal}}" />
+                <view hidden="{{!isClearShow}}" bindtap="clearSearch">
+                    <icon type="clear" size="14" class="search-clear"></icon>
+                </view>
             </view>
-            <button size="mini" class="search-btn" bindtap="search">搜索</button>
+            <!--<button class="search-btn" bindtap="search">搜索</button>-->
         </view>
+
+
+
         <view class="plist">
             <block wx:for="{{plist}}" wx:key="pid" wx:for-item="p">
                 <view class="item itemBox">

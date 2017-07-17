@@ -4,14 +4,13 @@ page{ background:#fafafa}
 
 .tabHead{ height:50px; display:flex; flex-direction:row; font-size:14px}
 .tabHead .tab{ width:50%; height:43px; line-height:43px; text-align:center; border-bottom:2px solid #fafafa; background:#fff}
-.tabHead .tab.active{ border-bottom:2px solid #2a98da; color:#2a98da}
+.tabHead .tab.active{ border-bottom:2px solid #2a98da; color:#2a98da;background-color:#eaeaea;  }
 
 .scrollWrap{ height:100%;}
 .scrollWrap.hide{ display:none}
 .scrollView{ height:100%}
 
 .loadMoreWrap{ height:40px; line-height:40px; text-align:center; margin-bottom:5px }
-
 .scrollView .item.unuse{ padding:10px; background:#ffffff; margin-bottom:10px}
 .scrollView .item.cantap:active{
   background-color: #f2f2f2;

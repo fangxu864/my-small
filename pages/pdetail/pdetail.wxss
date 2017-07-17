@@ -44,8 +44,10 @@
 
 }
 
-.banner-box .info-box .icon-you{
+.banner-box .info-box .icon-icon-system-fi-navigation{
   float: right;
+  font-size:18px
+
 }
 
 
@@ -70,13 +72,14 @@
 }
 .tab-title-box .tab-title{
   padding: 5px;
-  width: 20%;
+  width: 33.3%;
   text-align: center;
 }
 .tab-title-box .tab-title.active{
   border-bottom: 6rpx solid #0797d9 ;
   color: #0797d9 ;
   font-weight: bold;
+  background:#eaeaea;
 }
 
 /*ticket-list-box*/
