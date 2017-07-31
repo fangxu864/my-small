@@ -63,10 +63,10 @@
         </view>
         <view class="load-more-wrap">
             <view class="load-content" hidden="{{!isLoading}}">
-                <text class="weui-loading"/><text class="loading-text">玩命加载中</text>
+                <text class="weui-loading"/><text class="loading-text">努力加载中...</text>
             </view>
             <view wx:if="{{!hasMore}}" hidden="{{isHasMoreHidden}}" class="no-more">
-                <text>没有更多内容了</text>
+                <text>没有更多了...</text>
             </view>
         </view>
         <view class="nodata" hidden="{{!noData}}">

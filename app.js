@@ -6,11 +6,11 @@ App({
     //logs.unshift(Date.now())
     //wx.setStorageSync('logs', logs)
   },
-  getUserInfo:function(cb){
+  getUserInfo: function (cb) {
     var that = this
-    if(this.globalData.userInfo){
+    if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
-    }else{
+    } else {
       //调用登录接口
       wx.login({
         success: function () {
@@ -24,8 +24,8 @@ App({
       })
     }
   },
-  globalData:{
-    userInfo:null,
+  globalData: {
+    userInfo: null,
     //当前的ScenCode
     curScenCode: "",
     //当前的经度
@@ -33,10 +33,14 @@ App({
     //当前的纬度
     curLongitude: ""
   },
-  
+
   //缓存仓库
   cacheHub: {
+    //首页
+    index:{},
     //店铺列表页面
-    shopList: {}
+    shopList: {},
+    //产品详情页面
+    productDetail: {}
   }
 });
