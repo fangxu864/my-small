@@ -19,14 +19,14 @@
         <view class="tab-title {{floor_2_active}}" data-type="floor_2">预订须知</view>
         <view class="tab-title {{floor_3_active}}" data-type="floor_3">景区介绍</view>
     </view>
-    <view class="ticket-list-box"  id="floor_1">
+    <view class="ticket-list-box" id="floor_1">
         <block wx:for="{{ticketList}}">
             <view class="ticket-list-item">
                 <view class="lt">
                     <view>
                         <text class="t-title">{{item.ticket}}</text>
                     </view>
-                    <view  class="t-desc-box">
+                    <view class="t-desc-box">
                         <text class="t-desc">{{item.intro}}</text>
                     </view>
                     <view>
@@ -55,7 +55,7 @@
                         <view>
                             <text class="t-title">{{item.ticket}}</text>
                         </view>
-                        <view  class="t-desc-box">
+                        <view class="t-desc-box">
                             <text class="t-desc">{{item.intro}}</text>
                         </view>
                         <view>
@@ -71,7 +71,7 @@
                     </view>
                 </view>
             </block>
-    </view>
+        </view>
     </view>
     <view class="p-desc-box" id="floor_2">
         <view class="desc-title">
@@ -81,7 +81,7 @@
             <text>{{land.jqts}}</text>
         </view>
     </view>
-    <view class="p-desc-box"  id="floor_3">
+    <view class="p-desc-box" id="floor_3">
         <view class="desc-title">
             <text>产品简介</text>
         </view>
@@ -99,6 +99,13 @@
         <view class="desc-con">
             <text>{{land.jtzn}}</text>
         </view>
+    </view>
+    <view class="bot-phone-call">
+        <text class="tip-text">*以上信息仅供参考，具体以景区当日信息为准</text>
+        <button class="call-btn" bindtap="onPhoneCall" data-phonenum="{{12345678}}">
+            <iconfont class="iconfont icon-dianhua-1"></iconfont>
+            <text class="text">电话咨询景区</text>
+        </button>
     </view>
     <view class="footer">
         <icon>p</icon>

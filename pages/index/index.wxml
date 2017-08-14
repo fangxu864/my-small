@@ -43,14 +43,14 @@
                 <view class="item itemBox">
                     <view class="con" bindtap="navigateToDetail" data-lid="{{p.lid}}" data-ptype="" data-topic="">
                         <view class="photoBox">
-                            <image mode="widthFix" src="{{p.imgpath == 'images/defaultThum.jpg' ? 'http://www.12301.cc/' + p.imgpath : p.imgpath}}"></image>
+                            <image mode="aspectFill" src="{{p.imgpath == 'images/defaultThum.jpg' ? 'http://www.12301.cc/' + p.imgpath : p.imgpath}}"></image>
                             <text class="title gtextoverflow">{{p.title}}</text>
                         </view>
                         <view class="bCon">
                             <view class="price">
                                 <text class="yen">¥</text>
                                 <text class="num">{{p.jsprice}}</text>
-                                <text class="qi">起</text>
+                                <!-- <text class="qi">起</text> -->
                             </view>
                             <view class="price tprice">
                                 <text class="yen">¥</text>

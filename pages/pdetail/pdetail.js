@@ -1,7 +1,9 @@
-//index.js
-//获取应用实例
+//index.js 获取应用实例
 var Common = require("../../utils/common.js");
 var app = getApp();
+
+
+
 Page({
 
     isUseCache: true, //是否启用缓存
@@ -24,31 +26,16 @@ Page({
      * @param e
      */
     onTabTitleTap: function (e) {
-        this.setData({
-            scroll_into_view: e.target.dataset.type,
-            isfixed: "fixed"
-        });
+        this.setData({ scroll_into_view: e.target.dataset.type, isfixed: "fixed" });
         switch (e.target.dataset.type) {
             case "floor_1":
-                this.setData({
-                    floor_1_active: "active",
-                    floor_2_active: "",
-                    floor_3_active: ""
-                });
+                this.setData({ floor_1_active: "active", floor_2_active: "", floor_3_active: "" });
                 break;
             case "floor_2":
-                this.setData({
-                    floor_1_active: "",
-                    floor_2_active: "active",
-                    floor_3_active: ""
-                });
+                this.setData({ floor_1_active: "", floor_2_active: "active", floor_3_active: "" });
                 break;
             case "floor_3":
-                this.setData({
-                    floor_1_active: "",
-                    floor_2_active: "",
-                    floor_3_active: "active"
-                });
+                this.setData({ floor_1_active: "", floor_2_active: "", floor_3_active: "active" });
                 break;
         }
     },
@@ -59,14 +46,30 @@ Page({
      */
     onScroll: function (e) {
         var _this = this;
-        if (e.detail.scrollTop >= 214) {
-            _this.setData({
-                isfixed: "fixed"
-            })
-        } else {
-            _this.setData({
-                isfixed: ""
-            })
+        var event = e;
+        function scrollFun(event) {
+            var _this = this;
+            console.log("666");
+            if (event.detail.scrollTop >= 214) {
+                _this.setData({ isfixed: "fixed" })
+            } else {
+                _this.setData({ isfixed: "" })
+            }
+        }
+        if (!this.scrollCallback) {
+            this.scrollCallback = this.selfThrottle(scrollFun, 30);
+        }
+        this.scrollCallback(e);
+    },
+
+    selfThrottle: function (func, wait) {
+        var last = 0, now ;
+        return function () {
+            now = Date.now();
+            if (now - last > Number(wait)) {
+                func.apply(this,arguments);
+                last = now;
+            }
         }
     },
 
@@ -94,7 +97,7 @@ Page({
 
     /**
      * 获取景区信息
-     * 
+     *
      * @param {any} lid 景区id
      */
     getScenicInfo: function (lid) {
@@ -103,7 +106,8 @@ Page({
         var data = {
             lid: lid,
             scenCode: app.globalData.curScenCode
-        }, _this = this;
+        },
+            _this = this;
 
         var paramKey = "scenicInfo" + JSON.stringify(data);
 
@@ -131,51 +135,71 @@ Page({
         function dealRes(res) {
             if (res.code == 200) {
                 //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                res.data.jqts = res.data.jqts.replace(/\<br[^\<\>]+\>/g, "\n");
-                res.data.jqts = res.data.jqts.replace(/\<[^\<\>]+\>/g, "");
-                res.data.jqts = res.data.jqts.replace(/\n[\s\n]+/g, "\n");
+                res.data.jqts = res
+                    .data
+                    .jqts
+                    .replace(/\<br[^\<\>]+\>/g, "\n");
+                res.data.jqts = res
+                    .data
+                    .jqts
+                    .replace(/\<[^\<\>]+\>/g, "");
+                res.data.jqts = res
+                    .data
+                    .jqts
+                    .replace(/\n[\s\n]+/g, "\n");
 
                 //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                res.data.jtzn = res.data.jtzn.replace(/\<br[^\<\>]+\>/g, "\n");
-                res.data.jtzn = res.data.jtzn.replace(/\<[^\<\>]+\>/g, "");
-                res.data.jtzn = res.data.jtzn.replace(/\n[\s\n]+/g, "\n");
+                res.data.jtzn = res
+                    .data
+                    .jtzn
+                    .replace(/\<br[^\<\>]+\>/g, "\n");
+                res.data.jtzn = res
+                    .data
+                    .jtzn
+                    .replace(/\<[^\<\>]+\>/g, "");
+                res.data.jtzn = res
+                    .data
+                    .jtzn
+                    .replace(/\n[\s\n]+/g, "\n");
 
                 //抽出图片
-                var imgSrcArr = res.data.bhjq.match(/src\=\"[^\"]+\"/g);
+                var imgSrcArr = res
+                    .data
+                    .bhjq
+                    .match(/src\=\"[^\"]+\"/g);
                 var srcarr = [];
                 if (imgSrcArr) {
                     for (var i = 0; i < imgSrcArr.length; i++) {
                         var str = imgSrcArr[i].replace(/src\=\"/g, "")
                         srcarr.push(str.replace(/\"/g, ""))
                     }
-                    _this.setData({
-                        imgSrcArr: srcarr,
-                    })
+                    _this.setData({ imgSrcArr: srcarr })
                 }
                 //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                res.data.bhjq = res.data.bhjq.replace(/\<br[^\<\>]+\>/g, "\n");
-                res.data.bhjq = res.data.bhjq.replace(/\<[^\<\>]+\>/g, "");
-                res.data.bhjq = res.data.bhjq.replace(/\n[\s\n]+/g, "\n");
+                res.data.bhjq = res
+                    .data
+                    .bhjq
+                    .replace(/\<br[^\<\>]+\>/g, "\n");
+                res.data.bhjq = res
+                    .data
+                    .bhjq
+                    .replace(/\<[^\<\>]+\>/g, "");
+                res.data.bhjq = res
+                    .data
+                    .bhjq
+                    .replace(/\n[\s\n]+/g, "\n");
                 //替换空格
-                res.data.bhjq = res.data.bhjq.replace(/\&nbsp;+/g, " ");
-                _this.setData({
-                    land: res.data,
-                    title: res.data.title
-
-                });
-                wx.setNavigationBarTitle({
-                    title: _this.data.land.title
-                });
+                res.data.bhjq = res
+                    .data
+                    .bhjq
+                    .replace(/\&nbsp;+/g, " ");
+                _this.setData({ land: res.data, title: res.data.title });
+                wx.setNavigationBarTitle({ title: _this.data.land.title });
 
             } else {
                 wx.showModal({
-                    title: '提示',
-                    content: res.msg,
-                    // success: function(res) {
-                    //     if (res.confirm) {
-                    //     console.log('用户点击确定')
-                    //     }
-                    // }
+                    title: '提示', content: res.msg,
+                    // success: function(res) {     if (res.confirm) {     console.log('用户点击确定') } }
                 })
 
             }
@@ -184,7 +208,7 @@ Page({
 
     /**
      * 票列表请求
-     * 
+     *
      * @param {any} lid 景区id
      */
     getTicketList: function (lid) {
@@ -193,7 +217,8 @@ Page({
         var data = {
             lid: lid,
             scenCode: app.globalData.curScenCode
-        }, _this = this;
+        },
+            _this = this;
 
         var paramKey = "ticketList" + JSON.stringify(data);
 
@@ -218,24 +243,22 @@ Page({
         });
 
         function dealRes(res) {
-            _this.setData({
-                ticketList: res.data.list,
-            })
+            _this.setData({ ticketList: res.data.list })
         }
     },
 
     /**
      * 套票数据
-     * 
+     *
      * @param {any} lid 景区id
      */
     getPackageTicketList: function (lid) {
         var cacheHub = app.cacheHub.productDetail;
 
-
         var data = {
             lid: lid
-        }, _this = this;
+        },
+            _this = this;
 
         var paramKey = "packageTicketList" + JSON.stringify(data);
 
@@ -260,13 +283,9 @@ Page({
         })
 
         function dealRes(res) {
-            _this.setData({
-                taoPiaoTicketList: res.data
-            });
+            _this.setData({ taoPiaoTicketList: res.data });
             if (res.data.length == 0) {
-                _this.setData({
-                    isRenderTaoPiaoList: false
-                })
+                _this.setData({ isRenderTaoPiaoList: false })
             }
         }
     },
@@ -299,11 +318,68 @@ Page({
         return {
             title: this.data.land.title,
             path: 'pages/pdetail/pdetail?lid=' + this.data.land.id + "&scenCode=" + app.globalData.curScenCode,
-            success: function (res) {
-            },
+            success: function (res) { },
             fail: function (res) {
                 // 转发失败
             }
         }
+    },
+
+    /**
+     * 拨打电话时
+     *
+     */
+    onPhoneCall: function (e) {
+        var curPhoneNumber = e.currentTarget.dataset.phonenum + "";
+        wx.makePhoneCall({ phoneNumber: curPhoneNumber })
+
+    },
+
+    throttle: function (func, wait, options) {
+        var context,
+            args,
+            result;
+        var timeout = null;
+        // 上次执行时间点
+        var previous = 0;
+        if (!options)
+            options = {};
+
+        // 延迟执行函数
+        var later = function () {
+            // 若设定了开始边界不执行选项，上次执行时间始终为0
+            previous = options.leading === false ? 0 : Date.now();
+            timeout = null;
+            result = func.apply(context, args);
+            if (!timeout)
+                context = args = null;
+        };
+
+        return function () {
+            var now = Date.now();
+            // 首次执行时，如果设定了开始边界不执行选项，将上次执行时间设定为当前时间。
+            if (!previous && options.leading === false)
+                previous = now;
+
+            // 延迟执行时间间隔
+            var remaining = wait - (now - previous);
+            context = this;
+            args = arguments;
+            // 延迟时间间隔remaining小于等于0，表示上次执行至此所间隔时间已经超过一个时间窗口
+            // remaining大于时间窗口wait，表示客户端系统时间被调整过
+            if (remaining <= 0 || remaining > wait) {
+                clearTimeout(timeout);
+                timeout = null;
+                previous = now;
+                result = func.apply(context, args);
+                if (!timeout)
+                    context = args = null;
+                //如果延迟执行不存在，且没有设定结尾边界不执行选项
+            }
+            else if (!timeout && options.trailing !== false) {
+                timeout = setTimeout(later, remaining);
+            }
+            return result;
+        };
     }
 });

@@ -38,6 +38,11 @@ Page({
         curShopName: ''
     },
 
+    /**
+     * 页面加载时
+     * 
+     * @param {any} opt 
+     */
     onLoad: function (opt) {
         //如果用户是扫码进来的话,会有scenCode,则将scenCode缓存至app.globalData.curScenCode
         if (opt.scene) {
@@ -167,7 +172,11 @@ Page({
                 hasKeyword: false,
                 isClearShow: false
             })
+
+            //当inp啥内容也没有时，调用下搜索
+            this.search();
         }
+        
     },
 
     clearSearch: function () {

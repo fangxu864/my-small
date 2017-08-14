@@ -1,0 +1,18 @@
+page {
+    background-color: #f5f5f5;
+}
+
+.ticket-box {
+    background-color: #fff;
+    width: 80%;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: 30px double #e5e5e5;
+    border-right: 30px double #e5e5e5;
+    height: 150px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    border-image-source: url("//static.12301.cc/assets/build/images/pft-samllapp/borderimg.png?4545454545");
+    border-image-slice: 30;
+    border-image-repeat: round;
+}

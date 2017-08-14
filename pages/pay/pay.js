@@ -2,8 +2,10 @@ var Common = require("../../utils/common.js");
 var ShowError = Common.showError;
 var app = getApp();
 Page({
-	data : {},
-	onReady : function(){},
+	data: {},
+	
+	onReady: function () { },
+	
 	onLoad : function(option){
 		var ordernum = option.ordernum || "3317783";
 		var pcode = option.pcode || "3317783";
@@ -14,6 +16,7 @@ Page({
 		wx.setNavigationBarTitle({title:"支付"});
 		this.queryOrderInfo(ordernum,Common.getAccount());
 	},
+
 	queryOrderInfo : function(ordernum,account){
 		var that = this;
 		if(!ordernum || !account) return false;
