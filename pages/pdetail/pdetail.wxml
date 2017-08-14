@@ -8,10 +8,9 @@
                 <text class="land-name">{{land.title}}</text>
             </view>-->
             <view>
-                <icon class="icon-address iconfont"></icon>
+                <!-- <icon class="icon-address iconfont"></icon> -->
                 <text class="land-adress ">{{land.address}}</text>
-                <text>导航</text>
-                <!--<icon class="icon-you iconfont"></icon>-->
+                <icon class="icon-icon-system-fi-navigation iconfont"></icon>
             </view>
         </view>
     </view>
@@ -44,7 +43,7 @@
             </view>
         </block>
     </view>
-    <view class="taopiao-about" wx:if="{{isRenderTaoPiaoList}}">
+    <view class="taopiao-about" hidden="{{!isRenderTaoPiaoList}}">
         <view class="switch-btn">
             <text>相关套票</text>
             <icon>x</icon>

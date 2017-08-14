@@ -744,29 +744,30 @@ var QR = (function () {
             var size =  Math.min(cavW, cavH);
 
             var frame = this.getFrame(string),
-                ctx = wx.createContext(),
+                ctx = wx.createCanvasContext( canvas ),
                 px = Math.round(size / (width + 8));
 
             var roundedSize = px * (width + 8),
                 offset = Math.floor((size - roundedSize) / 2);
             size = roundedSize;
-            ctx.clearRect(0, 0, cavW, cavW);
-            // ctx.setFillStyle('#ffffff');
-            // ctx.rect(0, 0, size, size);
+
+            //绘制纯白背景
+            ctx.clearRect(0, 0, cavW, cavH);
+            ctx.setFillStyle('#ffffff');
+            ctx.fillRect(0, 0, cavW, cavH);
+            ctx.draw(true);
+
+            //绘制黑色二维码
             ctx.setFillStyle('#000000');
 			// ctx.setLineWidth(1);
             for (var i = 0; i < width; i++) {
                 for (var j = 0; j < width; j++) {
                     if (frame[j * width + i]) {
-                        ctx.rect(px * (4 + i) + offset, px * (4 + j) + offset, px, px);
+                        ctx.fillRect(px * (4 + i) + offset, px * (4 + j) + offset, px, px);
 					}
                 }
             }
-            ctx.fill();
-			wx.drawCanvas({
-          		canvasId: canvas,
-          		actions: ctx.getActions()
-    		});
+            ctx.draw(true);
         }
     }
 	module.exports = {

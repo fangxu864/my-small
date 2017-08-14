@@ -63,6 +63,7 @@
 }
 .plist {
   padding: 10px 10px 0;
+  border-top:1px solid #e5e5e5;
 }
 .plist:after {
   content:'';
@@ -133,14 +134,21 @@
     height: 30px;
     line-height: 30px;
     overflow: hidden;
-    background: #f0f4f5;
+    background: #f0eff5;
   }
 
   .itemBox .price {
     float: left;
   }
+.itemBox .price .num{
+    font-weight: bold;
+}
+.itemBox .price.tprice .num{
+    font-weight: bold;
+    font-size: 24rpx;
+}
 
-  .itemBox .price.tprice {
+.itemBox .price.tprice {
     float: right;
     text-decoration: line-through;
     color: #999;
@@ -209,29 +217,37 @@
 
 .search {
   position: relative;
-  padding:10px 10px 0;
+  padding:30rpx 30rpx;
+  background:#f0eff5;
+  display: flex;
 }
+
+.search-wrap{
+  position: relative;
+  background-color: #ffffff;
+  flex-basis:100%;
+  border-radius: 10rpx;
+}
+
 .search-icon {
-  position: absolute;
-  left: 10px;
-  top: 20px;
+  position:absolute;
+  left:20rpx;
+  top:20rpx;
 }
 .search-inp {
-  display: block;
-  margin: 0 70px 0 0;
-  padding: 5px 20px 5px 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  font-size: 12px;
+  padding:10rpx 60rpx 10rpx 60rpx;
+  font-size:28rpx;
+  line-height: 72rpx;
 }
 .search-clear {
   position: absolute;
-  right: 85px;
-  top: 20px;
+  right:20rpx;
+  top:20rpx;
 }
 .search-btn {
-  position: absolute;
-  right: 10px;
-  top: 12px;
+  line-height: 36px;
+  font-size: 24rpx;
+  margin-right:0;
 }
 .nodata {
   color: #999;
