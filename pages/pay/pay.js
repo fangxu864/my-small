@@ -97,7 +97,7 @@ Page({
 
 				};
 
-				if(status=="ok"){
+        if (res.code==200){
 					wx.requestPayment(data);
 				}else{
 					showError(msg);
