@@ -35,6 +35,14 @@ page{ background:#fafafa}
 .scrollView .item.history .ticketLi .star,.scrollView .item.history .ticketLi .tnum{ color:#f37138}
 .scrollView .item.history .time{ padding-top:5px;}
 
+.click-refresh{
+    height: 72rpx;
+    line-height: 72rpx;
+    text-align: center;
+    color: #2a98da;
+    background: #dfefff;
+}
+
 
 
 

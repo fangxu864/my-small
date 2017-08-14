@@ -27,19 +27,19 @@
 				"pagePath": "pages/index/index",
 				"iconPath": "image/ing.png",
 				"selectedIconPath": "image/ing-active.png",
-				"text": "产品预订"
+				"text": "预订"
 			},
 			{
 				"pagePath": "pages/trip/trip",
 				"iconPath": "image/xingcheng.png",
 				"selectedIconPath": "image/xingcheng-active.png",
-				"text": "我的行程"
+				"text": "行程"
 			},
 			{
 				"pagePath": "pages/ordercenter/ordercenter",
 				"iconPath": "image/coming.png",
 				"selectedIconPath": "image/coming-active.png",
-				"text": "我的订单"
+				"text": "订单"
 			}
 		]
 	},

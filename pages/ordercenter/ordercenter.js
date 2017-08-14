@@ -20,11 +20,12 @@ Page({
 		history_hasMore: true
 	},
 	onReady: function () {
-
+	},
+	onShow: function () {
+		console.log("onShow");
 		wx.setNavigationBarTitle({ title: "我的订单" });
 		var that = this;
 		var oData = this.data;
-
 		this.queryList({
 			type: oData.currentTab,
 			page: 1,
@@ -48,9 +49,6 @@ Page({
 				Common.showError(msg + " 错误代码：" + code);
 			}
 		})
-	},
-	onShow: function () {
-		console.log("onShow");
 	},
 	onHide: function () {
 		console.log("onHide");
@@ -270,6 +268,72 @@ Page({
 		wx.navigateTo({
 			url: '../checkqrcode/checkqrcode?code=' + code
 		});
-	}
+	},
+
+	/**
+	 * 刷新未使用订单
+	 * 
+	 */
+	refreshUnuseOrder: function () {
+		var that = this;
+		this.queryList({
+			type: "unuse",
+			page: 1,
+			loading: function () {
+				Common.showLoading();
+				that.setData({ unuse_showRefreshLoading: true })
+			},
+			complete: function () {
+				Common.hideLoading();
+				that.setData({ unuse_showRefreshLoading: false })
+			},
+			success: function (data) {
+				var totalPage = data.totalPage;
+				var list = data.list;
+				var page = data.page;
+				that.setData({ "list.unuse": list });
+				that.setData({ unuse_hasMore: page >= totalPage ? false : true });
+			},
+			empty: function () { },
+			error: function (msg, code) {
+				Common.showError(msg + " 错误代码：" + code);
+			}
+		})
+		
+	},
+	
+	/**
+	 * 刷新历史订单
+	 * 
+	 */
+	refreshHistoryOrder: function () {
+		var that = this;
+		this.queryList({
+			type: "history",
+			page: 1,
+			loading: function () {
+				Common.showLoading();
+				that.setData({ unuse_showRefreshLoading: true })
+			},
+			complete: function () {
+				Common.hideLoading();
+				that.setData({ unuse_showRefreshLoading: false })
+			},
+			success: function (data) {
+				var totalPage = data.totalPage;
+				var list = data.list;
+				var page = data.page;
+				that.setData({ "list.unuse": list });
+				that.setData({ unuse_hasMore: page >= totalPage ? false : true });
+			},
+			empty: function () { },
+			error: function (msg, code) {
+				Common.showError(msg + " 错误代码：" + code);
+			}
+		})
+		
+	},
+
+
 
 })

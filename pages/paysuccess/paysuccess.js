@@ -124,7 +124,7 @@ Page({
 	 */
     goToIndex : function(){
 		wx.switchTab({
-			url: '../index/index'
+			url: '../ordercenter/ordercenter'
 		});
 	}
 })
