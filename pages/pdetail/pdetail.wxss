@@ -18,6 +18,27 @@
     overflow: hidden
 }
 
+.banner-box .shop-name{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  text-align:center;
+  line-height:88rpx;
+  color:#ffffff;
+  font-size:32rpx;
+  font-weight:bold;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0));
+}
+
+.banner-box .shop-name .icon-erweima1{
+  float: right;
+  right:0px;
+  width:88rpx;
+  height:88rpx;
+  font-size: 38rpx;
+}
+
 .banner-box .img-box {
     width: 100%
 }

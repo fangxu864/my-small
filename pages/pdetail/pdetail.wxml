@@ -1,5 +1,8 @@
 <scroll-view class="container" scroll-y="true" scroll-into-view="{{scroll_into_view}}" bindscroll="onScroll" style="margin-top: {{isfixed =='fixed' ? '92rpx' : ''}}">
     <view class="banner-box">
+        <view class="shop-name">
+            <icon class="icon-erweima1 iconfont" catchtap="onQrCodeTap"></icon>
+        </view>
         <view class="img-box">
             <image src="{{land.imgpath}}"></image>
         </view>

@@ -6,7 +6,7 @@ var app = getApp();
  * 二维码页
  */
 Page({
-    
+
     data: {
         qrImgSrc: ''
     },
@@ -15,19 +15,21 @@ Page({
      * 页面加载时
      * @param opt
      */
-    onLoad: function ( opt ) {
+    onLoad: function (opt) {
         var _this = this;
         Common.request({
             url: "/r/Mall_Mall/getPageAppCode",
             data: {
-                account: decodeURIComponent( opt.account ),
-                scenCode: decodeURIComponent( opt.scenCode )
+                account: decodeURIComponent(opt.account),
+                scenCode: decodeURIComponent(opt.scenCode),
+                codeType: 0,
+                page: decodeURIComponent(opt.page || "pages/index/index")
             },
             loading: function () {
                 Common.showLoading("二维码加载中");
             },
-            complete: function () {},
-            success: function ( res ) {
+            complete: function () { },
+            success: function (res) {
                 _this.setData({
                     qrImgSrc: res.data.url
                 })
@@ -41,7 +43,7 @@ Page({
      */
     onPreviewImage: function () {
         let urls = [];
-        urls.push( this.data.qrImgSrc );
+        urls.push(this.data.qrImgSrc);
         wx.previewImage({
             urls: urls // 需要预览的图片http链接列表
         })
@@ -53,7 +55,7 @@ Page({
     onQrImgLoadEnd: function () {
         Common.hideLoading();
     }
-    
-    
-    
+
+
+
 });
