@@ -473,7 +473,7 @@ var Common = {
 	 */
 	ellipsis: function (string , length) {
 		var str = string || "";
-		if( string.length > length ){
+		if( str.length > length ){
 			var reg = new RegExp('.{0,'+length+'}');
 			str = str.match(reg)[0] + '...';
 		}
