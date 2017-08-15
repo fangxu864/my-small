@@ -20,9 +20,6 @@ Page({
 		history_hasMore: true
 	},
 	onReady: function () {
-	},
-	onShow: function () {
-		console.log("onShow");
 		wx.setNavigationBarTitle({ title: "我的订单" });
 		var that = this;
 		var oData = this.data;
@@ -49,6 +46,9 @@ Page({
 				Common.showError(msg + " 错误代码：" + code);
 			}
 		})
+	},
+	onShow: function () {
+		
 	},
 	onHide: function () {
 		console.log("onHide");
@@ -323,7 +323,7 @@ Page({
 				var totalPage = data.totalPage;
 				var list = data.list;
 				var page = data.page;
-				that.setData({ "list.unuse": list });
+				that.setData({ "list.history": list });
 				that.setData({ unuse_hasMore: page >= totalPage ? false : true });
 			},
 			empty: function () { },

@@ -9,6 +9,7 @@
             <view style="height:300px; line-height:300px; background:#ffffff; text-align:center" class="loading">努力加载中...</view>
         </block>
         <block wx:elif="{{list.unuse.length==0}}">
+            <view class="click-refresh" catchtap="refreshUnuseOrder">点击刷新...</view> 
             <view style="height:300px; line-height:300px; text-align:center; background:#ffffff;">暂无订单</view>
         </block>
         <block wx:else>
@@ -74,6 +75,7 @@
             <view style="height:300px; line-height:300px; background:#ffffff; text-align:center" class="loading">努力加载中...</view>
         </block>
         <block wx:elif="{{list.history.length==0}}">
+            <view class="click-refresh" catchtap="refreshHistoryOrder">点击刷新...</view>
             <view style="height:300px; line-height:300px; text-align:center; background:#ffffff;">暂无订单</view>
         </block>
         <block wx:else>
