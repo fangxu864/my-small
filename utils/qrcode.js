@@ -755,7 +755,7 @@ var QR = (function () {
             ctx.clearRect(0, 0, cavW, cavH);
             ctx.setFillStyle('#ffffff');
             ctx.fillRect(0, 0, cavW, cavH);
-            ctx.draw(true);
+            // ctx.draw(true);
 
             //绘制黑色二维码
             ctx.setFillStyle('#000000');

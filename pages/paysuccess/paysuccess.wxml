@@ -1,7 +1,7 @@
 <view class="container">
 
     <view class="top-box">
-        <icon type="success_no_circle" size="45" color="#3eba40"/>
+        <icon class="iconfont icon-chenggong"/>
         <text class="tip">下单成功</text>
     </view>
 
@@ -9,7 +9,7 @@
 
     <view class="qrcode-container">
         <view class="topt">凭证码: <text class="code">{{infoData.qrcode}}</text> </view>
-        <view id="qrcodeBox" class="qrcode-box">
+        <view id="qrcodeBox" class="qrcode-box" catchtap="onQrImgTap">
             <canvas  style="width: 200px;height: 200px;" canvas-id="qrcodeCanvas"/>
         </view>
     </view>

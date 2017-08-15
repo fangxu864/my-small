@@ -1,8 +1,11 @@
 /**
- * Author: huangzhiyang
- * Date: 2017/1/6 10:26
- * Description: ""
- */
+ * @author [fangxu]
+ * @email [864109504@qq.com]
+ * @create date 2017-08-15 05:07:57
+ * @modify date 2017-08-15 05:07:57
+ * @desc [description]
+*/
+
 //获取应用实例
 var Common = require("../../utils/common.js");
 var QR = require("../../utils/qrcode.js");
