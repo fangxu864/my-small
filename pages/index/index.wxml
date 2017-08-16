@@ -1,17 +1,23 @@
-
-
-
 <!--<view class="location-wrap">-->
-      <!--<button size="mini" class="" bindtap="onShow">搜索</button>-->
-      <!--<button size="mini" class="" bindtap="getLocation">定位</button>-->
+<!--<button size="mini" class="" bindtap="onShow">搜索</button>-->
+<!--<button size="mini" class="" bindtap="getLocation">定位</button>-->
 <!--</view>-->
 
 <view class="scroll-view-wrap">
     <scroll-view class="scroll-view" scroll-y="true" bindscrolltolower="scrollToLower">
         <view class="banner-box">
-            <view class="img-box">
+            <!-- <view class="img-box">
                 <image src="{{shopInfo.img}}"></image>
-            </view>
+            </view> -->
+            <swiper indicator-active-color="#457ed8" class="swiper-box" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{2000}}">
+
+                <!-- <block wx:for{{shopInfo.img}}> -->
+                    <swiper-item>
+                        <image class="swiper-img" mode="widthFix" src="{{shopInfo.img}}" />
+                    </swiper-item>
+                <!-- </block> -->
+
+            </swiper>
             <!--<view class="info-box">
                 <view>
                     <text class="banner-text">联系电话:{{shopInfo.tel}}</text>
@@ -28,7 +34,8 @@
         <view class="search">
             <view class="search-wrap">
                 <icon type="search" size="14" color="{{}}" class="search-icon" bindtap="searchIconTap"></icon>
-                <input confirm-type="search" type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput" bindconfirm="search" value="{{searchVal}}" />
+                <input confirm-type="search" type="text" class="search-inp" placeholder="请输入关键字" focus="{{searchInpFocus}}" bindinput="searchInput"
+                    bindconfirm="search" value="{{searchVal}}" />
                 <view hidden="{{!isClearShow}}" bindtap="clearSearch">
                     <icon type="clear" size="14" class="search-clear"></icon>
                 </view>
@@ -63,7 +70,8 @@
         </view>
         <view class="load-more-wrap">
             <view class="load-content" hidden="{{!isLoading}}">
-                <text class="weui-loading"/><text class="loading-text">努力加载中...</text>
+                <text class="weui-loading" />
+                <text class="loading-text">努力加载中...</text>
             </view>
             <view wx:if="{{!hasMore}}" hidden="{{isHasMoreHidden}}" class="no-more">
                 <text>没有更多了...</text>

@@ -1,11 +1,1 @@
-<view class="ticket-box">
-    <view class="title">
-
-    </view>
-    <view class="middle">
-
-    </view>
-    <view class="bottom">
-
-    </view>
-</view>
+<view class="c">我的行程</view>
