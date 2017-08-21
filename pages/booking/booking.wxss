@@ -153,4 +153,62 @@
   }
 }
 
+.fadeIn{
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* 简单消息弹出 */
+
+.simple-msg-pop{
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(74, 74, 74, 0.36);
+  width: 100%;
+}
+
+.simple-msg-pop .mask{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top:0
+}
+
+.simple-msg-pop .con{
+  background-color: #ffffff;  
+  position: absolute;
+  bottom: 44px;
+  left: 0;
+  right: 0;
+  /* height: 200px; */
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #258cc9;
+}
+
+.simple-msg-pop .bottom{
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #258cc9;
+}
 

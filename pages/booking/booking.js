@@ -19,6 +19,7 @@ Page({
 		ticketList : [],
 		canSubmit : true,
 		contactDisplay: "none", // 常用联系人是否显示
+		simpleMsgPopDisplay: "none", // 简单显示信息是否显示
 		contactData:{}
     },
     onReady : function(){
@@ -488,6 +489,25 @@ Page({
 		this.setData({
 			contactDisplay: "block",
 			contactData: comContact.getContactArr()
+		})
+	},
+
+	/**
+	 * 关闭简单消息提示
+	 */
+	closeSimpleMsgPop: function () {
+		this.setData({
+			simpleMsgPopDisplay: "none"
+		})
+	},
+
+	/**
+	 * 打开简单消息提示
+	 */
+	openSimpleMsgPop: function () {
+		this.setData({
+			simpleMsgPopDisplay: "block",
+		
 		})
 	},
 

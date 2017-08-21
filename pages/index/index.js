@@ -35,7 +35,17 @@ Page({
         hasKeyword: false,
         lastSearch: '',
         //当前店铺名称
-        curShopName: ''
+        curShopName: '',
+
+        //swiper图片列表
+        imgUrls:[
+            "http://images.12301.cc/shops/123624/14609470368965.jpg",
+            "http://images.pft12301.cc/100014/b2c/1499676604.jpeg",
+            "http://images.12301.cc/shops/123624/14609470368965.jpg",
+            "http://images.pft12301.cc/100014/b2c/1499676604.jpeg",
+            "http://images.12301.cc/shops/123624/14609470368965.jpg",
+            "http://images.pft12301.cc/100014/b2c/1499676604.jpeg"
+        ]
     },
 
     /**

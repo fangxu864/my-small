@@ -9,13 +9,13 @@
             <!-- <view class="img-box">
                 <image src="{{shopInfo.img}}"></image>
             </view> -->
-            <swiper indicator-active-color="#457ed8" class="swiper-box" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{2000}}">
+            <swiper indicator-active-color="#457ed8" class="swiper-box" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
 
-                <!-- <block wx:for{{shopInfo.img}}> -->
+                <block wx:for="{{shopInfo.imgUrls}}" >
                     <swiper-item>
-                        <image class="swiper-img" mode="widthFix" src="{{shopInfo.img}}" />
+                        <image class="swiper-img" mode="aspectFill" src="{{item}}" />
                     </swiper-item>
-                <!-- </block> -->
+                </block>
 
             </swiper>
             <!--<view class="info-box">

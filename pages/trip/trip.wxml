@@ -1,1 +1,60 @@
-<view class="c">我的行程</view>
+<!-- 景区模块 -->
+<view class="scenic-block">
+    <!-- 订单列表 -->
+    <view class="order-list">
+        <view class="order-name">我的订单1</view>
+        <!-- 票类二维码 -->
+        <swiper class="ticket-code-list" indicator-active-color="#457ed8" indicator-dots="{{true}}" autoplay="{{true}}">
+            <!-- <block wx:for="{{}}"> -->
+            <swiper-item>
+                <div class="canvas-box checked clearfix">
+                    <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas" bindtap="onQrImgTap"/>
+                </div>
+            </swiper-item>
+            <swiper-item>
+                <div class="canvas-box checked clearfix">
+                    <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas1" bindtap="onQrImgTap"/>
+                </div>
+            </swiper-item>
+            <!-- </block> -->
+        </swiper>
+        <!-- 概要信息 -->
+        <view class="common-info clearfix">
+            <view class="lt">
+                <view class="scenic-name">五彩田园</view>
+                <view class="ticeket-name">全价票*1张</view>
+            </view>
+            <view class="rt">
+                <view class="money">金额</view>
+                <view class="money-num">500</view>
+            </view>
+        </view>
+        <!-- 详细信息 -->
+        <view class="detail-info">
+            <view class="line clearfix">
+                <view class="lt">订单状态</view>
+                <view class="rt">未使用</view>
+            </view>
+            <view class="line clearfix">
+                <view class="lt">订单号</view>
+                <view class="rt">156452112</view>
+            </view>
+            <view class="line clearfix">
+                <view class="lt">凭证码</view>
+                <view class="rt">156452112</view>
+            </view>
+            <view class="line clearfix">
+                <view class="lt">下单时间</view>
+                <view class="rt">156452112</view>
+            </view>
+            <view class="line clearfix">
+                <view class="lt">有效期</view>
+                <view class="rt">156452112</view>
+            </view>
+            <view class="line clearfix">
+                <view class="lt">联系人</view>
+                <view class="rt">156452112</view>
+            </view>
+        </view>
+    </view>
+</view>
