@@ -178,8 +178,8 @@ Page({
     },
 
     onLoad: function () {
-        QR.qrApi.draw( "121212" ,"qrcodeCanvas","150","150");
-        QR.qrApi.draw( "4545" ,"qrcodeCanvas1","150","150");
+        QR.qrApi.draw( "121212" ,"qrcodeCanvas","120","120");
+        QR.qrApi.draw( "4545" ,"qrcodeCanvas1","120","120");
     },
 
     /**

@@ -4,17 +4,15 @@
     <view class="order-list">
         <view class="order-name">我的订单1</view>
         <!-- 票类二维码 -->
-        <swiper class="ticket-code-list" indicator-active-color="#457ed8" indicator-dots="{{true}}" autoplay="{{true}}">
+        <swiper class="ticket-code-list-swiper" indicator-active-color="#457ed8" indicator-dots="{{true}}" autoplay="{{false}}">
             <!-- <block wx:for="{{}}"> -->
-            <swiper-item>
-                <div class="canvas-box checked clearfix">
-                    <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas" bindtap="onQrImgTap"/>
-                </div>
+            <swiper-item >
+                <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas" bindtap="onQrImgTap" />
+                <views class="v-code">凭证码：666666</views>
             </swiper-item>
             <swiper-item>
-                <div class="canvas-box checked clearfix">
-                    <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas1" bindtap="onQrImgTap"/>
-                </div>
+                <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas1" bindtap="onQrImgTap" />
+                <views class="v-code">凭证码：666666</views>
             </swiper-item>
             <!-- </block> -->
         </swiper>

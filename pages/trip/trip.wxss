@@ -2,47 +2,60 @@ page {
     background-color: #f5f5f5;
 }
 
-.lt{
+.lt {
     float: left;
 }
-.rt{
+
+.rt {
     float: right;
 }
 
-.order-name{
+.order-name {
     background-color: #ffffff;
     text-align-last: center;
     margin-top: 10px;
     padding-top: 10px;
 }
 
+
 /* 概要信息 */
-.common-info,.detail-info{
+
+.common-info,
+.detail-info {
     background-color: #ffffff;
     margin: 10px 0;
     padding: 10px;
 }
 
+
 /* 票类二维码 */
-.ticket-code-list{
+
+.ticket-code-list-swiper {
     background-color: #ffffff;
+    height: 150px;
 }
+
+.ticket-code-list-swiper swiper-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 
 /* 二维码 */
-.canvas-box , .qrcode-canvas{
-    position: relative;
-    width: 150px;
-    height: 150px;
-    margin: 0 auto;
+
+.qrcode-canvas {
+    width: 120px;
+    height: 120px;
 }
 
-.canvas-box.checked:after{
+/* .canvas-box.checked:after {
     content: ".";
     display: block;
     position: absolute;
-    width:30px;
+    width: 30px;
     height: 30px;
     background-color: red;
     top: 0;
     z-index: 200;
-}
+} */
