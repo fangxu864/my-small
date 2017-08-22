@@ -41,14 +41,28 @@
     box-sizing: border-box;
     margin: 40rpx;
     background-color: #fafafa;
-    line-height: 40rpx;
+    line-height: 50rpx;
     font-size: 24rpx;
     padding: 20rpx;
+}
+.info-box .landTitle{
+    font-size: 28rpx;
+    font-weight: bold;
 }
 
 .info-box .line {
     display: flex;
     flex-direction: row;
+}
+.info-box .line .lt{
+    text-align: right;
+    font-weight: bold;
+    
+}
+.info-box .line .rt{
+    /* width: 120rpx; */
+    text-align: right;
+    color: #5e5e5e;
 }
 
 .qrcode-container {
@@ -72,6 +86,7 @@
 }
 
 .goToIndex {
-    width: 60%;
-    font-size: 14px;
+    width: 50%;
+    font-size: 24rpx;
+    margin-top: 20rpx;
 }
