@@ -255,6 +255,7 @@ Page({
 
         _this.setData({
             listWrapShow: "block",
+            pageStatusShow: "none",
             landList: reorderedData
         })
         reorderedData.forEach(function (item) {
