@@ -1,58 +1,67 @@
-<!-- 景区模块 -->
-<view class="scenic-block">
-    <!-- 订单列表 -->
-    <view class="order-list">
-        <view class="order-name">我的订单1</view>
-        <!-- 票类二维码 -->
-        <swiper class="ticket-code-list-swiper" indicator-active-color="#457ed8" indicator-dots="{{true}}" autoplay="{{false}}">
-            <!-- <block wx:for="{{}}"> -->
-            <swiper-item >
-                <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas" bindtap="onQrImgTap" />
-                <views class="v-code">凭证码：666666</views>
-            </swiper-item>
-            <swiper-item>
-                <canvas class="qrcode-canvas" canvas-id="qrcodeCanvas1" bindtap="onQrImgTap" />
-                <views class="v-code">凭证码：666666</views>
-            </swiper-item>
-            <!-- </block> -->
-        </swiper>
-        <!-- 概要信息 -->
-        <view class="common-info clearfix">
-            <view class="lt">
-                <view class="scenic-name">五彩田园</view>
-                <view class="ticeket-name">全价票*1张</view>
-            </view>
-            <view class="rt">
-                <view class="money">金额</view>
-                <view class="money-num">500</view>
-            </view>
+<view class="list-wrap" style="display: {{listWrapShow}}">
+    <block wx:for="{{landList}}" wx:for-item="landList">
+        <!-- 景区模块 -->
+        <view class="scenic-block">
+            <block wx:for="{{landList.orderlist}}" wx:for-item="orderItem">
+                <!-- 订单列表 -->
+                <view class="order-list">
+                    <!-- 票类二维码 -->
+                    <view class="qrcode-box">
+                        <view class="order-name">{{orderItem.ltitle}}</view>
+                        <canvas class="qrcode-canvas" data-code="{{orderItem.code}}" canvas-id="{{'canvas' + orderItem.code}}" bindtap="onQrImgTap"
+                        />
+                        <views class="v-code">凭证码：
+                            <text class="num orangered">{{orderItem.code}}</text>
+                        </views>
+                    </view>
+                    <!-- 概要信息 -->
+                    <view class="common-info clearfix">
+                        <view class="lt">
+                            <view class="scenic-name">{{orderItem.ltitle}}</view>
+                            <block wx:for="{{orderItem.tickets}}" wx:for-item="ticketItem">
+                                <view class="ticeket-name">{{ticketItem.title}}*
+                                    <text class="orangered">{{ticketItem.tnum}}</text>张
+                                </view>
+                            </block>
+                        </view>
+                        <view class="rt">
+                            <view class="money">金额（元）</view>
+                            <view class="money-num orangered">￥
+                                <text class="num">{{orderItem.totalmoney}}</text>
+                            </view>
+                        </view>
+                    </view>
+                    <!-- 详细信息 -->
+                    <view class="detail-info">
+                        <view class="line clearfix">
+                            <view class="item-name">订单状态：</view>
+                            <view class="item-value">{{orderStatus[orderItem.status]}}</view>
+                        </view>
+                        <view class="line clearfix">
+                            <view class="item-name">订单号：</view>
+                            <view class="item-value">{{orderItem.ordernum}}</view>
+                        </view>
+                        <view class="line clearfix">
+                            <view class="item-name">凭证码：</view>
+                            <view class="item-value">{{orderItem.code}}</view>
+                        </view>
+                        <view class="line clearfix">
+                            <view class="item-name">下单时间：</view>
+                            <view class="item-value">{{orderItem.ordertime}}</view>
+                        </view>
+                        <view class="line clearfix">
+                            <view class="item-name">有效期：</view>
+                            <view class="item-value">{{orderItem.begintime}}至{{orderItem.endtime}}</view>
+                        </view>
+                        <view class="line clearfix">
+                            <view class="item-name">联系人：</view>
+                            <view class="item-value">{{orderItem.ordername}} {{orderItem.ordertel}}</view>
+                        </view>
+                    </view>
+                </view>
+            </block>
         </view>
-        <!-- 详细信息 -->
-        <view class="detail-info">
-            <view class="line clearfix">
-                <view class="lt">订单状态</view>
-                <view class="rt">未使用</view>
-            </view>
-            <view class="line clearfix">
-                <view class="lt">订单号</view>
-                <view class="rt">156452112</view>
-            </view>
-            <view class="line clearfix">
-                <view class="lt">凭证码</view>
-                <view class="rt">156452112</view>
-            </view>
-            <view class="line clearfix">
-                <view class="lt">下单时间</view>
-                <view class="rt">156452112</view>
-            </view>
-            <view class="line clearfix">
-                <view class="lt">有效期</view>
-                <view class="rt">156452112</view>
-            </view>
-            <view class="line clearfix">
-                <view class="lt">联系人</view>
-                <view class="rt">156452112</view>
-            </view>
-        </view>
-    </view>
+    </block>
 </view>
+
+<view class="page-status" style="display: {{pageStatusShow}}">{{pageStatusText}}</view>

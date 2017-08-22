@@ -1,5 +1,6 @@
 page {
     background-color: #f5f5f5;
+    font-size: 24rpx;
 }
 
 .lt {
@@ -10,52 +11,88 @@ page {
     float: right;
 }
 
-.order-name {
+.orangered{
+    color: #f7520e;
+}
+ 
+
+
+/* 二维码容器 */
+.qrcode-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: #ffffff;
-    text-align-last: center;
-    margin-top: 10px;
+    font-weight: bold;
+}
+
+.qrcode-box .order-name {
     padding-top: 10px;
+    font-size: 28rpx;
+}
+
+/* 二维码 */
+.qrcode-box .qrcode-canvas{
+    width: 120px;
+    height: 120px;
+}
+.qrcode-box .v-code{
+    padding-bottom: 10px;
+}
+.qrcode-box .v-code .num{
+    font-size: 30rpx;
+    font-weight: bold;
+
 }
 
 
-/* 概要信息 */
+
+/* 概要信息和详细信息容器 */
 
 .common-info,
 .detail-info {
     background-color: #ffffff;
     margin: 10px 0;
+    line-height: 50rpx;
     padding: 10px;
 }
 
 
-/* 票类二维码 */
-
-.ticket-code-list-swiper {
-    background-color: #ffffff;
-    height: 150px;
+/* 概要信息 */
+.common-info{
+    font-weight: bold;
+}
+.common-info .rt .num{
+    font-size: 30rpx;
+    font-weight: bold;
+}
+.common-info .rt{
+    text-align: right;
 }
 
-.ticket-code-list-swiper swiper-item{
+
+
+.detail-info .line{
     display: flex;
-    flex-direction: column;
-    align-items: center;
+}
+.detail-info .item-name{
+    text-align: right;
+    font-weight: bold;
+    
+}
+.detail-info .item-value{
+    /* width: 120rpx; */
+    text-align: right;
+    color: #5e5e5e;
+    
 }
 
-
-/* 二维码 */
-
-.qrcode-canvas {
-    width: 120px;
-    height: 120px;
+.page-status{
+    background-color:#fff;
+    line-height:168rpx;
+    text-align:center;
+    font-size:28rpx;
+    color:#c3c3c3;
+    margin-top:40rpx;
 }
 
-/* .canvas-box.checked:after {
-    content: ".";
-    display: block;
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: red;
-    top: 0;
-    z-index: 200;
-} */

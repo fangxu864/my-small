@@ -1,3 +1,11 @@
+/**
+ * @author [fangxu]
+ * @email [864109504@qq.com]
+ * @create date 2017-08-22 02:07:07
+ * @modify date 2017-08-22 02:07:07
+ * @desc [description]
+*/
+
 var Common = require("../../utils/common.js");
 var app = getApp();
 

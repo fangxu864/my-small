@@ -745,7 +745,7 @@ var QR = (function () {
 
             var frame = this.getFrame(string),
                 ctx = wx.createCanvasContext( canvas ),
-                px = Math.round(size / (width + 8));
+                px = Math.round(size / (width + 5));
 
             var roundedSize = px * (width + 8),
                 offset = Math.floor((size - roundedSize) / 2);
