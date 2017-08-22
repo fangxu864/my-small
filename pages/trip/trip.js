@@ -182,9 +182,9 @@ Page({
             },
             "msg": ""
         },
-        listWrapShow: "block",
+        listWrapShow: "none",
         pageStatusShow: "block",
-        pageStatusText: "您还没有行程哦，快去定制吧！",
+        pageStatusText: "您还没有行程哦，快去预订吧！",
         landList: [], //景区列表
         orderStatus: { //订单状态
             0: "未使用",
@@ -200,12 +200,12 @@ Page({
     },
 
     onLoad: function () {
-        // this.getListData();
+        this.getListData();
     },
 
     onShow: function () {
         var _this = this;
-        this.renderData(_this.data.scenicData.data);
+        // this.renderData(_this.data.scenicData.data);
     },
 
     getListData: function () {
@@ -226,21 +226,22 @@ Page({
                 wx.stopPullDownRefresh();
             },
             success: function (res) {
-                if (code == 200) {
+                if (res.code == 200) {
                     if (Common.judgeTrue(res.data)) {
+                        console.log(121212)
                         _this.renderData(res.data);
                     } else {
                         _this.setData({
                             pageStatusShow: "block",
                             listWrapShow: "none",
-                            pageStatusText: "您还没有行程哦，快去定制吧！"
+                            pageStatusText: "您还没有行程哦，快去预订吧！"
                         })
                     }
                 } else {
                     _this.setData({
                         pageStatusShow: "block",
                         listWrapShow: "none",
-                        pageStatusText: msg
+                        pageStatusText: res.msg
                     })
                 }
             }
