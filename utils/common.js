@@ -378,7 +378,6 @@ var Common = {
 					newOpt.error(msg,code);
 				}
 			}else{
-
 				wx.showModal({
 					title : "出错",
 					content : JSON.stringify(_res),

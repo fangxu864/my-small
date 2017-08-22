@@ -71,7 +71,7 @@ Page({
             var data = {
                 keyword: keyword,
                 topic: '',
-                type: 'all',
+                type: 'A',
                 city: '',
                 pageSize: this.data.pageSize,
                 lastPos: this.data.lastPos,
@@ -279,10 +279,20 @@ Page({
                         shopInfo: res.data.shopInfo,
                         curShopName: res.data.shopInfo.name
                     });
+
+                    //如果不在最近浏览历史中，存入之
+                    if (!app.globalData.historyShop.checkExist(app.globalData.curScenCode)) {
+                        app.globalData.historyShop.addShop({
+                            img: res.data.shopInfo.img,
+                            name: res.data.shopInfo.name,
+                            scenCode: app.globalData.curScenCode
+                        })
+                    }
+
+                    //设置标题
                     wx.setNavigationBarTitle({
                         title: res.data.shopInfo.name
                     });
-
 
                     if (res.data.list.length) {
 

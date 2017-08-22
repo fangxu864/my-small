@@ -5,18 +5,29 @@
 </view>
 
 
-<view style="display: {{shopListShow}}">
-<view class="top-tips" >附近的景点、旅行社、门票代理</view>
-<view class="shop-item clearfix" wx:for="{{shopListArr}}" bindtap = "onShopItemTap" data-scencode="{{item.scenCode}}">
-    <image class="shop-img" src="{{item.img}}" mode="scaleToFill"></image>
-    <view class="rt">
-        <view class="shop-name">{{item.name}}</view>
-        <view class="summary">{{item.aboutus}}</view>
-        <div class="distance">距您{{item.dist}}km</div>
+<view class="history-shop" wx:if="{{historyShoplist.length > 0}}">
+    <view class="top-tips">最近访问</view>
+    <view class="shop-item clearfix" wx:for="{{historyShoplist}}" bindtap="onShopItemTap" data-scencode="{{item.scenCode}}">
+        <image class="shop-img" src="{{item.img}}" mode="scaleToFill"></image>
+        <view class="rt">
+            <view class="shop-name">{{item.name}}</view>
+            <view class="summary"></view>
+            <div class="distance"></div>
+        </view>
     </view>
 </view>
+
+
+<view style="display: {{shopListShow}}">
+    <view class="top-tips">附近的景点、旅行社、门票代理</view>
+    <view class="shop-item clearfix" wx:for="{{shopListArr}}" bindtap="onShopItemTap" data-scencode="{{item.scenCode}}">
+        <image class="shop-img" src="{{item.img}}" mode="scaleToFill"></image>
+        <view class="rt">
+            <view class="shop-name">{{item.name}}</view>
+            <view class="summary">{{item.aboutus}}</view>
+            <div class="distance">距您{{item.dist}}km</div>
+        </view>
+    </view>
 </view>
 
 <view class="page-status" style="display: {{pageStatusShow}}">{{pageStatusText}}</view>
-
-

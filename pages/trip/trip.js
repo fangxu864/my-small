@@ -182,7 +182,7 @@ Page({
             },
             "msg": ""
         },
-        listWrapShow: "none",
+        listWrapShow: "block",
         pageStatusShow: "block",
         pageStatusText: "您还没有行程哦，快去定制吧！",
         landList: [], //景区列表
@@ -200,27 +200,12 @@ Page({
     },
 
     onLoad: function () {
-        this.getListData();
+        // this.getListData();
     },
 
     onShow: function () {
         var _this = this;
-        // var reorderedData = _this.reorderDataByDistance(_this.data.scenicData.data);
-        // var codeArr = [];
-
-        // this.setData({
-        //     landList: reorderedData
-        // })
-        // reorderedData.forEach(function (item) {
-        //     item.orderlist.forEach(function (item2) {
-        //         codeArr.push(item2.code);
-        //     })
-        // });
-        // codeArr.forEach(function (item) {
-        //     console.log("canvas" + item)
-        //     QR.qrApi.draw("1212", "canvas" + item, "120", "120");
-        // })
-        // this.getListData();
+        this.renderData(_this.data.scenicData.data);
     },
 
     getListData: function () {
@@ -243,23 +228,7 @@ Page({
             success: function (res) {
                 if (code == 200) {
                     if (Common.judgeTrue(res.data)) {
-                        var reorderedData = _this.reorderDataByDistance(res.data);
-                        var codeArr = [];
-
-                        _this.setData({
-                            listWrapShow: "block",
-                            landList: reorderedData
-                        })
-                        reorderedData.forEach(function (item) {
-                            item.orderlist.forEach(function (item2) {
-                                codeArr.push(item2.code);
-                            })
-                        });
-                        codeArr.forEach(function (item) {
-                            console.log("canvas" + item)
-                            QR.qrApi.draw("1212", "canvas" + item, "120", "120");
-                        })
-                        _this.getListData();
+                        _this.renderData(res.data);
                     } else {
                         _this.setData({
                             pageStatusShow: "block",
@@ -276,6 +245,26 @@ Page({
                 }
             }
         });
+    },
+
+    renderData: function (data) {
+        var _this = this;
+        var reorderedData = _this.reorderDataByDistance(data);
+        var codeArr = [];
+
+        _this.setData({
+            listWrapShow: "block",
+            landList: reorderedData
+        })
+        reorderedData.forEach(function (item) {
+            item.orderlist.forEach(function (item2) {
+                codeArr.push(item2.code);
+            })
+        });
+        codeArr.forEach(function (item) {
+            console.log("canvas" + item)
+            QR.qrApi.draw("1212", "canvas" + item, "120", "120");
+        })
     },
 
     /**

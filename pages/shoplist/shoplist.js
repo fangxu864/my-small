@@ -22,7 +22,15 @@ Page({
         shopListArr: [],
         //是否显示状态提示框
         pageStatusShow: "none",
-        pageStatusText: "页面状态文本"
+        pageStatusText: "页面状态文本",
+
+        historyShoplist: [
+            // {
+            //     img:"http://images.12301.cc/shops/123624/14609470368965.jpg",
+            //     name:"慢慢的二级店铺",
+            //     scenCode:"wxApp#Bp3odO"
+            // }
+        ]
     },
 
     onLoad: function () {
@@ -53,6 +61,11 @@ Page({
                 console.log(res.currentSize);
                 console.log(res.limitSize)
             }
+        })
+
+        //历史访问的店铺
+        this.setData({
+            historyShoplist: app.globalData.historyShop.shopData
         })
     },
 
