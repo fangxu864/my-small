@@ -182,7 +182,7 @@ Page({
                     _this.setData({
                         pageStatusShow: "block",
                         shopListShow: "none",
-                        pageStatusText: "暂无数据，请重新选择位置"
+                        pageStatusText: "暂无附近景点，请重新选择位置"
                     })
                 }
             } else {
