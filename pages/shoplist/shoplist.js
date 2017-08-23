@@ -65,7 +65,7 @@ Page({
 
         //历史访问的店铺
         this.setData({
-            historyShoplist: app.globalData.historyShop.shopData
+            historyShoplist: app.globalData.historyShop.getShopData()
         })
     },
 

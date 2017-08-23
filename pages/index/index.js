@@ -280,15 +280,13 @@ Page({
                         curShopName: res.data.shopInfo.name
                     });
 
-                    //如果不在最近浏览历史中，存入之
-                    if (!app.globalData.historyShop.checkExist(app.globalData.curScenCode)) {
-                        app.globalData.historyShop.addShop({
-                            img: res.data.shopInfo.img,
-                            name: res.data.shopInfo.name,
-                            scenCode: app.globalData.curScenCode
-                        })
-                    }
-
+                    //增加历史记录
+                    app.globalData.historyShop.addHistoryShop({
+                        img: res.data.shopInfo.img,
+                        name: res.data.shopInfo.name,
+                        scenCode: app.globalData.curScenCode
+                    })
+                
                     //设置标题
                     wx.setNavigationBarTitle({
                         title: res.data.shopInfo.name
