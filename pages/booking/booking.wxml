@@ -84,13 +84,18 @@
                         <text style="color:red">!格式错误</text>
                     </view>
                 </view>
-                <view style="margin-top:1px" class="line">
+                <view style="margin-top:1px" class="line" wx:if="{{needID==1 }}">
                     <view class="lt">身份证</view>
                     <view class="rt"><input type="text" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}" class="idCardInp"
                             id="idCardInp" placeholder="身份证" /></view>
                     <view class="errorTip" wx:if="{{!!needIDErrTipShow}}" style="margin-right:5px">
                         <text style="color:red">!格式错误</text>
                     </view>
+                </view>
+                <view style="margin-top:1px" class="line" wx:if="{{needID==2 }}" bindtap="onEditTouristTap">
+                    <view class="lt">游客信息</view>
+                    <view class="rt">已编辑{{touristInfoAlreadyNum}}/{{touristInfoTotalNum}}</view>
+                    <iconfont class="icon-you iconfont "></iconfont>
                 </view>
             </view>
 
@@ -145,5 +150,20 @@
         <view class="bottom slideInUp" bindtap="closeSimpleMsgPop">关闭</view>
     </view>
 
-
+    <!-- 需要多张身份证的时候 -->
+    <view class="idcard-list-wrap slideInUp" style="display:{{idcardListWrapDisplay}}">
+        <view class="title">请填写游客信息</view>
+        <view class="con">
+            <block class="dd" wx:for="{{[1,2,3,4,5,6,7,8]}}" wx:for-index="index">
+                <view class="line">
+                    <input type="text" class="tourist-name" data-index="index" data-type="name" bindblur="onTouristInpBlur" placeholder="游客姓名{{index + 1}}" />
+                    <input type="idcard" class="tourist-id" data-index="index" data-type="idcard" bindblur="onTouristInpBlur" placeholder="身份证" />
+                </view>
+            </block>
+        </view>
+        <view class="bottom">
+            <view class="cancel-btn btn" bindtap="closeIdcardListWrap">取消</view>
+            <view class="confirm-btn btn">确认</view>
+        </view>
+    </view>
 </view>

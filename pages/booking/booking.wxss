@@ -63,7 +63,7 @@
 .descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin-right:10px}
 
 .common-contact-box{
-  z-index: 1;
+  z-index: 20;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -71,6 +71,7 @@
   right: 0;
   background-color: #fff;
   width: 100%;
+  transition: height 0.5s;
 }
 
 .common-contact-box .title{
@@ -168,7 +169,7 @@
 /* 简单消息弹出 */
 
 .simple-msg-pop{
-  z-index: 1;
+  z-index: 20;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -212,5 +213,79 @@
   text-align: center;
   border-top: 1px solid #e5e5e5;
   color: #258cc9;
+}
+
+
+/* 身份证列表 */
+
+.idcard-list-wrap{
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 100%;
+  transition: height 0.5s;
+}
+
+.idcard-list-wrap .title{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.idcard-list-wrap .bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  line-height: 43px;
+  border-top: 1px solid #e5e5e5;
+  color: #258cc9;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.idcard-list-wrap .bottom .btn{
+  width: 40%;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+.idcard-list-wrap .bottom .btn:active{
+  opacity: 0.9;
+}
+.idcard-list-wrap .bottom .cancel-btn{
+  background: #c7c7c7;
+  color: #333;
+}
+.idcard-list-wrap .bottom .confirm-btn{
+  background: #258cc9;
+  color: #fff;
+}
+
+.idcard-list-wrap .con .line{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.idcard-list-wrap .con .line input{
+  border: 1px solid #e5e5e5;
+  padding: 10rpx;
+}
+
+.idcard-list-wrap .con .tourist-name {
+  width: 200rpx;
+}
+.idcard-list-wrap .con .tourist-id {
+  width: 350rpx;
 }
 
