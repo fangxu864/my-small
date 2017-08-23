@@ -281,7 +281,7 @@ Page({
                     });
 
                     //增加历史记录
-                    app.globalData.historyShop.addHistoryShop({
+                    app.historyShop.addHistoryShop({
                         img: res.data.shopInfo.img,
                         name: res.data.shopInfo.name,
                         scenCode: app.globalData.curScenCode
