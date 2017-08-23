@@ -376,7 +376,7 @@ Page({
 			ordername : oData.ordername,      //联系人姓名,
             scenCode  : app.globalData.curScenCode //店铺唯一编码
 		};
-		if(oData.needID==1) submitData["sfz"] = oData.sfz; //需要一张身份证
+		if(oData.needID==1 || oData.needID==2) submitData["sfz"] = oData.sfz; //需要一张身份证
 
 		// if(contacttel.length!==11 || isNaN(contacttel)) return this.setData({contacttelErrTipShow:true});
 		// if(!ordername) return this.setData({orderNameErrTipShow:true});
@@ -434,7 +434,6 @@ Page({
 
 
 	},
-
 
 	//请求库存价格
 	queryPriceAndStore : function(date){

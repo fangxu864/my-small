@@ -63,7 +63,7 @@
             </view>
 
             <!-- 联系人信息 -->
-            <view wx:if="{{needID==1}}" class="box userInfoBox userInfo">
+            <view wx:if="{{needID==1 || needID==2 }}" class="box userInfoBox userInfo">
                 <view class="line" style="margin-bottom:1px">
                     <view class="lt">联系人</view>
                     <view class="rt">
