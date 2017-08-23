@@ -136,7 +136,12 @@
     <!-- 简单的底部弹出消息 -->
     <view class="simple-msg-pop fadeIn" style="display:{{simpleMsgPopDisplay}}">
         <view class="mask" bindtap="closeSimpleMsgPop"></view>
-        <view class="con slideInUp">退票规则</view>
+        <view class="con slideInUp">
+            <view class="base-text line">{{refundTicketRuleText.baseText}}</view>
+            <block wx:for="{{refundTicketRuleText.ladderTextList}}" wx:for-key="item">
+                <view class="ladder-text line">{{item}}</view>
+            </block>
+        </view>
         <view class="bottom slideInUp" bindtap="closeSimpleMsgPop">关闭</view>
     </view>
 

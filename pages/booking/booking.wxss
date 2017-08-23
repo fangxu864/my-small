@@ -187,16 +187,18 @@
 }
 
 .simple-msg-pop .con{
-  background-color: #ffffff;  
-  position: absolute;
-  bottom: 44px;
-  left: 0;
-  right: 0;
-  /* height: 200px; */
-  line-height: 43px;
-  text-align: center;
-  border-top: 1px solid #e5e5e5;
-  color: #258cc9;
+  background-color:#ffffff;
+  position:absolute;
+  bottom:43px;
+  left:0;
+  right:0;
+  line-height:80rpx;
+  border-top:1px solid #e5e5e5;
+  font-size: 24rpx;
+}
+.simple-msg-pop .con .line{
+  padding-left: 20rpx;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .simple-msg-pop .bottom{

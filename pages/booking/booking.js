@@ -20,7 +20,8 @@ Page({
 		canSubmit : true,
 		contactDisplay: "none", // 常用联系人是否显示
 		simpleMsgPopDisplay: "none", // 简单显示信息是否显示
-		contactData:{}
+		contactData: {},
+		refundTicketRuleText:"退票规则"
     },
     onReady : function(){
         var that = this;
@@ -277,7 +278,8 @@ Page({
 			data["refund_rule_text"] = "不可退";
 		}
 
-
+		//得出并设置退票规则文本
+		this.getRefundTicketRuleText(data);
 		var reb = data.reb;
 		var reb_type = data.reb_type;
 		data["reb"] = reb * 1;
@@ -298,6 +300,60 @@ Page({
 
 		this.setData(newData);
 
+	},
+
+	/**
+	 * 得出并设置退票规则文本
+	 * 
+	 * @param {any} data 
+	 */
+	getRefundTicketRuleText: function (data) {
+		//2不可退，1游玩日期前可退，0有效期前可退 3随时退
+		if (data.refund_rule == 2) return false;
+		var baseChargeText = "", //基础扣费文本
+			ladderChargeTextArr = []; //阶梯扣费
+
+
+		//基础扣费 reb_type 0百分比 1固定金额
+		if (data.reb_type == 1) {
+			baseChargeText = "基础扣费：" + Number(data.reb)/100 + "元"
+		} else {
+			baseChargeText = "基础扣费：票价的" + data.reb + "%"
+		}
+
+		//阶梯扣费
+		if (Common.judgeTrue(data.cancel_cost)) {
+			var arr = data.cancel_cost;
+			arr.forEach(function (item, index) {
+				//c_type 1百分比 0固定金额
+				if (item.c_type == 1) {
+					ladderChargeTextArr.push(beginTimePerfix() + MinueToDayTime(item.c_days) + "内，收取手续费：票价的" + Number(item.c_cost) / 100 + "%");
+				} else {
+					ladderChargeTextArr.push(beginTimePerfix() + MinueToDayTime(item.c_days) + "内，收取手续费：" + Number(item.c_cost) / 100 + "元");
+				}
+			})
+		}
+
+		this.setData({
+			refundTicketRuleText: {
+				ladderTextList: ladderChargeTextArr,
+				baseText: baseChargeText
+			}
+		})
+
+		function beginTimePerfix(p_type){
+			return {
+				"A" : "游玩日期前",
+				"B" : "集合日期前",
+				"C" : "入住日期前",
+				"F" : "游玩日期前",
+				"H" : "演出日期前"
+			}[data.p_type]
+		}
+
+
+
+		
 	},
 
 	//提交订单
