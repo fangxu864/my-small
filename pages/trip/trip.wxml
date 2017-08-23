@@ -64,4 +64,5 @@
     </block>
 </view>
 
+<!-- 状态信息 -->
 <view class="page-status" style="display: {{pageStatusShow}}">{{pageStatusText}}</view>
