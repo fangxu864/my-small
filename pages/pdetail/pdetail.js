@@ -339,9 +339,9 @@ Page({
     onQrCodeTap: function () {
         var _this = this;
         var data = {
-            account: Common.getAccount(),
-            scenCode: app.globalData.curScenCode,
-            page:"pages/pdetail/pdetail?lid=" + _this.landId
+            account: encodeURIComponent(Common.getAccount()),
+            scenCode: encodeURIComponent(app.globalData.curScenCode),
+            page:encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
         };
 
         wx.navigateTo({

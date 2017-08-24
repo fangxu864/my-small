@@ -318,8 +318,9 @@ Page({
     //当二维码点击时
     onQrCodeTap: function () {
         var data = {
-            account: common.getAccount(),
-            scenCode: app.globalData.curScenCode
+            account: encodeURIComponent(common.getAccount()),
+            scenCode: encodeURIComponent(app.globalData.curScenCode),
+            page:encodeURIComponent("pages/index/index")
         };
 
         wx.navigateTo({

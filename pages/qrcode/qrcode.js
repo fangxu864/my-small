@@ -17,6 +17,7 @@ Page({
      */
     onLoad: function (opt) {
         var _this = this;
+        console.log(opt.page);
         Common.request({
             url: "/r/Mall_Mall/getPageAppCode",
             data: {
