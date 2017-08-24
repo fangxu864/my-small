@@ -741,7 +741,7 @@ Page({
 			for (i; i < this._listData.length; i++){
 
 				if (this._listData[i].name == "") {
-					text = "第" + (i + 1) + "个，姓名不能为空";
+					text = "第" + (i + 1) + "位游客的姓名不能为空";
 					wx.showModal({
 						title: "提示",
 						content: text,
@@ -751,7 +751,7 @@ Page({
 					break;
 				}
 				if (!Common.validateIDCard(this._listData[i].idcard)) {
-					text = "第" + (i + 1) + "个，身份证填写错误";
+					text = "第" + (i + 1) + "位游客的身份证填写错误";
 					wx.showModal({
 						title: "提示",
 						content: text,
