@@ -25,6 +25,7 @@ Page({
 		refundTicketRuleText: "退票规则",
 		touristInfoTotalNum: 0,//共计需要身份证的数量
 		touristInfoAlreadyNum: 0,//已正确填写身份证的数量
+		touristInfoArr: [],//联系人数组
 
 	},
 	onReady: function () {
@@ -210,7 +211,7 @@ Page({
 				Common.showLoading()
 			},
 			complete: function () {
-				console.log("第一ge")
+
 				Common.hideLoading();
 			},
 			success: function (res) {
@@ -390,7 +391,6 @@ Page({
 		var ordername = oData.ordername;
 		var sfz = oData.sfz;
 
-		//console.log("scenCode", app.globalData.curScenCode);
 		var submitData = {
 			pid: oData.pid,
 			aid: oData.aid,
@@ -400,11 +400,26 @@ Page({
 			ordername: oData.ordername,      //联系人姓名,
 			scenCode: app.globalData.curScenCode //店铺唯一编码
 		};
-		if (oData.needID == 1 || oData.needID == 2) submitData["sfz"] = oData.sfz; //需要一张身份证
+		if (oData.needID == 1) submitData["sfz"] = oData.sfz; //需要一张身份证
 
 		// if(contacttel.length!==11 || isNaN(contacttel)) return this.setData({contacttelErrTipShow:true});
 		// if(!ordername) return this.setData({orderNameErrTipShow:true});
 		if (oData.needID == 1 && !Common.validateIDCard(sfz)) return this.setData({ needIDErrTipShow: true });
+
+		//如果一票一身份证
+		if (oData.needID == 2) {
+			if (this.touristIdcardList.getOkNum() != submitData.tnum) {
+				wx.showModal({
+					title: "提示",
+					content: "游客信息填写有误，请完善",
+					showCancel: false
+				})
+				return false;
+			} else { 
+				submitData["idcards"] = this.touristIdcardList.getTouristIdArr();
+				submitData["tourists"] = this.touristIdcardList.getTouristNameArr();
+			}
+		}
 
 		comContact.addContact({
 			name: ordername,
@@ -591,29 +606,10 @@ Page({
 	},
 
 	/**
-	 * 游客信息编辑
-	 */
-	onEditTouristTap: function () {
-		this.setData({
-			idcardListWrapDisplay: "block",
-		})
-	},
-
-	/**
-	 * 游客信息关闭
-	 */
-	closeIdcardListWrap: function () {
-		this.setData({
-			idcardListWrapDisplay: "none",
-		})
-	},
-
-	/**
 	 * 点击常用联系人
 	 * 包括选择和删除
 	 */
 	comContactItemTap: function (e) {
-		console.log(e);
 		var tel = e.currentTarget.dataset.tel || "";
 		var name = e.currentTarget.dataset.name || "";
 		var id = e.currentTarget.dataset.id || "";
@@ -641,15 +637,64 @@ Page({
 	},
 
 	/**
+ * 游客信息编辑
+ */
+	onEditTouristTap: function (e) {
+		var total = e.currentTarget.dataset.total;
+		var arr = this.touristIdcardList.getListData(total);
+
+		this.setData({
+			idcardListWrapDisplay: "block",
+			touristInfoArr: arr
+		})
+	},
+
+	/**
+	 * 游客信息关闭
+	 */
+	closeIdcardListWrap: function () {
+		var _this = this;
+		this.setData({
+			idcardListWrapDisplay: "none",
+			touristInfoAlreadyNum: _this.touristIdcardList.getOkNum()
+		})
+		
+	},
+
+	/**
+	 * 游客身份信息输入框blur事件
+	 * 
+	 * @param {any} e 
+	 */
+	onTouristInpBlur: function (e) {
+		var dataset = e.currentTarget.dataset,
+			index = dataset.index,
+			type = dataset.type,
+			value = e.detail.value;
+		this.touristIdcardList.addData(index, type, value);
+	},
+
+	IdcardListWrapConfirm: function () {
+		if (this.touristIdcardList.checkData()) {
+			this.closeIdcardListWrap();
+		}
+	},
+
+	/**
 	 * 一票一身份证的相关操作
 	 */
 	touristIdcardList: {
 
-		//存储的游客信息数据
+		//存储的游客信息数据,格式如下
+		// [
+		// {name:"fsdf",idcard:"1234564521212"},
+		// {name:"fsdf",idcard:"1234564521212"},
+		// ]
 		_listData: [],
 
 		/**
 		 * 获取游客信息数据
+		 * 输入游客个数，输出相同长度游客信息数组
 		 * 
 		 * @param {any} length 
 		 */
@@ -666,23 +711,96 @@ Page({
 				return this._listData;
 			} else {
 				this.loop(wantLenth - curLen, function () {
-					this._listData.push({});
-				})
+					this._listData.push({
+						name: "",
+						idcard: ""
+					});
+				}.bind(this));
+				return this._listData;
 			}
 		},
 
+		/**
+		 * 增加数据
+		 * 
+		 * @param {any} index 数据索引
+		 * @param {any} type 数据类型（名称或身份证）
+		 * @param {any} value 值
+		 */
+		addData: function (index, type, value) {
+			this._listData[index][type] = value;
+		},
+
+		/**
+		 * 校验数据的正确与错误
+		 * 
+		 */
+		checkData: function () {
+			var text = "", allOk = true,i = 0;
+
+			for (i; i < this._listData.length; i++){
+
+				if (this._listData[i].name == "") {
+					text = "第" + (i + 1) + "个，姓名不能为空";
+					wx.showModal({
+						title: "提示",
+						content: text,
+						showCancel: false
+					})
+					allOk = false;
+					break;
+				}
+				if (!Common.validateIDCard(this._listData[i].idcard)) {
+					text = "第" + (i + 1) + "个，身份证填写错误";
+					wx.showModal({
+						title: "提示",
+						content: text,
+						showCancel: false
+					})
+					allOk = false;
+					break;
+				}
+			}
+			
+			return allOk;
+		},
+
+		/**
+		 * 获取身份正确填写的个数
+		 * 
+		 */
+		getOkNum: function () {
+			var okNum = 0, allOk = true;
+			this._listData.forEach(function (item, index) {
+				if (item.name != "" && Common.validateIDCard(item.idcard)) {
+					okNum++;
+				}
+			})
+			return okNum;
+		},
+
+		getTouristNameArr: function () {
+			var arr = [];
+			this._listData.forEach(function (item, index) {
+				arr.push(item.name);
+			})
+			return arr;
+		},
+
+		getTouristIdArr: function () {
+			var arr = [];
+			this._listData.forEach(function (item, index) {
+				arr.push(item.idcard);
+			})
+			return arr;
+		},
+
 		loop: function (times, callback) {
-			var times = Number(tiems);
+			var times = Number(times);
 			for (var i = 0; i < times; i++) {
 				callback();
 			}
 		}
-
-
-
-
-
-
 	}
 
 
