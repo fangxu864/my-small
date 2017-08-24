@@ -81,7 +81,8 @@ Page({
             app.globalData.curScenCode = decodeURIComponent(opt.scenCode);
         }
 
-        var lid = opt.lid;
+        var lid = this.landId =  opt.lid;
+        
         var _this = this;
 
         //获取景区信息
@@ -336,10 +337,11 @@ Page({
 
     //当二维码点击时
     onQrCodeTap: function () {
+        var _this = this;
         var data = {
             account: Common.getAccount(),
             scenCode: app.globalData.curScenCode,
-            page:"pages/pdetail/pdetail"
+            page:"pages/pdetail/pdetail?lid=" + _this.landId
         };
 
         wx.navigateTo({
