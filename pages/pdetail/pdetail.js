@@ -19,8 +19,8 @@ Page({
         isRenderTaoPiaoList: true,
         imgSrcArr: [],
         storage: false,
-        // canIUseRichText: wx.canIUse('rich-text')  //兼容富文本组件
-        canIUseRichText: false  //兼容富文本组件
+        canIUseRichText: wx.canIUse('rich-text')  //兼容富文本组件
+        // canIUseRichText: false  //兼容富文本组件
     },
 
     /**
@@ -140,7 +140,7 @@ Page({
 
                 _this.setData({
                     jqtsRichText: res.data.jqts,
-                    bhjqRichText: res.data.bhjq,
+                    bhjqRichText: res.data.bhjq.replace(/\<img/g, '<img class="rich-img"'),
                     jtznRichText: res.data.jtzn
                 })
 

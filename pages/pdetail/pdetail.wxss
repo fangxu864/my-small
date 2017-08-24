@@ -244,6 +244,10 @@
     width: 710rpx
 }
 
+.p-desc-box .desc-con .rich-img {
+    width: 710rpx
+}
+
 .p-desc-box .desc-con text {
     text-align: justify
 }
