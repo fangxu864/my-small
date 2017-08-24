@@ -18,7 +18,9 @@ Page({
         taoPiaoTicketList: [],
         isRenderTaoPiaoList: true,
         imgSrcArr: [],
-        storage: false
+        storage: false,
+        // canIUseRichText: wx.canIUse('rich-text')  //兼容富文本组件
+        canIUseRichText: false  //兼容富文本组件
     },
 
     /**
@@ -62,11 +64,11 @@ Page({
     },
 
     selfThrottle: function (func, wait) {
-        var last = 0, now ;
+        var last = 0, now;
         return function () {
             now = Date.now();
             if (now - last > Number(wait)) {
-                func.apply(this,arguments);
+                func.apply(this, arguments);
                 last = now;
             }
         }
@@ -81,8 +83,8 @@ Page({
             app.globalData.curScenCode = decodeURIComponent(opt.scenCode);
         }
 
-        var lid = this.landId =  opt.lid;
-        
+        var lid = this.landId = opt.lid;
+
         var _this = this;
 
         //获取景区信息
@@ -129,11 +131,19 @@ Page({
                 console.log(cacheHub);
                 cacheHub[paramKey] = res;
                 dealRes(res);
+
             }
         });
 
         function dealRes(res) {
             if (res.code == 200) {
+
+                _this.setData({
+                    jqtsRichText: res.data.jqts,
+                    bhjqRichText: res.data.bhjq,
+                    jtznRichText: res.data.jtzn
+                })
+
                 //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
                 res.data.jqts = res
                     .data
@@ -341,12 +351,12 @@ Page({
         var data = {
             account: encodeURIComponent(Common.getAccount()),
             scenCode: encodeURIComponent(app.globalData.curScenCode),
-            page:encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
+            page: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
         };
 
         wx.navigateTo({
             url: '../qrcode/qrcode?' + Common.urlStringify(data)
         });
     }
-    
+
 });

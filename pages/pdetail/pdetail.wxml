@@ -81,18 +81,23 @@
             <text>预订须知</text>
         </view>
         <view class="desc-con">
-            <text>{{land.jqts}}</text>
+            <rich-text wx:if="{{canIUseRichText}}" nodes="{{jqtsRichText}}"></rich-text>
+            <text wx:else>{{land.jqts}}</text>
         </view>
     </view>
     <view class="p-desc-box" id="floor_3">
         <view class="desc-title">
             <text>产品简介</text>
         </view>
+
         <view class="desc-con">
-            <text>{{land.bhjq}}</text>
-            <block wx:for="{{imgSrcArr}}">
-                <image src="{{item}}"></image>
-            </block>
+            <rich-text wx:if="{{canIUseRichText}}" nodes="{{bhjqRichText}}"></rich-text>
+            <view wx:else>
+                <text>{{land.bhjq}}</text>
+                <block wx:for="{{imgSrcArr}}">
+                    <image src="{{item}}"></image>
+                </block>
+            </view>
         </view>
     </view>
     <view class="p-desc-box">
@@ -100,7 +105,8 @@
             <text>交通指南</text>
         </view>
         <view class="desc-con">
-            <text>{{land.jtzn}}</text>
+            <rich-text wx:if="{{canIUseRichText}}" nodes="{{jtznRichText}}"></rich-text>
+            <text wx:else>{{land.jtzn}}</text>
         </view>
     </view>
     <view class="bot-phone-call">
