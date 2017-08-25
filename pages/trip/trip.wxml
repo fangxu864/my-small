@@ -25,7 +25,7 @@
                             </block>
                         </view>
                         <view class="rt">
-                            <view class="money">金额（元）</view>
+                            <view class="money">总金额</view>
                             <view class="money-num orangered">￥
                                 <text class="num">{{orderItem.totalmoney}}</text>
                             </view>
