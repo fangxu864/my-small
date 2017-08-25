@@ -23,7 +23,7 @@
         <view class="tab-title {{floor_3_active}}" data-type="floor_3">景区介绍</view>
     </view>
     <view class="ticket-list-box" id="floor_1">
-        <block wx:for="{{ticketList}}">
+        <block wx:for="{{ticketList}}" wx:key="pid">
             <view class="ticket-list-item">
                 <view class="lt">
                     <view>
@@ -33,7 +33,7 @@
                         <text class="t-desc">{{item.intro}}</text>
                     </view>
                     <view>
-                        <block wx:for="{{item.tags}}">
+                        <block wx:for="{{item.tags}}" wx:key="item">
                             <text class="t-tag">{{item}}</text>
                         </block>
                     </view>
@@ -52,7 +52,7 @@
             <icon>x</icon>
         </view>
         <view class="ticket-list-box">
-            <block wx:for="{{taoPiaoTicketList}}">
+            <block wx:for="{{taoPiaoTicketList}}" wx:key="pid">
                 <view class="ticket-list-item">
                     <view class="lt">
                         <view>
@@ -62,7 +62,7 @@
                             <text class="t-desc">{{item.intro}}</text>
                         </view>
                         <view>
-                            <block wx:for="{{item.tags}}">
+                            <block wx:for="{{item.tags}}" wx:key="item">
                                 <text class="t-tag">{{item}}</text>
                             </block>
                         </view>

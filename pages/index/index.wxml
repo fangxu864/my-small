@@ -11,7 +11,7 @@
             </view> -->
             <swiper indicator-active-color="#457ed8" class="swiper-box" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
 
-                <block wx:for="{{shopInfo.imgUrls}}" >
+                <block wx:for="{{shopInfo.imgUrls}}" wx:key="item">
                     <swiper-item>
                         <image class="swiper-img" mode="aspectFill" src="{{item}}" />
                     </swiper-item>

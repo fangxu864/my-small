@@ -66,7 +66,7 @@ App({
       var isExist = false,
         existIndex = 0,
         existItem = {};
-      console.log(this._shopData);
+      
       //循环
       this._shopData.forEach(function (item, index) {
         if (item.scenCode == scenCode) {
@@ -106,7 +106,7 @@ App({
      * 
      */
     getShopData: function () {
-      console.log(this._shopData);
+      
       return this._shopData;
     }
   },
