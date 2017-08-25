@@ -50,7 +50,7 @@ Page({
         var _this = this;
         function scrollFun(event) {
             var _this = this;
-            console.log(11112);
+        
             if (event.detail.scrollTop >= 214) {
                 _this.setData({ isfixed: "fixed" })
             } else {

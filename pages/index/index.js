@@ -120,7 +120,7 @@ Page({
                 opt.success && opt.success(res);
             }
         } else {
-            console.log('正在请求  请稍后');
+            
         }
     },
 

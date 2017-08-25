@@ -34,7 +34,6 @@ Page({
     },
 
     onLoad: function () {
-        console.log("list-onload");
     },
 
     /**
@@ -56,10 +55,6 @@ Page({
 
         wx.getStorageInfo({
             success: function (res) {
-                console.log(res);
-                console.log(res.keys);
-                console.log(res.currentSize);
-                console.log(res.limitSize)
             }
         })
 
@@ -104,7 +99,7 @@ Page({
         var _this = this;
         wx.chooseLocation({
             cancel: function () {
-                console.log("cancel")
+               
             },
             success: function (res) {
                 app.globalData.curLatitude = res.latitude;
@@ -116,10 +111,10 @@ Page({
                 _this.getShopListData(res.longitude, res.latitude);
             },
             fail: function (e) {
-                console.log(e.errMsg);
+               
                 //如果用户拒绝了授权地理位置 'chooseLocation:fail auth deny'
                 if (/deny/g.test(e.errMsg)) {
-                    console.log("ddd")
+                  
                 }
 
             }
