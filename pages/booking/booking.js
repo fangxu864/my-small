@@ -294,6 +294,8 @@ Page({
 			data["refund_rule_text"] = "游玩日期前可退";
 		} else if (refund_rule == 2) {
 			data["refund_rule_text"] = "不可退";
+		} else if (refund_rule == 3){
+			data["refund_rule_text"] = "随时退";
 		}
 
 		//得出并设置退票规则文本
@@ -341,9 +343,18 @@ Page({
 
 		//基础扣费 reb_type 0百分比 1固定金额
 		if (data.reb_type == 1) {
-			baseChargeText = "基础扣费：" + Number(data.reb) / 100 + "元"
+			if (Number(data.reb) == 0) {
+				baseChargeText = "退票不收取手续费"
+			} else {
+				baseChargeText = "基础扣费：" + Number(data.reb) / 100 + "元"
+			}
+			
 		} else {
-			baseChargeText = "基础扣费：票价的" + data.reb + "%"
+			if (Number(data.reb) == 0) {
+				baseChargeText = "退票不收取手续费"
+			} else {
+				baseChargeText = "基础扣费：票价的" + data.reb + "%"
+			}	
 		}
 
 		//阶梯扣费

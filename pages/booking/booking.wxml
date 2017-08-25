@@ -19,7 +19,7 @@
             </view>
 
             <!-- 退票规则等小标签 -->
-            <view style="margin-left:10px; margin-top:10px; margin-right:10px; line-height:1.6">
+            <view style="margin-left:10px; margin-top:10px; margin-right:10px; line-height:1.6;display:flex;flex-wrap:wrap;">
                 <text class="validTime descFlag">{{validTime}}</text>
                 <text class="descFlag verifyTime" wx:if="{{verifyTime!=''}}">{{verifyTime}}</text>
                 <text class="descFlag refund_rule">{{refund_rule_text}}</text>
@@ -54,7 +54,7 @@
 
                             </view>
                         </view>
-                        <view wx:if="{{item.buy_low!=-1 || item.buy_up!=-1}}" style="margin-top:3px; text-align:right; font-size:12px; color:#777777">
+                        <view wx:if="{{item.buy_low!=-1 || item.buy_up!=-1}}" style="margin-top:16rpx; text-align:right; font-size:12px; color:#777777">
                             <text wx:if="{{item.buy_low!=-1 && item.buy_low!=1}}">{{item.buy_low}}张起买</text>
                             <text wx:if="{{item.buy_up!=-1}}">最高限购{{item.buy_up}}张</text>
                         </view>

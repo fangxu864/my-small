@@ -128,8 +128,6 @@ Page({
                 Common.hideLoading();
             },
             success: function (res) {
-                console.log(cacheHub);
-                cacheHub[paramKey] = res;
                 dealRes(res);
 
             }
@@ -137,7 +135,7 @@ Page({
 
         function dealRes(res) {
             if (res.code == 200) {
-
+                cacheHub[paramKey] = res;
                 _this.setData({
                     jqtsRichText: res.data.jqts,
                     bhjqRichText: res.data.bhjq.replace(/\<img/g, '<img class="rich-img"'),
@@ -203,7 +201,7 @@ Page({
                     .data
                     .bhjq
                     .replace(/\&nbsp;+/g, " ");
-                _this.setData({ land: res.data, title: res.data.title });
+                // _this.setData({ land: res.data, title: res.data.title });
                 wx.setNavigationBarTitle({ title: _this.data.land.title });
 
             } else {
