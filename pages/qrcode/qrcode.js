@@ -23,7 +23,7 @@ Page({
             data: {
                 account: decodeURIComponent(opt.account),
                 scenCode: decodeURIComponent(opt.scenCode),
-                codeType: 0,
+                codeType: decodeURIComponent(opt.codeType) || 0,
                 page: decodeURIComponent(opt.page || "pages/index/index")
             },
             loading: function () {

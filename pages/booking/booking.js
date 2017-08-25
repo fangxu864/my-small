@@ -524,7 +524,7 @@ Page({
 				ticketList.forEach(function (ticket) {
 					var pid = ticket.pid;
 					if (data[pid]) {
-						newTicketList.push(that.updateTicketPriceStore(ticket, ticket.jsprice, ticket.store));
+						newTicketList.push(that.updateTicketPriceStore(ticket, data[pid].price, data[pid].store));
 					}
 				})
 

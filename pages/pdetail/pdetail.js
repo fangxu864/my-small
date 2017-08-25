@@ -350,8 +350,11 @@ Page({
         var _this = this;
         var data = {
             account: encodeURIComponent(Common.getAccount()),
-            scenCode: encodeURIComponent(app.globalData.curScenCode),
-            page: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
+            // scenCode: encodeURIComponent(app.globalData.curScenCode),
+            // page: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
+            scenCode: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId),
+            page: encodeURIComponent("pages/pdetail/pdetail"),
+            codeType: 1
         };
 
         wx.navigateTo({
