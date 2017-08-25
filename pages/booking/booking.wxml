@@ -95,7 +95,7 @@
                 <view style="margin-top:1px" class="line" wx:if="{{needID==2 }}" data-total="{{touristInfoTotalNum}}" bindtap="onEditTouristTap">
                     <view class="lt">游客信息</view>
                     <view class="rt">已编辑{{touristInfoAlreadyNum}}/{{touristInfoTotalNum}}</view>
-                    <iconfont class="icon-you iconfont "></iconfont>
+                    <iconfont class="icon-you iconfont " style="margin-right:10px;padding:5px;"></iconfont>
                 </view>
             </view>
 
