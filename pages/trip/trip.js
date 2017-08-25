@@ -228,7 +228,6 @@ Page({
             success: function (res) {
                 if (res.code == 200) {
                     if (Common.judgeTrue(res.data)) {
-                        console.log(121212)
                         _this.renderData(res.data);
                     } else {
                         _this.setData({
@@ -251,6 +250,7 @@ Page({
     renderData: function (data) {
         var _this = this;
         var reorderedData = _this.reorderDataByDistance(data);
+
         var codeArr = [];
 
         _this.setData({
@@ -294,7 +294,7 @@ Page({
             resultArr.push(data[land]);
         }
 
-        if (resultArr.length > 1) {
+        if (resultArr.length > 0) {
             //返回排序后的数据
             return resultArr.sort(function (a, b) {
                 a["dis"] = getSimpleDis(getLat(a.pos), getLgt(a.pos));
