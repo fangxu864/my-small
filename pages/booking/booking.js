@@ -414,7 +414,7 @@ Page({
 					content: "游客信息填写有误，请完善",
 					showCancel: false
 				})
-				return false;
+				// return false;
 			} else { 
 				submitData["idcards"] = this.touristIdcardList.getTouristIdArr();
 				submitData["tourists"] = this.touristIdcardList.getTouristNameArr();
