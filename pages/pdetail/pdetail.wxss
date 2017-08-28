@@ -103,8 +103,8 @@
 }
 
 .tab-title-box .tab-title.active {
-    border-bottom: 6rpx solid #0797d9;
-    color: #0797d9;
+    border-bottom: 6rpx solid #457ed8;
+    color: #457ed8;
     font-weight: bold;
     background: #eaeaea;
 }
@@ -194,7 +194,6 @@
     background-color: #f95137;
     line-height: 60rpx;
     padding: 4rpx 30rpx;
-    background: #f07845;
     text-align: center;
     border-radius: 3px;
 }
