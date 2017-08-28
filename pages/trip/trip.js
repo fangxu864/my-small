@@ -267,7 +267,7 @@ Page({
 
         // setTimeout(function () {
             codeArr.forEach(function (item) {
-                QR.qrApi.draw("1212", "canvas" + item, "120", "120");
+                QR.qrApi.draw("1212", "canvas" + item, "150", "150");
             })
         // },1000)
        
