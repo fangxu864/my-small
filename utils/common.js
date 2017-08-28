@@ -342,7 +342,7 @@ var Common = {
 		//complete中间件
 		var _complete = newOpt.complete;
 		newOpt["complete"] = function (res) {
-			_complete(res.data);
+			_complete(res);
 			// var _res = res.data;
 			// var statusCode = res.statusCode;
 			// if (statusCode == 200) {
@@ -377,10 +377,10 @@ var Common = {
 				}
 			} else {
 				wx.showModal({
-					title : "出错",
-					content : SERVER_ERROR_TEXT,
-					showCancel : false
-				})
+					title: "出错",
+					content: SERVER_ERROR_TEXT,
+					showCancel: false
+				});
 			}
 		};
 

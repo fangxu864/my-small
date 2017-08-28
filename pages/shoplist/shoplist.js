@@ -148,7 +148,7 @@ Page({
                 });
                 Common.showLoading()
             },
-            complete: function () {
+            complete: function (res) {
                 Common.hideLoading();
             },
             success: function (res) {
