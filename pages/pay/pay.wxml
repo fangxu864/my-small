@@ -8,7 +8,7 @@
     <view class="orderInfoBox">
 
         <view class="land">{{detail.landTitle}}</view>
-        <block wx:for="{{detail.tickets}}">
+        <block wx:for="{{detail.tickets}}" wx:key="title">
             <view class="ticket">
                 <text class="name">{{item.title}}</text> * <text class="tnum">{{item.num}}</text> 张
             </view>

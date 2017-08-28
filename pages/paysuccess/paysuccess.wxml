@@ -24,7 +24,7 @@
                 <view class="line">
                     <view class="lt">房型：</view>
                     <view class="rt">
-                        <block wx:for="{{infoData.tickets}}">
+                        <block wx:for="{{infoData.tickets}}" wx:key="title">
                             <view><text>{{item.title+" "+item.num}}张</text></view>
                         </block>
                     </view>
@@ -51,7 +51,7 @@
                 <view class="line">
                     <view class="lt">门票：</view>
                     <view class="rt">
-                        <block wx:for="{{infoData.tickets}}">
+                        <block wx:for="{{infoData.tickets}}" wx:key="title">
                             <view><text>{{item.title+" "+item.num}}张</text></view>
                         </block>
                     </view>
@@ -78,7 +78,7 @@
                 <view class="line">
                     <view class="lt">门票：</view>
                     <view class="rt">
-                        <block wx:for="{{infoData.tickets}}">
+                        <block wx:for="{{infoData.tickets}}" wx:key="title">
                             <view><text>{{item.title+" "+item.num}}张</text></view>
                         </block>
                     </view>
@@ -109,7 +109,7 @@
                 <view class="line">
                     <view class="lt">票类：</view>
                     <view class="rt">
-                        <block wx:for="{{infoData.tickets}}">
+                        <block wx:for="{{infoData.tickets}}" wx:key="title">
                             <view><text>{{item.title+" "+item.num}}张</text></view>
                         </block>
                     </view>

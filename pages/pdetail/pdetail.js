@@ -50,7 +50,7 @@ Page({
         var _this = this;
         function scrollFun(event) {
             var _this = this;
-        
+
             if (event.detail.scrollTop >= 214) {
                 _this.setData({ isfixed: "fixed" })
             } else {
@@ -136,80 +136,85 @@ Page({
         function dealRes(res) {
             if (res.code == 200) {
                 cacheHub[paramKey] = res;
-                _this.setData({
-                    jqtsRichText: res.data.jqts,
-                    bhjqRichText: res.data.bhjq.replace(/\<img/g, '<img class="rich-img"'),
-                    jtznRichText: res.data.jtzn
-                })
 
-                //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                res.data.jqts = res
-                    .data
-                    .jqts
-                    .replace(/\<br[^\<\>]+\>/g, "\n");
-                res.data.jqts = res
-                    .data
-                    .jqts
-                    .replace(/\<[^\<\>]+\>/g, "");
-                res.data.jqts = res
-                    .data
-                    .jqts
-                    .replace(/\n[\s\n]+/g, "\n");
+                //如果可以使用富文本
+                if (_this.data.canIUseRichText) {
+                    _this.setData({
+                        jqtsRichText: res.data.jqts,
+                        bhjqRichText: res.data.bhjq.replace(/\<img/g, '<img class="rich-img"'),
+                        jtznRichText: res.data.jtzn
+                    })
+                } else {
+                    //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
+                    res.data.jqts = res
+                        .data
+                        .jqts
+                        .replace(/\<br[^\<\>]+\>/g, "\n");
+                    res.data.jqts = res
+                        .data
+                        .jqts
+                        .replace(/\<[^\<\>]+\>/g, "");
+                    res.data.jqts = res
+                        .data
+                        .jqts
+                        .replace(/\n[\s\n]+/g, "\n");
 
-                //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                res.data.jtzn = res
-                    .data
-                    .jtzn
-                    .replace(/\<br[^\<\>]+\>/g, "\n");
-                res.data.jtzn = res
-                    .data
-                    .jtzn
-                    .replace(/\<[^\<\>]+\>/g, "");
-                res.data.jtzn = res
-                    .data
-                    .jtzn
-                    .replace(/\n[\s\n]+/g, "\n");
+                    //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
+                    res.data.jtzn = res
+                        .data
+                        .jtzn
+                        .replace(/\<br[^\<\>]+\>/g, "\n");
+                    res.data.jtzn = res
+                        .data
+                        .jtzn
+                        .replace(/\<[^\<\>]+\>/g, "");
+                    res.data.jtzn = res
+                        .data
+                        .jtzn
+                        .replace(/\n[\s\n]+/g, "\n");
 
-                //抽出图片
-                var imgSrcArr = res
-                    .data
-                    .bhjq
-                    .match(/src\=\"[^\"]+\"/g);
-                var srcarr = [];
-                if (imgSrcArr) {
-                    for (var i = 0; i < imgSrcArr.length; i++) {
-                        var str = imgSrcArr[i].replace(/src\=\"/g, "")
-                        srcarr.push(str.replace(/\"/g, ""))
+                    //抽出图片
+                    var imgSrcArr = res
+                        .data
+                        .bhjq
+                        .match(/src\=\"[^\"]+\"/g);
+                    var srcarr = [];
+                    if (imgSrcArr) {
+                        for (var i = 0; i < imgSrcArr.length; i++) {
+                            var str = imgSrcArr[i].replace(/src\=\"/g, "")
+                            srcarr.push(str.replace(/\"/g, ""))
+                        }
+                        _this.setData({ imgSrcArr: srcarr })
                     }
-                    _this.setData({ imgSrcArr: srcarr })
+                    //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
+                    res.data.bhjq = res
+                        .data
+                        .bhjq
+                        .replace(/\<br[^\<\>]+\>/g, "\n");
+                    res.data.bhjq = res
+                        .data
+                        .bhjq
+                        .replace(/\<[^\<\>]+\>/g, "");
+                    res.data.bhjq = res
+                        .data
+                        .bhjq
+                        .replace(/\n[\s\n]+/g, "\n");
+                    //替换空格
+                    res.data.bhjq = res
+                        .data
+                        .bhjq
+                        .replace(/\&nbsp;+/g, " ");
+                    _this.setData({ land: res.data, title: res.data.title });
+
                 }
-                //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
-                res.data.bhjq = res
-                    .data
-                    .bhjq
-                    .replace(/\<br[^\<\>]+\>/g, "\n");
-                res.data.bhjq = res
-                    .data
-                    .bhjq
-                    .replace(/\<[^\<\>]+\>/g, "");
-                res.data.bhjq = res
-                    .data
-                    .bhjq
-                    .replace(/\n[\s\n]+/g, "\n");
-                //替换空格
-                res.data.bhjq = res
-                    .data
-                    .bhjq
-                    .replace(/\&nbsp;+/g, " ");
-                // _this.setData({ land: res.data, title: res.data.title });
-                wx.setNavigationBarTitle({ title: _this.data.land.title });
+
+                //设置title
+                wx.setNavigationBarTitle({ title: _this.data.land.title || "产品详情" });
 
             } else {
                 wx.showModal({
                     title: '提示', content: res.msg,
-                    // success: function(res) {     if (res.confirm) {     console.log('用户点击确定') } }
                 })
-
             }
         }
     },

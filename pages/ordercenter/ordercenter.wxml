@@ -3,6 +3,7 @@
     <view catchtap="onTabClick" data-tab="history" class="tab history {{currentTab=='history' ? 'active' : ''}}">历史订单</view>
 </view>
 <view class="mainBody">
+    <!-- 未使用订单 -->
     <view class="scrollWrap unuse {{currentTab=='unuse' ? '' : 'hide'}}">
         
         <block wx:if="{{unuse_showRefreshLoading}}">
@@ -15,13 +16,13 @@
         <block wx:else>
             <scroll-view class="scrollView" data-type="unuse" scroll-y="true" bindscrolltolower="scrollToLower">
                 <view class="click-refresh" catchtap="refreshUnuseOrder">点击刷新...</view> 
-                <block wx:for="{{list.unuse}}" wx:for-item="order">
+                <block wx:for="{{list.unuse}}" wx:for-item="order" wx:key="ordernum">
                     <view class="item unuse {{ order.paystatus == 1 ? 'cantap' : ''}}" data-pcode="{{order.code}}" catchtap="{{ order.paystatus == 1 ? 'alreadyPayTap' : ''}}">
                         <view class="topBox">
                             <image class="photo" mode="aspectFit" data-type="unuse" data-ordernum="{{order.ordernum}}" binderror="onImageError" src="{{order.imgpath}}"></image>
                             <view class="rtTextBox">
                                 <view class="title">{{order.ltitle}}</view>
-                                <block wx:for="{{order.tickets}}" wx:for-item="ticket">
+                                <block wx:for="{{order.tickets}}" wx:for-item="ticket" wx:key="tid">
                                     <view class="ticketLi">
                                         <text class="ticTitle">{{ticket.title}}</text>
                                         <text class="star"> * </text>
@@ -70,6 +71,8 @@
             </scroll-view>
         </block>
     </view>
+
+    <!-- 历史订单 -->
     <view class="scrollWrap history {{currentTab=='history' ? '' : 'hide'}}">
         <block wx:if="{{history_showRefreshLoading}}">
             <view style="height:300px; line-height:300px; background:#ffffff; text-align:center" class="loading">努力加载中...</view>
@@ -81,10 +84,10 @@
         <block wx:else>
             <scroll-view class="scrollView" data-type="history" scroll-y="true" bindscrolltolower="scrollToLower">
                 <view class="click-refresh" catchtap="refreshHistoryOrder">点击刷新...</view>                
-                <block wx:for="{{list.history}}" wx:for-item="order">
+                <block wx:for="{{list.history}}" wx:for-item="order" wx:key="ordernum">
                     <view class="item history">
                         <view class="title">{{order.ltitle}}</view>
-                        <block wx:for="{{order.tickets}}" wx:for-item="ticket">
+                        <block wx:for="{{order.tickets}}" wx:for-item="ticket" wx:key="tid">
                             <view class="ticketLi">
                                 <text class="ticName">{{ticket.title}}</text>
                                 <text class="star"> * </text>

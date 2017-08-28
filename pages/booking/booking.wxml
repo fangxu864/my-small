@@ -6,16 +6,19 @@
         <scroll-view scroll-y="true" class="mainBody">
             <!-- 游玩时间 -->
             <view class="box datepickerBox datepicker">
-                <view>
-                    <text style="padding-left:10px">游玩时间</text>
+                <view style="width:30%;">
+                    <text style="padding-left:20rpx">游玩时间</text>
                 </view>
-                <view style="width:220px; margin-left:20px">
-                    <picker style="height:100%; width:300px" mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                        <view class="picker">
+                <view style="width:70%;">
+                    <picker style="height:100%;" mode="date" value="{{date}}" start="{{today}}" end="2100-09-01" bindchange="bindDateChange">
+                        <view class="picker" style="padding:0 20rpx;box-sizing:border-box;">
                             {{begintime}}
+                            <iconfont class="iconfont icon-you" style="float:right"></iconfont>
                         </view>
+
                     </picker>
                 </view>
+
             </view>
 
             <!-- 退票规则等小标签 -->
@@ -29,7 +32,7 @@
 
             <!-- 票类列表 -->
             <view class="box ticketListUl ticketListBox">
-                <view class="item" wx:for="{{ticketList}}">
+                <view class="item" wx:for="{{ticketList}}" wx:key="tid">
                     <view class="minBox">
                         <view class="tit">{{item.title}}</view>
                         <view class="bcon">
@@ -143,7 +146,7 @@
         <view class="mask" bindtap="closeSimpleMsgPop"></view>
         <view class="con slideInUp">
             <view class="base-text line">{{refundTicketRuleText.baseText}}</view>
-            <block wx:for="{{refundTicketRuleText.ladderTextList}}" wx:for-key="item">
+            <block wx:for="{{refundTicketRuleText.ladderTextList}}" wx:key="item">
                 <view class="ladder-text line">{{item}}</view>
             </block>
         </view>
@@ -154,10 +157,12 @@
     <view class="idcard-list-wrap slideInUp" style="display:{{idcardListWrapDisplay}}">
         <view class="title">请填写游客信息</view>
         <view class="con">
-            <block class="dd" wx:for="{{touristInfoArr}}" wx:for-index="index">
+            <block class="dd" wx:for="{{touristInfoArr}}" wx:for-index="index" wx:key="idcard">
                 <view class="line">
-                    <input type="text" class="tourist-name" data-index="{{index}}" data-type="name" value="{{item.name}}" bindblur="onTouristInpBlur" placeholder="游客姓名{{index + 1}}" />
-                    <input type="idcard" class="tourist-id" data-index="{{index}}" data-type="idcard" value="{{item.idcard}}" bindblur="onTouristInpBlur" placeholder="身份证" />
+                    <input type="text" class="tourist-name" data-index="{{index}}" data-type="name" value="{{item.name}}" bindblur="onTouristInpBlur"
+                        placeholder="游客姓名{{index + 1}}" />
+                    <input type="idcard" class="tourist-id" data-index="{{index}}" data-type="idcard" value="{{item.idcard}}" bindblur="onTouristInpBlur"
+                        placeholder="身份证" />
                 </view>
             </block>
         </view>

@@ -12,6 +12,7 @@
   display:flex;
   background: #fff;
   font-size:14px;
+  margin-top: 20rpx;
 }
 .picker{ height:44px; width:100%}
 

@@ -4,6 +4,7 @@ var comContact = require("./contact.js");
 var app = getApp();
 Page({
 	data: {
+		today: Common.getToday(),
 		isReady: false,
 		begintime: Common.getToday(),
 		aid: "",
@@ -508,39 +509,44 @@ Page({
 				Common.hideLoading();
 			},
 			success: function (res) {
-				var data = res.data;
-				var ticketList = that.data.ticketList;
-				var newTicketList = [];
-
-				if (Object.prototype.toString.call(data) == "[object Array]" && data.length == 0) {
-
-					Common.showError("该日期没有库存及价格，请更换日期", "提示");
-
-					var newList = [];
-					that.data.ticketList.forEach(function (item) {
-						item["jsprice"] = 0;
-						newList.push(item);
-					})
-
-					that.setData({ ticketList: newList });
-					that.setData({ canSubmit: false });
-					that.calTotalMoney();
-
-					return false;
-
-				}
-
-				that.setData({ canSubmit: true });
-
-				ticketList.forEach(function (ticket) {
-					var pid = ticket.pid;
-					if (data[pid]) {
-						newTicketList.push(that.updateTicketPriceStore(ticket, data[pid].price, data[pid].store));
+				if (res.code == 200) {
+					var data = res.data;
+					var ticketList = that.data.ticketList;
+					var newTicketList = [];
+	
+					if (Object.prototype.toString.call(data) == "[object Array]" && data.length == 0) {
+	
+						Common.showError("该日期没有库存及价格，请更换日期", "提示");
+	
+						var newList = [];
+						that.data.ticketList.forEach(function (item) {
+							item["jsprice"] = 0;
+							newList.push(item);
+						})
+	
+						that.setData({ ticketList: newList });
+						that.setData({ canSubmit: false });
+						that.calTotalMoney();
+	
+						return false;
+	
 					}
-				})
-
-				that.setData({ ticketList: newTicketList });
-				that.calTotalMoney();
+	
+					that.setData({ canSubmit: true });
+	
+					ticketList.forEach(function (ticket) {
+						var pid = ticket.pid;
+						if (data[pid]) {
+							newTicketList.push(that.updateTicketPriceStore(ticket, data[pid].price, data[pid].store));
+						}
+					})
+	
+					that.setData({ ticketList: newTicketList });
+					that.calTotalMoney();
+				} else {
+					Common.showError("该日期没有库存及价格，请更换日期", "提示");
+				}
+				
 
 			}
 		})
@@ -575,7 +581,7 @@ Page({
 		ticketList.forEach(function (item) {
 			total += (item.value * item.jsprice);
 		});
-		this.setData({ totalMoney: total });
+		this.setData({ totalMoney: Number(total).toFixed(2) });
 	},
 
 	/**

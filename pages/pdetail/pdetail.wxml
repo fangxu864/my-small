@@ -93,7 +93,7 @@
         <view class="desc-con">
             <rich-text wx:if="{{canIUseRichText}}" nodes="{{bhjqRichText}}"></rich-text>
             <view wx:else>
-                <text>{{land.bhjq}}</text>
+                <text>{{land.bhjq}} - 666666</text>
                 <block wx:for="{{imgSrcArr}}">
                     <image src="{{item}}"></image>
                 </block>

@@ -51,10 +51,10 @@ Page({
 		
 	},
 	onHide: function () {
-		console.log("onHide");
+	
 	},
 	onLoad: function () {
-		console.log("onLoad");
+	
 	},
 	onImageError: function (e) {
 		var dataset = e.currentTarget.dataset;

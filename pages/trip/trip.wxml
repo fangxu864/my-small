@@ -1,5 +1,5 @@
 <view class="list-wrap" style="display: {{listWrapShow}}">
-    <block wx:for="{{landList}}" wx:for-item="landList">
+    <block wx:for="{{landList}}" wx:for-item="landList" wx:key="lid">
         <!-- 景区模块 -->
         <view class="scenic-block">
             <block wx:for="{{landList.orderlist}}" wx:for-item="orderItem" wx:key="code">
@@ -18,7 +18,7 @@
                     <view class="common-info clearfix">
                         <view class="lt">
                             <view class="scenic-name">{{orderItem.ltitle}}</view>
-                            <block wx:for="{{orderItem.tickets}}" wx:for-item="ticketItem">
+                            <block wx:for="{{orderItem.tickets}}" wx:for-item="ticketItem" wx:key="tid">
                                 <view class="ticeket-name">{{ticketItem.title}}*
                                     <text class="orangered">{{ticketItem.tnum}}</text>张
                                 </view>
