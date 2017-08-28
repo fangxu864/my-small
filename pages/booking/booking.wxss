@@ -21,7 +21,7 @@
 
 .ticketListUl{ padding:0; margin:10px 0}
 
-.ticketListUl .item{ padding:15px; background:#fff; margin-top:10px}
+.ticketListUl .item{ padding:20rpx; background:#fff; margin-top:10px}
 
 .ticketListUl .item .tit{ font-size:16px; font-weight:bold; margin-bottom:5px}
 .ticketListUl .item .price,.ticketListUl .item .store{ font-size:14px; color:#878787}
@@ -61,7 +61,7 @@
 .totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f37138; color:#ffffff}
 .totalBar .submitBtn.disable{ background:#999999; color:#555555}
 
-.descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin:10rpx;}
+.descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin:10rpx 10rpx 10rpx 0;}
 
 .common-contact-box{
   z-index: 20;
