@@ -20,11 +20,11 @@ page{ background:#fafafa}
 .scrollView .item.unuse .rtTextBox{ margin-left:8px}
 .scrollView .item.unuse .title{ font-size:14px; font-weight:bold; padding:5px 0 0 0}
 .scrollView .item.unuse .ticketLi{ font-size:12px; margin-top:3px}
-.scrollView .item.unuse .ticketLi .star,.scrollView .item.unuse .ticketLi .tnum{ font-weight:bold; color:#f37138}
+.scrollView .item.unuse .ticketLi .star,.scrollView .item.unuse .ticketLi .tnum{ font-weight:bold; color:#f95137}
 .scrollView .item.unuse .paystatusText.status_0,.scrollView .item.unuse .paystatusText.status_1{ color:#3eba40}
-.scrollView .item.unuse .paystatusText.status_2{ color:#f37138}
+.scrollView .item.unuse .paystatusText.status_2{ color:#f95137}
 .scrollView .item.unuse .infoBox{ font-size:12px; line-height:1.6}
-.scrollView .item.unuse .maCode{ color:#f37138}
+.scrollView .item.unuse .maCode{ color:#f95137}
 .scrollView .item.unuse .btnGroup{ text-align:right; font-size:12px; padding-bottom:10px;}
 .scrollView .item.unuse .btnGroup .btn{ padding:7px 20px; border:1px solid #457ed8; color:#457ed8; margin-left:20px;}
 .scrollView .item.unuse .btnGroup .btn.disable{ color:#929292; border-color:#929292}
@@ -32,7 +32,7 @@ page{ background:#fafafa}
 .scrollView .item.history{ padding:15px 10px; margin-bottom:10px; background:#fff}
 .scrollView .item.history .title{ font-size:14px; font-weight:bold;}
 .scrollView .item.history .ticketLi{ padding-top:5px;}
-.scrollView .item.history .ticketLi .star,.scrollView .item.history .ticketLi .tnum{ color:#f37138}
+.scrollView .item.history .ticketLi .star,.scrollView .item.history .ticketLi .tnum{ color:#f95137}
 .scrollView .item.history .time{ padding-top:5px;}
 
 .click-refresh{

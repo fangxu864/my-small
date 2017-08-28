@@ -25,7 +25,7 @@
 
 .ticketListUl .item .tit{ font-size:16px; font-weight:bold; margin-bottom:5px}
 .ticketListUl .item .price,.ticketListUl .item .store{ font-size:14px; color:#878787}
-.ticketListUl .item .price .yen,.ticketListUl .item .price .num{ color:#f37138}
+.ticketListUl .item .price .yen,.ticketListUl .item .price .num{ color:#f95137}
 .ticketListUl .item .price .num{ font-size:16px; font-weight:bold}
 .ticketListUl .item .storeNum{ color:#777777; font-weight:bold}
 
@@ -56,7 +56,7 @@
 .totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;  }
 .totalBar .totalBarCon{  display:flex;  height:100%;  align-items:center;  justify-content:space-between;  }
 .totalBar .totalT{ margin-left:10px;}
-.totalBar .totalBox{ color:#f37138; font-size:14px}
+.totalBar .totalBox{ color:#f95137; font-size:14px}
 .totalBar .totalBox .totalNum{ font-size:18px; font-weight:bold}
 .totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f95137; color:#ffffff}
 .totalBar .submitBtn.disable{ background:#999999; color:#555555}

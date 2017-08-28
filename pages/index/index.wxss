@@ -179,13 +179,13 @@
 
   .itemBox .price {
     font-size: 16px;
-    color: #f07845;
+    color: #f95137;
     padding-left: 1px;
   }
 
   .itemBox .price .yen {
     font-size: 12px;
-    color: #f07845;
+    color: #f95137;
     margin-right: 2px;
   }
 

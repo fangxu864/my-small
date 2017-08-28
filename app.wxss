@@ -15,6 +15,13 @@ page{
   background-size: 100%;
 }
 
+.pft-blue{
+  color: #457ed8;
+}
+.pft-orange{
+  color: #f95137;
+}
+
 @-webkit-keyframes weuiLoading {
   0% {
     transform: rotate3d(0, 0, 1, 0deg);

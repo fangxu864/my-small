@@ -185,7 +185,7 @@
 .ticket-list-box .ticket-list-item .rt .discount-price {
     font-size: 32rpx;
     margin-bottom: 10rpx;
-    color: #f07845;
+    color: #f95137;
 }
 
 .ticket-list-box .ticket-list-item .rt .book-btn {

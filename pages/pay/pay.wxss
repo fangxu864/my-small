@@ -7,16 +7,16 @@
 .successTitle{ font-size:22px; color:#3eba40; font-weight:bold; margin-top:10px; margin-bottom:5px}
 
 .payTip{ font-size:14px; color:#888888}
-.payTip .time{ font-size:16px; color:red; font-weight:bold; margin-right:3px}
+.payTip .time{ font-size:16px; color:#f95137; font-weight:bold; margin-right:3px}
 
 .orderInfoBox{ padding:10px 0 10px 15px; background:#fafafa; font-size:14px; margin:20px 0; line-height:1.6}
-.orderInfoBox .ticket .tnum{ font-size:16px; color:#f37138; font-weight:bold;}
+.orderInfoBox .ticket .tnum{ font-size:16px; color:#f95137; font-weight:bold;}
 
 .payBox{ display:flex; flex-direction:column; align-items:center; background:#fafafa; padding:30px 0;}
 .payBox .t{ font-size:12px; margin-top:10px}
 .payBox:active{ background:#eaeaea}
 
 .totalMoneyBox{ display:flex; flex-direction:row; align-items:center; padding:20px 15px; background:#fafafa; font-size:14px; margin-bottom:10px;}
-.totalMoneyBox .rt{ color:#f37138;}
+.totalMoneyBox .rt{ color:#f95137;}
 .totalMoneyBox .yen{ font-size:16px}
 .totalMoneyBox .num{ font-size:22px; font-weight:bold}
