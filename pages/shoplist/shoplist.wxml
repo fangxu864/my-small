@@ -19,7 +19,7 @@
 
 
 <view style="display: {{shopListShow}}">
-    <view class="top-tips">附近的景点、旅行社、门票代理</view>
+    <view class="top-tips">附近的景点</view>
     <view class="shop-item clearfix" wx:for="{{shopListArr}}" bindtap="onShopItemTap" data-scencode="{{item.scenCode}}" wx:key="scenCode">
         <image class="shop-img" src="{{item.img}}" mode="scaleToFill"></image>
         <view class="rt">
