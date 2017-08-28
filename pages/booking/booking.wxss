@@ -58,7 +58,7 @@
 .totalBar .totalT{ margin-left:10px;}
 .totalBar .totalBox{ color:#f37138; font-size:14px}
 .totalBar .totalBox .totalNum{ font-size:18px; font-weight:bold}
-.totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f37138; color:#ffffff}
+.totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f95137; color:#ffffff}
 .totalBar .submitBtn.disable{ background:#999999; color:#555555}
 
 .descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin:10rpx 10rpx 10rpx 0;}
