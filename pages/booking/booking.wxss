@@ -31,11 +31,11 @@
 
 .ticketListUl .bcon{ display:flex; flex-direction:row; justify-content: space-between; align-items: center;}
 
-.ticketListUl .countBox{ display:flex; flex-direction:row; border:1px solid #258cc9}
-.ticketListUl .countBox .inp{ width:65px; text-align:center; color:#258cc9; line-height:28px}
-.ticketListUl .countBox .btn{ width:38px; height:28px; line-height:28px; color:#258cc9; text-align:center}
-.ticketListUl .countBox .btn.add{  border-left:1px solid #258cc9;}
-.ticketListUl .countBox .btn.minus{  border-right:1px solid #258cc9;}
+.ticketListUl .countBox{ display:flex; flex-direction:row; border:1px solid #457ed8}
+.ticketListUl .countBox .inp{ width:65px; text-align:center; color:#457ed8; line-height:28px}
+.ticketListUl .countBox .btn{ width:38px; height:28px; line-height:28px; color:#457ed8; text-align:center}
+.ticketListUl .countBox .btn.add{  border-left:1px solid #457ed8;}
+.ticketListUl .countBox .btn.minus{  border-right:1px solid #457ed8;}
 
 
 .userInfoBox{ margin:10px 0}
@@ -45,7 +45,7 @@
 .userInfoBox .add-contact{
   line-height:30px;
   text-align:center;
-  color:#258cc9;
+  color:#457ed8;
   font-size: 38rpx;
   font-weight:700;
   margin-right:20rpx;
@@ -61,7 +61,7 @@
 .totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f95137; color:#ffffff}
 .totalBar .submitBtn.disable{ background:#999999; color:#555555}
 
-.descFlag{ font-size:12px; padding:2px 4px; color:#2a98da; border:1px solid #2a98da; margin:10rpx 10rpx 10rpx 0;}
+.descFlag{ font-size:12px; padding:2px 4px; color:#457ed8; border:1px solid #457ed8; margin:10rpx 10rpx 10rpx 0;}
 
 .common-contact-box{
   z-index: 20;
@@ -92,7 +92,7 @@
   line-height: 43px;
   text-align: center;
   border-top: 1px solid #e5e5e5;
-  color: #258cc9;
+  color: #457ed8;
 }
 
 .common-contact-box .con .item{
@@ -109,7 +109,7 @@
 
 }
 .common-contact-box .con .item .del-btn:active{
-  color: #258cc9;
+  color: #457ed8;
   background: #f2f2f2;
 }
 .common-contact-box .con .name-tel{
@@ -213,7 +213,7 @@
   line-height: 43px;
   text-align: center;
   border-top: 1px solid #e5e5e5;
-  color: #258cc9;
+  color: #457ed8;
 }
 
 
@@ -247,7 +247,7 @@
   height: 43px;
   line-height: 43px;
   border-top: 1px solid #e5e5e5;
-  color: #258cc9;
+  color: #457ed8;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -266,7 +266,7 @@
   color: #333;
 }
 .idcard-list-wrap .bottom .confirm-btn{
-  background: #258cc9;
+  background: #457ed8;
   color: #fff;
 }
 

@@ -65,8 +65,8 @@
 
                 </block>
                 <view class="loadMoreWrap" wx:if="{{!unuse_showRefreshLoading && list.unuse.length>0}}">
-                    <text wx:if="{{unuse_hasMore}}"><text style="margin-right:3px" class="weui-loading"/>努力加载中...</text>
-                    <text wx:else>没有更多了...</text>
+                    <text wx:if="{{unuse_hasMore}}"><text style="margin-right:3px" class="weui-loading"/>努力加载中..</text>
+                    <text wx:else>没有更多了..</text>
                 </view>
             </scroll-view>
         </block>
@@ -98,8 +98,8 @@
                     </view>
                 </block>
                 <view class="loadMoreWrap" wx:if="{{!history_showRefreshLoading && list.history.length>0}}">
-                    <view wx:if="{{history_hasMore}}"><text style="margin-right:3px" class="weui-loading"/>努力加载中...</view>
-                    <view wx:else>没有更多了...</view>
+                    <view wx:if="{{history_hasMore}}"><text style="margin-right:3px" class="weui-loading"/>努力加载中..</view>
+                    <view wx:else>没有更多了..</view>
                 </view>
             </scroll-view>
         </block>

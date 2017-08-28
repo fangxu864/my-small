@@ -74,7 +74,7 @@ Page({
 				page: 1,
 				loading: function () {
 					Common.showLoading();
-					that.setData({ history_showRefreshLoading: true })
+					that.setData({ history_showRefreshLoading: false })
 				},
 				complete: function () {
 					Common.hideLoading();
@@ -313,18 +313,18 @@ Page({
 			page: 1,
 			loading: function () {
 				Common.showLoading();
-				that.setData({ unuse_showRefreshLoading: true })
+				that.setData({ history_showRefreshLoading: true })
 			},
 			complete: function () {
 				Common.hideLoading();
-				that.setData({ unuse_showRefreshLoading: false })
+				that.setData({ history_showRefreshLoading: false })
 			},
 			success: function (data) {
 				var totalPage = data.totalPage;
 				var list = data.list;
 				var page = data.page;
 				that.setData({ "list.history": list });
-				that.setData({ unuse_hasMore: page >= totalPage ? false : true });
+				that.setData({ history_hasMore: page >= totalPage ? false : true });
 			},
 			empty: function () { },
 			error: function (msg, code) {
