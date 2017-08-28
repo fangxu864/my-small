@@ -40,7 +40,7 @@
 
 .userInfoBox{ margin:10px 0}
 .userInfoBox .line{ height:48px; display:flex; flex-direction:row; align-items:center; background:#fff}
-.userInfoBox .line .lt{ flex:1; margin-left:10px}
+.userInfoBox .line .lt{width: 20%;padding-left: 20rpx;}
 .userInfoBox .line .rt{ flex:4; }
 .userInfoBox .add-contact{
   line-height:30px;
