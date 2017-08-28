@@ -3,7 +3,7 @@ page{ background:#fafafa}
 .mainBody{ position:absolute; top:50px; left:0; right:0; bottom:0; background:#fafafa; font-size:14px}
 
 .tabHead{ height:50px; display:flex; flex-direction:row; font-size:14px}
-.tabHead .tab{ width:50%; height:43px; line-height:43px; text-align:center; border-bottom:2px solid #fafafa; background:#fff}
+.tabHead .tab{ width:50%; height:48px; line-height:48px; text-align:center; border-bottom:2px solid #fafafa; background:#fff}
 .tabHead .tab.active{ border-bottom:2px solid #2a98da; color:#2a98da;background-color:#eaeaea;  }
 
 .scrollWrap{ height:100%;}
