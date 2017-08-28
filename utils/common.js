@@ -289,14 +289,14 @@ var Common = {
 			success: function () { },
 			fail: function (err) {
 				wx.showModal({
-					title: "出错",
+					title: "提示",
 					content: JSON.stringify(err),
 					showCancel: false
 				})
 			},
 			error: function (msg, code) {
 				wx.showModal({
-					title: "出错",
+					title: "提示",
 					content: msg + "  错误代码：" + code,
 					showCancel: false
 				})
@@ -349,7 +349,7 @@ var Common = {
 			// 	_complete(_res);
 			// } else {
 			// 	wx.showModal({
-			// 		title: "出错",
+			// 		title: "提示",
 			// 		content: _res,
 			// 		showCancel: false
 			// 	})
@@ -377,7 +377,7 @@ var Common = {
 				}
 			} else {
 				wx.showModal({
-					title: "出错",
+					title: "提示",
 					content: SERVER_ERROR_TEXT,
 					showCancel: false
 				});
