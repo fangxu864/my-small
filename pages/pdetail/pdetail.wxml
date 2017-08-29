@@ -132,7 +132,7 @@
     </view>
 
     <!-- 电话咨询景区 -->
-    <view class="bot-phone-call">
+    <view class="bot-phone-call" wx:if="{{land.tel}}">
         <text class="tip-text">*以上信息仅供参考，具体以景区当日信息为准</text>
         <button class="call-btn" bindtap="onPhoneCall" data-phonenum="{{land.tel}}">
             <iconfont class="iconfont icon-dianhua-1"></iconfont>
