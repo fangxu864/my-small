@@ -86,7 +86,12 @@
 }
 
 .goToIndex {
-    width: 50%;
-    font-size: 24rpx;
-    margin-top: 20rpx;
+    width:70%;
+    font-size:24rpx;
+    margin-top:40rpx;
+    height:90rpx;
+    line-height:90rpx;
+    background-color:#3eba40;
+    color:#fff;
+    font-weight:bold;
 }
