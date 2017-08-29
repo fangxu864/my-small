@@ -19,8 +19,9 @@ Page({
         isRenderTaoPiaoList: true,
         imgSrcArr: [],
         storage: false,
-        canIUseRichText: wx.canIUse('rich-text')  //兼容富文本组件
+        canIUseRichText: wx.canIUse('rich-text'),  //兼容富文本组件
         // canIUseRichText: false  //兼容富文本组件
+        swiperImgUrls: []
     },
 
     /**
@@ -144,7 +145,6 @@ Page({
                         bhjqRichText: res.data.bhjq.replace(/\<img/g, '<img class="rich-img"'),
                         jtznRichText: res.data.jtzn,
                         land: res.data,
-                        title: res.data.title
                     })
                 } else {
                     //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
@@ -206,8 +206,24 @@ Page({
                         .data
                         .bhjq
                         .replace(/\&nbsp;+/g, " ");
-                    _this.setData({ land: res.data, title: res.data.title });
+                    _this.setData({ land: res.data});
 
+                }
+
+                if (Common.judgeTrue(res.data.imgpathGrp)) {
+                    _this.setData({
+                        swiperImgUrls: res.data.imgpathGrp
+                    })
+                } else {
+                    var arr = [];
+                    if (res.data.imgpath) {
+                        arr.push(res.data.imgpath);
+                    } else {
+                        arr.push("./images/defaultThum.jpg");
+                    }
+                    _this.setData({
+                        swiperImgUrls: arr
+                    })
                 }
 
                 //设置title

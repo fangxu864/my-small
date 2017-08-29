@@ -87,7 +87,7 @@
 
 .goToIndex {
     width:70%;
-    font-size:24rpx;
+    font-size:28rpx;
     margin-top:40rpx;
     height:90rpx;
     line-height:90rpx;

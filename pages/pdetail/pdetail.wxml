@@ -1,27 +1,40 @@
 <scroll-view class="container" scroll-y="true" scroll-into-view="{{scroll_into_view}}" bindscroll="onScroll" style="margin-top: {{isfixed =='fixed' ? '92rpx' : ''}}">
+    <!-- 顶部banner -->
     <view class="banner-box">
+        <!-- 二维码 -->
         <view class="shop-name">
             <icon class="icon-erweima1 iconfont" catchtap="onQrCodeTap"></icon>
         </view>
-        <view class="img-box">
-            <image src="{{land.imgpath}}"></image>
-        </view>
+        <!-- 轮播图 -->
+        <!-- <view class="img-box">
+            <image src="{{land.imgpath || './images/defaultThum.jpg'}}"></image>
+        </view> -->
+        <swiper indicator-active-color="#457ed8" class="swiper-box" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}"
+            duration="{{500}}">
+            <block wx:for="{{swiperImgUrls}}" wx:key="item">
+                <swiper-item>
+                    <image class="swiper-img" mode="aspectFill" src="{{item}}" />
+                </swiper-item>
+            </block>
+
+        </swiper>
+        <!-- 地址信息 -->
         <view class="info-box" bindtap="openMap">
-            <!--<view>
-                <text class="land-name">{{land.title}}</text>
-            </view>-->
             <view>
-                <!-- <icon class="icon-address iconfont"></icon> -->
                 <text class="land-adress ">{{land.address}}</text>
                 <icon class="icon-icon-system-fi-navigation iconfont"></icon>
             </view>
         </view>
     </view>
+
+    <!-- 导航栏 -->
     <view class="tab-title-box {{isfixed}}" bindtap="onTabTitleTap">
         <view class="tab-title {{floor_1_active}}" data-type="floor_1">购票</view>
         <view class="tab-title {{floor_2_active}}" data-type="floor_2">预订须知</view>
         <view class="tab-title {{floor_3_active}}" data-type="floor_3">景区介绍</view>
     </view>
+
+    <!-- 票类列表 -->
     <view class="ticket-list-box" id="floor_1">
         <block wx:for="{{ticketList}}" wx:key="pid">
             <view class="ticket-list-item">
@@ -46,6 +59,8 @@
             </view>
         </block>
     </view>
+
+    <!-- 套票相关 -->
     <view class="taopiao-about" hidden="{{!isRenderTaoPiaoList}}">
         <view class="switch-btn">
             <text>相关套票</text>
@@ -76,6 +91,8 @@
             </block>
         </view>
     </view>
+
+    <!-- 预订须知 -->
     <view class="p-desc-box" id="floor_2">
         <view class="desc-title">
             <text>预订须知</text>
@@ -85,6 +102,8 @@
             <text wx:else>{{land.jqts}}</text>
         </view>
     </view>
+
+    <!-- 产品简介 -->
     <view class="p-desc-box" id="floor_3">
         <view class="desc-title">
             <text>产品简介</text>
@@ -100,6 +119,8 @@
             </view>
         </view>
     </view>
+
+    <!-- 交通指南 -->
     <view class="p-desc-box">
         <view class="desc-title">
             <text>交通指南</text>
@@ -109,6 +130,8 @@
             <text wx:else>{{land.jtzn}}</text>
         </view>
     </view>
+
+    <!-- 电话咨询景区 -->
     <view class="bot-phone-call">
         <text class="tip-text">*以上信息仅供参考，具体以景区当日信息为准</text>
         <button class="call-btn" bindtap="onPhoneCall" data-phonenum="{{land.tel}}">
@@ -116,6 +139,8 @@
             <text class="text">电话咨询景区</text>
         </button>
     </view>
+
+    <!-- 票付通-技术支持 -->
     <view class="footer">
         <icon>p</icon>
         <text>票付通-技术支持</text>
