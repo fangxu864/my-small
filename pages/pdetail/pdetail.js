@@ -142,7 +142,9 @@ Page({
                     _this.setData({
                         jqtsRichText: res.data.jqts,
                         bhjqRichText: res.data.bhjq.replace(/\<img/g, '<img class="rich-img"'),
-                        jtznRichText: res.data.jtzn
+                        jtznRichText: res.data.jtzn,
+                        land: res.data,
+                        title: res.data.title
                     })
                 } else {
                     //<br/>替换成“\n”,删除其他标签,多个\n替换成一个\n
@@ -209,7 +211,9 @@ Page({
                 }
 
                 //设置title
-                wx.setNavigationBarTitle({ title: _this.data.land.title || "产品详情" });
+                wx.setNavigationBarTitle({
+                    title: _this.data.land.title || "产品详情"
+                });
 
             } else {
                 wx.showModal({
