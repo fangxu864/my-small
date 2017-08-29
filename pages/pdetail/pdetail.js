@@ -375,7 +375,7 @@ Page({
             account: encodeURIComponent(Common.getAccount()),
             // scenCode: encodeURIComponent(app.globalData.curScenCode),
             // page: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
-            scenCode: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId),
+            scenCode: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId + "&scenCode=" + app.globalData.curScenCode),
             page: encodeURIComponent("pages/pdetail/pdetail"),
             codeType: 1
         };
