@@ -12,7 +12,7 @@ Page({
         var _this = this;
         return {
             title: _this.curShopName,
-            path: 'pages/index/index?scene=' + app.globalData.curScenCode,
+            path: 'pages/index/index?scene=' + encodeURIComponent(app.globalData.curScenCode),
             success: function (res) { },
             fail: function (res) {
                 // 转发失败
