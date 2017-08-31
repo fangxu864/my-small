@@ -79,6 +79,7 @@ Page({
      *  初始化页面
      */
     onLoad: function (opt) {
+        console.log(opt)
         //转发进来的会有scenCode参数
         if (opt.scenCode) {
             app.globalData.curScenCode = decodeURIComponent(opt.scenCode);
@@ -350,7 +351,7 @@ Page({
     onShareAppMessage: function () {
         return {
             title: this.data.land.title,
-            path: 'pages/pdetail/pdetail?lid=' + this.data.land.id + "&scenCode=" + app.globalData.curScenCode,
+            path: 'pages/pdetail/pdetail?lid=' + this.data.land.id + "&scenCode=" + encodeURIComponent(app.globalData.curScenCode),
             success: function (res) { },
             fail: function (res) {
                 // 转发失败
@@ -375,7 +376,7 @@ Page({
             account: encodeURIComponent(Common.getAccount()),
             // scenCode: encodeURIComponent(app.globalData.curScenCode),
             // page: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId)
-            scenCode: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId + "&scenCode=" + app.globalData.curScenCode),
+            scenCode: encodeURIComponent("pages/pdetail/pdetail?lid=" + _this.landId + "&scenCode=" + encodeURIComponent(app.globalData.curScenCode)),
             page: encodeURIComponent("pages/pdetail/pdetail"),
             codeType: 1
         };
