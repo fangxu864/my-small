@@ -1,0 +1,26 @@
+ <!--景区-->
+ <template name="scenic" >
+        <view class="info-box">
+                <view class="landTitle">{{infoData.landTitle}}</view>
+                <view class="line">
+                    <view class="lt">门票：</view>
+                    <view class="rt">
+                        <block wx:for="{{infoData.tickets}}" wx:key="title">
+                            <view><text>{{item.title+" "+item.num}}张</text></view>
+                        </block>
+                    </view>
+                </view>
+                <view class="line">
+                    <view class="lt">金额：</view>
+                    <view class="rt">{{infoData.totalmoney}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">有效期：</view>
+                    <view class="rt">{{infoData.extra.date}}</view>
+                </view>
+                <view class="line">
+                    <view class="lt">联系人：</view>
+                    <view class="rt">{{infoData.ordername+" "+infoData.ordertel}}</view>
+                </view>
+            </view>
+    </template>

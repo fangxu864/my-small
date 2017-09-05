@@ -71,7 +71,7 @@ Page({
             var data = {
                 keyword: keyword,
                 topic: '',
-                type: 'A',
+                type: 'all',
                 city: '',
                 pageSize: this.data.pageSize,
                 lastPos: this.data.lastPos,
