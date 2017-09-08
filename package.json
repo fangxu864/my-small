@@ -1,0 +1,27 @@
+{
+  "name": "small-app",
+  "version": "1.0.0",
+  "description": "small-app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "node ./sass.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.12301.io:PFT/small-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "colors": "^1.1.2",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "time-stamp": "^2.0.0",
+    "yargs": "^8.0.2"
+  }
+}

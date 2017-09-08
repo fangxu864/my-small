@@ -1,0 +1,19 @@
+<template name="queryTimeHotel">
+    <view class="query-time-hotel">
+        <view class="beginBox box item">
+            <viewp class="tit">入住</viewp>
+            <viewp>
+                <view id="beginTimeInp_hotel">09月08日 周五</view>
+            </viewp>
+        </view>
+        <view class=" box item">
+            <text class="timeFlag">1晚</text>
+        </view>
+        <view class="endBox box item">
+            <view class="tit">离店</view>
+            <view>
+                <view id="endTimeInp_hotel">09月09日 周六</view>
+            </view>
+        </view>
+    </view>
+</template>

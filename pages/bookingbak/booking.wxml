@@ -1,18 +1,9 @@
-<!-- 景区类型询问时间模块 -->
-<import src="modules/qurey-time-scenic/index.wxml" />
-<!-- 酒店类型询问时间模块 -->
-<import src="modules/query-time-hotel/index.wxml" />
-
-
-
-
 <view class="body">
 
     <block wx:if="{{isReady}}">
 
-        <scroll-view scroll-y="true" class="mainBody">
-           
 
+        <scroll-view scroll-y="true" class="mainBody">
             <!-- 游玩时间 -->
             <view class="box datepickerBox datepicker">
                 <view style="width:30%;">
@@ -38,10 +29,6 @@
                 <text class="descFlag batch_check_rule" wx:if="{{batch_day && batch_day!=0}}">{{batch_day}}</text>
                 <text class="descFlag refund_ruleBtn" wx:if="{{refund_rule && refund_rule!=2}}" bindtap="openSimpleMsgPop">退票规则</text>
             </view>
-
-
-            <template is="queryTimeScenic" />
-            <template is="queryTimeHotel" />
 
             <!-- 票类列表 -->
             <view class="box ticketListUl ticketListBox">
@@ -102,8 +89,8 @@
                 </view>
                 <view style="margin-top:1px" class="line" wx:if="{{needID==1 }}">
                     <view class="lt">身份证</view>
-                    <view class="rt"><input type="idcard" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}"
-                            class="idCardInp" id="idCardInp" placeholder="身份证" /></view>
+                    <view class="rt"><input type="idcard" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}" class="idCardInp"
+                            id="idCardInp" placeholder="身份证" /></view>
                     <view class="errorTip" wx:if="{{!!needIDErrTipShow}}" style="margin-right:5px">
                         <text style="color:red">!格式错误</text>
                     </view>

@@ -1,0 +1,8 @@
+body{
+    background-color: wheat;
+    width: 100px;
+
+    .ff{
+        @import "./test/index.scss";
+    }
+}

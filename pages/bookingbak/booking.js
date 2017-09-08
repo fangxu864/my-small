@@ -28,10 +28,6 @@ Page({
 		touristInfoAlreadyNum: 0,//已正确填写身份证的数量
 		touristInfoArr: [],//联系人数组
 
-		msgItem: {
-			time: 100
-		}
-
 	},
 	onReady: function () {
 		var that = this;

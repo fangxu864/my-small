@@ -1,0 +1,292 @@
+/**index.wxss**/
+.body{
+    height: 100%;
+    background: #f5f5f5;
+    font-size:14px;
+    color:#444444;
+}
+.box.datepicker{
+  height: 44px;
+  line-height: 44px;
+  flex-direction: row;
+  display:flex;
+  background: #fff;
+  font-size:14px;
+  margin-top: 20rpx;
+}
+.picker{ height:44px; width:100%}
+
+
+.mainBody{ position:absolute; top:0; left:0; right:0; bottom:60px;}
+
+.ticketListUl{ padding:0; margin:10px 0}
+
+.ticketListUl .item{ padding:20rpx; background:#fff; margin-top:10px}
+
+.ticketListUl .item .tit{ font-size:16px; font-weight:bold; margin-bottom:5px}
+.ticketListUl .item .price,.ticketListUl .item .store{ font-size:14px; color:#878787}
+.ticketListUl .item .price .yen,.ticketListUl .item .price .num{ color:#f95137}
+.ticketListUl .item .price .num{ font-size:16px; font-weight:bold}
+.ticketListUl .item .storeNum{ color:#777777; font-weight:bold}
+
+.ticketListUl .bcon{ display:flex; flex-direction:row; justify-content: space-between; align-items: center;}
+
+.ticketListUl .countBox{ display:flex; flex-direction:row; border:1px solid #457ed8}
+.ticketListUl .countBox .inp{ width:65px; text-align:center; color:#457ed8; line-height:28px}
+.ticketListUl .countBox .btn{ width:38px; height:28px; line-height:28px; color:#457ed8; text-align:center}
+.ticketListUl .countBox .btn.add{  border-left:1px solid #457ed8;}
+.ticketListUl .countBox .btn.minus{  border-right:1px solid #457ed8;}
+
+
+.userInfoBox{ margin:10px 0}
+.userInfoBox .line{ height:48px; display:flex; flex-direction:row; align-items:center; background:#fff}
+.userInfoBox .line .lt{width: 20%;padding-left: 20rpx;}
+.userInfoBox .line .rt{ flex:4; }
+.userInfoBox .add-contact{
+  line-height:30px;
+  text-align:center;
+  color:#457ed8;
+  font-size: 38rpx;
+  font-weight:700;
+  margin-right:20rpx;
+  padding:10rpx;
+}
+
+
+.totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;  }
+.totalBar .totalBarCon{  display:flex;  height:100%;  align-items:center;  justify-content:space-between;  }
+.totalBar .totalT{ margin-left:10px;}
+.totalBar .totalBox{ color:#f95137; font-size:14px}
+.totalBar .totalBox .totalNum{ font-size:18px; font-weight:bold}
+.totalBar .submitBtn{ width:90px; height:100%; line-height:42px; text-align:center; background:#f95137; color:#ffffff}
+.totalBar .submitBtn.disable{ background:#999999; color:#555555}
+
+.descFlag{ font-size:12px; padding:2px 4px; color:#457ed8; border:1px solid #457ed8; margin:10rpx 10rpx 10rpx 0;}
+
+.common-contact-box{
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 100%;
+  transition: height 0.5s;
+}
+
+.common-contact-box .title{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.common-contact-box .bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #457ed8;
+}
+
+.common-contact-box .con .item{
+  height: 45px;
+  line-height: 45px;
+  margin: 0 10px;
+  overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+}
+.common-contact-box .con .item .del-btn{
+  color: #99997f;
+  text-align:center;
+  width: 20%;
+
+}
+.common-contact-box .con .item .del-btn:active{
+  color: #457ed8;
+  background: #f2f2f2;
+}
+.common-contact-box .con .name-tel{
+  width:80%;
+  display:inline-block;
+  padding-left:10rpx;
+  box-sizing:border-box;
+
+}
+.common-contact-box .con .name-tel .name{
+  display:inline-block;
+  width:160rpx;
+  overflow:hidden;
+  height:45px;
+  float:left;
+  text-overflow:ellipsis;
+
+}
+
+.common-contact-box .con .name-tel .tel{
+  display:inline-block;
+  padding-left: 20rpx;
+
+}
+
+.common-contact-box .con .name-tel:active{
+  background: #f2f2f2;
+}
+
+.slideInUp{
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: slideInUp;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 60%, 0);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.fadeIn{
+  animation-duration: 0.2s;
+  animation-fill-mode: both;
+  animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+}
+
+/* 简单消息弹出 */
+
+.simple-msg-pop{
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(74, 74, 74, 0.36);
+  width: 100%;
+}
+
+.simple-msg-pop .mask{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top:0
+}
+
+.simple-msg-pop .con{
+  background-color:#ffffff;
+  position:absolute;
+  bottom:43px;
+  left:0;
+  right:0;
+  line-height:80rpx;
+  border-top:1px solid #e5e5e5;
+  font-size: 24rpx;
+}
+.simple-msg-pop .con .line{
+  padding-left: 20rpx;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.simple-msg-pop .bottom{
+  background-color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #457ed8;
+}
+
+
+/* 身份证列表 */
+
+.idcard-list-wrap{
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  width: 100%;
+  transition: height 0.5s;
+}
+
+.idcard-list-wrap .title{
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.idcard-list-wrap .bottom{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  line-height: 43px;
+  border-top: 1px solid #e5e5e5;
+  color: #457ed8;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.idcard-list-wrap .bottom .btn{
+  width: 40%;
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+}
+.idcard-list-wrap .bottom .btn:active{
+  opacity: 0.9;
+}
+.idcard-list-wrap .bottom .cancel-btn{
+  background: #c7c7c7;
+  color: #333;
+}
+.idcard-list-wrap .bottom .confirm-btn{
+  background: #457ed8;
+  color: #fff;
+}
+
+.idcard-list-wrap .con .line{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 20rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.idcard-list-wrap .con .line input{
+  border: 1px solid #e5e5e5;
+  padding: 10rpx;
+}
+
+.idcard-list-wrap .con .tourist-name {
+  width: 200rpx;
+}
+.idcard-list-wrap .con .tourist-id {
+  width: 350rpx;
+}
+

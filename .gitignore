@@ -1,0 +1,11 @@
+*.log
+*.bak
+.hooks
+.idea/
+*.txt
+*.map
+node_modules/
+.vscode
+.DS_Store
+assets-to-new/my/
+npm-debug.log

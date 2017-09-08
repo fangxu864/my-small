@@ -1,0 +1,5 @@
+body {
+  background-color: wheat;
+  width: 100px; }
+  body .ff .ff {
+    width: 12px; }
