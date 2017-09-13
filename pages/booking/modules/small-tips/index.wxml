@@ -1,0 +1,21 @@
+<template name="smallTips">
+    <view style="margin-left:10px; margin-top:10px; margin-right:10px; line-height:1.6;display:flex;flex-wrap:wrap;">
+        <text class="validTime descFlag">{{validTime}}</text>
+        <text class="descFlag verifyTime" wx:if="{{verifyTime!=''}}">{{verifyTime}}</text>
+        <text class="descFlag refund_rule">{{refund_rule_text}}</text>
+        <text class="descFlag batch_check_rule" wx:if="{{batch_day && batch_day!=0}}">{{batch_day}}</text>
+        <text class="descFlag refund_ruleBtn" wx:if="{{refund_rule && refund_rule!=2}}" bindtap="stips_toggleDialog">退票规则</text>
+    </view>
+
+    <!-- 简单的底部弹出消息 -->
+    <view class="pft-dialog {{dialogshow ? ' pft-dialog--show' : '' }}">
+        <view class="pft-dialog__mask" bindtap="stips_toggleDialog"></view>
+        <view class="pft-dialog__con">
+            <view class="base-text line">{{refundTicketRuleText.baseText}}</view>
+            <block wx:for="{{refundTicketRuleText.ladderTextList}}" wx:key="item">
+                <view class="ladder-text line">{{item}}</view>
+            </block>
+            <view class="pft-dialog__cbtn" bindtap="stips_toggleDialog">关闭</view>
+        </view>
+    </view>
+</template>

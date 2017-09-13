@@ -2,21 +2,28 @@
   <view class="qurey-time-scenic">
     <view class="lt">游玩时间</view>
     <view class="mid">
-      <view class="dateBox selected">
-        <view class="le"> <span class="flag">今天</span> <span class="date">2017-09-08</span> </view>
-        <view class="le"> <span class="price"><i class="yen">¥</i><em class="num">起</em></span> </view>
-      </view>
-      <view class="dateBox ">
-        <view class="le"> <span class="flag">明天</span> <span class="date">2017-09-09</span> </view>
-        <view class="le"> <span class="price"><i class="yen">¥</i><em class="num">0.01起</em></span> </view>
-      </view>
 
-      <!-- <view class="single-date">2017-09-08</view> -->
+      <block wx:if="{{isShowTwo}}">
+        <view class="dateBox {{beginDate == today ? 'selected' : '' }}" data-date="{{today}}" bindtap="qts_dateItemTap">
+          <view class="flag">今天 </view>
+          <view class="date">{{today || "--"}}</view>
+        </view>
+        <view class="dateBox {{beginDate == tomorrow ? 'selected' : '' }}" data-date="{{tomorrow}}" bindtap="qts_dateItemTap">
+          <view class="flag">明天 </view>
+          <view class="date">{{tomorrow || "--"}}</view>
+        </view>
+      </block>
+      <view wx:else class="single-date">{{beginDate || "--"}}</view>
     </view>
+
     <view class="rt">
-      <view class="dot"></view>
-      <view class="dot"></view>
-      <view class="dot"></view>
+      <picker class="time-picker" mode="date" value="{{beginDate}}" start="{{today}}" end="2100-09-01" bindchange="qts_beginTimeChange">
+        <view class="dot"></view>
+        <view class="dot"></view>
+        <view class="dot"></view>
+      </picker>
     </view>
+
+
   </view>
 </template>

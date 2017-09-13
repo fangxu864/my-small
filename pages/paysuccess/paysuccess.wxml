@@ -1,13 +1,13 @@
 <!-- 引入模板文件  -->
 
 <!-- 酒店 -->
-<import src="./template/hotel.wxml"/>
+<import src="template/hotel.wxml"/>
 <!-- 线路 -->
-<import src="./template/route.wxml"/>
+<import src="template/route.wxml"/>
 <!-- 景区 -->
-<import src="./template/scenic.wxml"/>
+<import src="template/scenic.wxml"/>
 <!-- 演出 -->
-<import src="./template/show.wxml"/>
+<import src="template/show.wxml"/>
 
 <view class="container">
 

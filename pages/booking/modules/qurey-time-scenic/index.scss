@@ -2,8 +2,9 @@
     background-color: #ffffff;
     display: flex;
     justify-content: space-between;
-    padding: 20rpx 30rpx;
+    padding: 20rpx 20rpx;
     align-items: center;
+    margin-top: 20rpx;
 
     .lt{
         white-space: nowrap
@@ -16,7 +17,6 @@
         .dateBox {
             margin: 10rpx;
             display: flex;
-            flex-direction: column;
             font-size: 24rpx;
             text-align: center;
             padding: 16rpx 12rpx;
@@ -30,6 +30,9 @@
                 border-color: #cdcdcd;
                 color: #666;
                 cursor: not-allowed;
+            }
+            .date{
+                margin-left: 6rpx;
             }
         }
 
@@ -45,6 +48,7 @@
         display: flex;
         justify-content: space-around;
         align-self: stretch;
+        align-items: center;
         .dot {
             position: relative;
             align-self: center;
@@ -56,5 +60,14 @@
             line-height: 0;
             margin: 4rpx
         }
+        &:active{
+            background: #e5e5e5;
+        }
+    }
+
+    .time-picker{
+        align-self:stretch;
+        display:flex;
+        align-items:center;
     }
 }

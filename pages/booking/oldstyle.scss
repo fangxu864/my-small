@@ -1,6 +1,5 @@
 /**index.wxss**/
-.body{
-    height: 100%;
+page{
     background: #f5f5f5;
     font-size:14px;
     color:#444444;
@@ -17,7 +16,7 @@
 .picker{ height:44px; width:100%}
 
 
-.mainBody{ position:absolute; top:0; left:0; right:0; bottom:60px;}
+.mainBody{  margin-bottom:60px;}
 
 .ticketListUl{ padding:0; margin:10px 0}
 
@@ -34,6 +33,7 @@
 .ticketListUl .countBox{ display:flex; flex-direction:row; border:1px solid #457ed8}
 .ticketListUl .countBox .inp{ width:65px; text-align:center; color:#457ed8; line-height:28px}
 .ticketListUl .countBox .btn{ width:38px; height:28px; line-height:28px; color:#457ed8; text-align:center}
+.ticketListUl .countBox .btn.disabled{background-color: #b4b4b4;}
 .ticketListUl .countBox .btn.add{  border-left:1px solid #457ed8;}
 .ticketListUl .countBox .btn.minus{  border-right:1px solid #457ed8;}
 
@@ -167,54 +167,7 @@
   }
 }
 
-/* 简单消息弹出 */
 
-.simple-msg-pop{
-  z-index: 20;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(74, 74, 74, 0.36);
-  width: 100%;
-}
-
-.simple-msg-pop .mask{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top:0
-}
-
-.simple-msg-pop .con{
-  background-color:#ffffff;
-  position:absolute;
-  bottom:43px;
-  left:0;
-  right:0;
-  line-height:80rpx;
-  border-top:1px solid #e5e5e5;
-  font-size: 24rpx;
-}
-.simple-msg-pop .con .line{
-  padding-left: 20rpx;
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.simple-msg-pop .bottom{
-  background-color: #ffffff;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 43px;
-  line-height: 43px;
-  text-align: center;
-  border-top: 1px solid #e5e5e5;
-  color: #457ed8;
-}
 
 
 /* 身份证列表 */
@@ -288,5 +241,48 @@
 }
 .idcard-list-wrap .con .tourist-id {
   width: 350rpx;
+}
+
+
+.pft-dialog__cbtn {
+  background-color: #ffffff;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  border-top: 1px solid #e5e5e5;
+  color: #457ed8;
+}
+
+.pft-dialog__mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transform: translateY(150%);
+  transition: opacity 0.4s ease;
+  /* display: none; */
+}
+
+.pft-dialog__con {
+  position: fixed;
+  bottom: 0;
+  width: 750rpx;
+  background: white;
+  transform: translateY(150%);
+  transition: all 0.4s ease;
+  z-index: 11;
+}
+
+.pft-dialog--show .pft-dialog__con {
+  transform: translateY(0);
+}
+
+.pft-dialog--show .pft-dialog__mask {
+  opacity: 0.5;
+  transform: translateY(0);
 }
 

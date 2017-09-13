@@ -1,0 +1,53 @@
+<template name="ticketList">
+    <!-- 票类列表 -->
+    <view class="box ticketListUl ticketListBox">
+        <view class="item" wx:for="{{ticketList}}" wx:key="tid">
+            <view class="minBox">
+                <view class="tit">{{item.title}}</view>
+                <view class="bcon">
+                    <view class="conBox price">单价：
+                        <text class="yen">¥</text>
+                        <text class="num">{{item.jsprice}}</text>
+                    </view>
+                    <view class="store" wx:if="{{item.store!=-1}}">
+                        库存：
+                        <text class="storeNum">{{item.store}}</text>
+                    </view>
+                    <view>
+                        <view class="countBox">
+                            <text bindtap="tlist_onCountBtnTap" 
+                            data-id="{{item.pid+'-'+item.aid}}" 
+                            data-ismain="{{index==0}}" 
+                            data-buyup="{{item.buy_up}}"
+                            data-buylow="{{item.buy_low}}" 
+                            data-type="minus" 
+                            data-store="{{item.store}}" 
+                            data-value="{{item.value}}"
+                            data-ismain="{{index==0}}" 
+                            data-isdisabled="{{item.minusdisabled ? true : false}}"
+                            class="btn minus {{item.minusdisabled ? 'disabled' : ''}}">-</text>
+
+                            <text class="inp">{{item.value}}</text>
+
+                            <text bindtap="tlist_onCountBtnTap" 
+                            data-id="{{item.pid+'-'+item.aid}}" 
+                            data-ismain="{{index==0}}" 
+                            data-buyup="{{item.buy_up}}"
+                            data-buylow="{{item.buy_low}}" 
+                            data-store="{{item.store}}" 
+                            data-value="{{item.value}}" 
+                            data-ismain="{{index==0}}"
+                            data-isdisabled="{{item.adddisabled ? true : false}}"
+                            data-type="add" class="btn add {{item.adddisabled ? 'disabled' : ''}}">+</text>
+                        </view>
+
+                    </view>
+                </view>
+                <view wx:if="{{item.buy_low!=-1 || item.buy_up!=-1}}" style="margin-top:16rpx; text-align:right; font-size:12px; color:#777777">
+                    <text wx:if="{{item.buy_low!=-1 && item.buy_low!=1}}">{{item.buy_low}}张起买</text>
+                    <text wx:if="{{item.buy_up!=-1}}">最高限购{{item.buy_up}}张</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>

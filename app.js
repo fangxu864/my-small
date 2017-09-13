@@ -66,7 +66,7 @@ App({
       var isExist = false,
         existIndex = 0,
         existItem = {};
-      
+
       //循环
       this._shopData.forEach(function (item, index) {
         if (item.scenCode == scenCode) {
@@ -106,7 +106,7 @@ App({
      * 
      */
     getShopData: function () {
-      
+
       return this._shopData;
     }
   },
@@ -119,5 +119,39 @@ App({
     shopList: {},
     //产品详情页面
     productDetail: {}
+  },
+
+  /**
+   * 混合
+   * 
+   * @param {any} to 
+   * @param {any} from 
+   * @returns 
+   */
+  mixin: function (to, from) {
+    var toString = Object.prototype.toString;
+    var isObject = function (obj) { return toString.call(obj) === "[object Object]" };
+    var isArray = function (obj) { return toString.call(obj) === "[object Object]" };
+    var isObjectOrArray = function (obj) { return (isObject(obj) || isArray(obj)) };
+    var _mix = function (to, from) {
+      if (!isObjectOrArray(to) || !isObjectOrArray(from)) return to;
+      for (var i in from) {
+        if (isObject(from[i])) {
+          if (typeof to[i] === "undefined" || !isObject(to[i])) {
+            to[i] = from[i];
+          } else {
+            _mix(to[i], from[i]);
+          }
+        } else if (isArray(from[i])) {
+          for (var s = 0, len = from[i].length; s < len; s++) {
+            _mix(to[i][s], from[i][s]);
+          }
+        } else {
+          to[i] = from[i];
+        }
+      }
+      return to;
+    };
+    return _mix(to, from);
   }
 });

@@ -1,187 +1,38 @@
+<!-- 模板文件 -->
+
 <!-- 景区类型询问时间模块 -->
 <import src="modules/qurey-time-scenic/index.wxml" />
 <!-- 酒店类型询问时间模块 -->
 <import src="modules/query-time-hotel/index.wxml" />
+<!-- 小标签模块 -->
+<import src="modules/small-tips/index.wxml" />
+<!-- 票类列表 -->
+<import src="modules/ticket-list/index.wxml" />
+<!-- 游客信息模块 -->
+<import src="modules/tourist-info/index.wxml" />
+<!-- 底部的计价确认部分 -->
+<import src="modules/total-money/index.wxml" />
 
 
+<view scroll-y="true" class="mainBody">
 
+    <!-- 游玩时间 -->
+    <template wx:if="{{p_type == 'C'}}" is="queryTimeHotel" data="{{...viewData.qureyTimeMode}}" />
+    <template wx:else is="queryTimeScenic" data="{{...viewData.qureyTimeMode}}" />
 
-<view class="body">
+    <!-- 退票规则等小标签 -->
+    <template is="smallTips" data="{{...viewData.smallTips}}" />
 
-    <block wx:if="{{isReady}}">
+    <!-- 票类列表 -->
+    <template is="ticketList" data="{{...viewData.ticketList}}" />
 
-        <scroll-view scroll-y="true" class="mainBody">
-           
+    <!-- 游客信息模块 -->
+    <template is="touristInfo" data="{{...viewData.touristInfo}}" />
 
-            <!-- 游玩时间 -->
-            <view class="box datepickerBox datepicker">
-                <view style="width:30%;">
-                    <text style="padding-left:20rpx">游玩时间</text>
-                </view>
-                <view style="width:70%;">
-                    <picker style="height:100%;" mode="date" value="{{date}}" start="{{today}}" end="2100-09-01" bindchange="bindDateChange">
-                        <view class="picker" style="padding:0 20rpx;box-sizing:border-box;">
-                            {{begintime}}
-                            <iconfont class="iconfont icon-you" style="float:right"></iconfont>
-                        </view>
-
-                    </picker>
-                </view>
-
-            </view>
-
-            <!-- 退票规则等小标签 -->
-            <view style="margin-left:10px; margin-top:10px; margin-right:10px; line-height:1.6;display:flex;flex-wrap:wrap;">
-                <text class="validTime descFlag">{{validTime}}</text>
-                <text class="descFlag verifyTime" wx:if="{{verifyTime!=''}}">{{verifyTime}}</text>
-                <text class="descFlag refund_rule">{{refund_rule_text}}</text>
-                <text class="descFlag batch_check_rule" wx:if="{{batch_day && batch_day!=0}}">{{batch_day}}</text>
-                <text class="descFlag refund_ruleBtn" wx:if="{{refund_rule && refund_rule!=2}}" bindtap="openSimpleMsgPop">退票规则</text>
-            </view>
-
-
-            <template is="queryTimeScenic" />
-            <template is="queryTimeHotel" />
-
-            <!-- 票类列表 -->
-            <view class="box ticketListUl ticketListBox">
-                <view class="item" wx:for="{{ticketList}}" wx:key="tid">
-                    <view class="minBox">
-                        <view class="tit">{{item.title}}</view>
-                        <view class="bcon">
-                            <view class="conBox price">单价：
-                                <text class="yen">¥</text>
-                                <text class="num">{{item.jsprice}}</text>
-                            </view>
-                            <view class="store" wx:if="{{item.store!=-1}}">
-                                库存：
-                                <text class="storeNum">{{item.store}}</text>
-                            </view>
-                            <view>
-                                <view class="countBox">
-                                    <text bindtap="onCountBtnTap" data-id="{{item.pid+'-'+item.aid}}" data-ismain="{{index==0}}" data-buyup="{{item.buy_up}}"
-                                        data-buylow="{{item.buy_low}}" data-type="minus" data-store="{{item.store}}" data-value="{{item.value}}"
-                                        data-ismain="{{index==0}}" class="btn minus">-</text>
-                                    <text class="inp">{{item.value}}</text>
-                                    <text bindtap="onCountBtnTap" data-id="{{item.pid+'-'+item.aid}}" data-ismain="{{index==0}}" data-buyup="{{item.buy_up}}"
-                                        data-buylow="{{item.buy_low}}" data-store="{{item.store}}" data-value="{{item.value}}"
-                                        data-ismain="{{index==0}}" data-type="add" class="btn add">+</text>
-                                </view>
-
-                            </view>
-                        </view>
-                        <view wx:if="{{item.buy_low!=-1 || item.buy_up!=-1}}" style="margin-top:16rpx; text-align:right; font-size:12px; color:#777777">
-                            <text wx:if="{{item.buy_low!=-1 && item.buy_low!=1}}">{{item.buy_low}}张起买</text>
-                            <text wx:if="{{item.buy_up!=-1}}">最高限购{{item.buy_up}}张</text>
-                        </view>
-                    </view>
-                </view>
-            </view>
-
-            <!-- 联系人信息 -->
-            <view wx:if="{{needID==1 || needID==2 }}" class="box userInfoBox userInfo">
-                <view class="line" style="margin-bottom:1px">
-                    <view class="lt">联系人</view>
-                    <view class="rt">
-                        <input type="text" bindblur="onOrderNameInpBlur" bindinput="onOrderNameInpChange" name="" value="{{ordername}}" class="usernameInp"
-                            id="usernameInp" placeholder="取票人姓名" />
-                    </view>
-                    <view class="errorTip" wx:if="{{orderNameErrTipShow}}">
-                        <text style="color:red">!必填</text>
-                    </view>
-                    <icon class="icon-unie62a iconfont add-contact" bindtap="onAddContactTap"></icon>
-                    <!--<view class="addUserInfo"><text class="text">+</text></view>-->
-                </view>
-                <view class="line">
-                    <view class="lt">手机号</view>
-                    <view class="rt"><input type="number" bindblur="onContacttelInpBlur" bindinput="onContacttelInpChange" name="" value="{{contacttel}}"
-                            class="mobileInp" id="mobileInp" placeholder="取票人手机号" /></view>
-                    <view class="errorTip" wx:if="{{!!contacttelErrTipShow}}" style="margin-right:5px">
-                        <text style="color:red">!格式错误</text>
-                    </view>
-                </view>
-                <view style="margin-top:1px" class="line" wx:if="{{needID==1 }}">
-                    <view class="lt">身份证</view>
-                    <view class="rt"><input type="idcard" bindblur="onIDCardInpBlur" bindinput="onIDCardInpChange" name="" value="{{sfz}}"
-                            class="idCardInp" id="idCardInp" placeholder="身份证" /></view>
-                    <view class="errorTip" wx:if="{{!!needIDErrTipShow}}" style="margin-right:5px">
-                        <text style="color:red">!格式错误</text>
-                    </view>
-                </view>
-                <view style="margin-top:1px" class="line" wx:if="{{needID==2 }}" data-total="{{touristInfoTotalNum}}" bindtap="onEditTouristTap">
-                    <view class="lt">游客信息</view>
-                    <view class="rt">已编辑{{touristInfoAlreadyNum}}/{{touristInfoTotalNum}}</view>
-                    <iconfont class="icon-you iconfont " style="margin-right:10px;padding:5px;"></iconfont>
-                </view>
-            </view>
-
-        </scroll-view>
-
-
-        <!-- 底部的计价确认部分 -->
-        <view class="box totalBar">
-            <view class="totalBarCon">
-                <view>
-                    <text class="totalT">总金额：</text>
-                    <text class="totalBox">
-                        <text class="totalYen">¥</text>
-                        <text class="totalNum">{{totalMoney}}</text>
-                    </text>
-                </view>
-                <view bindtap="onSubmit" data-cansubmit="{{canSubmit}}" class="submitBtn {{canSubmit ? '' : 'disable'}}">提交</view>
-            </view>
-        </view>
-
-
-    </block>
-
-
-    <!-- 最近联系人 -->
-    <view class="common-contact-box slideInUp" style="display:{{contactDisplay}}">
-        <view class="title">最近联系人</view>
-        <view class="con">
-            <block wx:for="{{contactData}}" wx:key="tel">
-                <view class="item" data-tel="{{item.tel}}" data-name="{{item.name}}" data-id="{{item.id}}" bindtap="comContactItemTap">
-                    <view class="name-tel">
-                        <text class="name">{{item.name}}</text>
-                        <text class="tel">{{item.tel}}</text>
-                    </view>
-                    <icon class="icon-quxiao iconfont del-btn" data-tel="{{item.tel}}" catchtap="delContactTap"></icon>
-                </view>
-            </block>
-        </view>
-        <view class="bottom" bindtap="closeCommonContact">取消</view>
-    </view>
-
-
-    <!-- 简单的底部弹出消息 -->
-    <view class="simple-msg-pop fadeIn" style="display:{{simpleMsgPopDisplay}}">
-        <view class="mask" bindtap="closeSimpleMsgPop"></view>
-        <view class="con slideInUp">
-            <view class="base-text line">{{refundTicketRuleText.baseText}}</view>
-            <block wx:for="{{refundTicketRuleText.ladderTextList}}" wx:key="item">
-                <view class="ladder-text line">{{item}}</view>
-            </block>
-        </view>
-        <view class="bottom slideInUp" bindtap="closeSimpleMsgPop">关闭</view>
-    </view>
-
-    <!-- 需要多张身份证的时候 -->
-    <view class="idcard-list-wrap slideInUp" style="display:{{idcardListWrapDisplay}}">
-        <view class="title">请填写游客信息</view>
-        <view class="con">
-            <block class="dd" wx:for="{{touristInfoArr}}" wx:for-index="index" wx:key="idcard">
-                <view class="line">
-                    <input type="text" class="tourist-name" data-index="{{index}}" data-type="name" value="{{item.name}}" bindblur="onTouristInpBlur"
-                        placeholder="游客姓名{{index + 1}}" />
-                    <input type="idcard" class="tourist-id" data-index="{{index}}" data-type="idcard" value="{{item.idcard}}" bindblur="onTouristInpBlur"
-                        placeholder="身份证" />
-                </view>
-            </block>
-        </view>
-        <view class="bottom">
-            <view class="cancel-btn btn" bindtap="closeIdcardListWrap">取消</view>
-            <view class="confirm-btn btn" bindtap="IdcardListWrapConfirm">确认</view>
-        </view>
-    </view>
 </view>
+
+
+<!-- 底部的计价确认部分 -->
+<template is="totalMoney" data="{{...viewData.totalMoney}}" />
+
+

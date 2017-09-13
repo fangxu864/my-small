@@ -405,6 +405,21 @@ var Common = {
 		return y + "-" + m + "-" + d;
 	},
 
+	/**
+	 * 获取明天
+	 * 
+	 */
+	getTomorrow: function () {
+		var date = new Date();
+		date.setDate(date.getDate() + 1);
+		var y = date.getFullYear();
+		var m = date.getMonth() + 1;
+		var d = date.getDate();
+		if (m < 10) m = "0" + m;
+		if (d < 10) d = "0" + d;
+		return y + "-" + m + "-" + d;
+	},
+
 	MinueToDayTime: function (daytime) {
 		var day = daytime / (24 * 60);
 		var day_init = String(day).split(".")[0] * 1;
