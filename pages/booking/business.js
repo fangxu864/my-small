@@ -9,6 +9,8 @@
 
 
 var Common = require("../../utils/common.js");
+var App = getApp();
+var comContact = require("./modules/tourist-info/contact.js");
 
 
 /**
@@ -38,10 +40,9 @@ var bookingBusiness = {
 	//预订页面的业务数据,相当一个数据池
 	biz_data: {
 		contacttel: "12301",
-		ordername: "小程序购票"
+		ordername: "小程序购票",
+		scenCode: App.globalData.curScenCode //店铺唯一编码
 	},
-
-
 
 	/**
 	 * 更新业务数据的方法
@@ -50,8 +51,6 @@ var bookingBusiness = {
 	 */
 	biz_updateData: function (data) {
 		Object.assign(this.biz_data, data);
-
-		console.log(this.biz_data);
 	},
 
 
@@ -105,7 +104,6 @@ var bookingBusiness = {
 					Common.showError("该日期没有售票，请更换日期", "提示");
 				}
 
-
 			}
 		})
 	},
@@ -126,17 +124,33 @@ var bookingBusiness = {
 			}
 		}
 		return ticket;
-
 	},
 
+   
 
-    /**
-     * 提交数据
-     * 
-     */
-	biz_submit: function () {
+	/**
+	 * 提交订单
+	 *  
+	 */
+	biz_submitData: function () {
 
 		var submitData = this.biz_getSubmitData();
+
+		console.log(submitData)
+
+		if (!Common.judgeTrue(submitData)) {
+			this.biz_Error("未提交任何信息")
+			return false
+		};
+
+		if (submitData.contacttel != "12301") {
+			comContact.addContact({
+				name: submitData.ordername,
+				tel: submitData.contacttel,
+				id: submitData.sfz
+			});
+		}
+
 
 		Common.request({
 			url: "/r/Mall_Order/order/",
@@ -169,110 +183,137 @@ var bookingBusiness = {
 		})
 	},
 
-
-    /**
+	 /**
      * 根据不同的产品类型获取需要提交的数据
      * 
      * @returns 需要提交的数据
      */
 	biz_getSubmitData: function () {
+		var _this = this, oData = this.data, p_type = oData.p_type;
 
-		var submitData = {}
-
-		//获取公共的数据
-
-		//按照类别获取不同的数据
-
-		return submitData;
-	},
-
-
-	//提交订单
-	onSubmit: function (e) {
-		var oData = this.data;
-		var ticketList = oData.ticketList;
-		if (oData.isSubmitLoading) return false;
-		if (oData.needIDErrTipShow || oData.needIDErrTipShow || oData.orderNameErrTipShow) return false;
-		var contacttel = oData.contacttel;
-		var ordername = oData.ordername;
-		var sfz = oData.sfz;
-
-		var submitData = {
+		var submitData = {};
+		var comData = {
+			scenCode: App.globalData.curScenCode,//店铺唯一编码
 			pid: oData.pid,
-			aid: oData.aid,
-			tnum: ticketList[0]["value"],   //主票购买张数
-			begintime: oData.begintime,     //开始时间
-			contacttel: oData.contacttel || "12301",   //取票人手机号
-			ordername: oData.ordername || "小程序购票",      //联系人姓名,
-			scenCode: app.globalData.curScenCode //店铺唯一编码
-		};
-		if (oData.needID == 1) submitData["sfz"] = oData.sfz; //需要一张身份证
+			aid: oData.aid
+		}
 
-		// if(contacttel.length!==11 || isNaN(contacttel)) return this.setData({contacttelErrTipShow:true});
-		// if(!ordername) return this.setData({orderNameErrTipShow:true});
-		if (oData.needID == 1 && !Common.validateIDCard(sfz)) return this.setData({ needIDErrTipShow: true });
+		// 产品类型：A=景点，B=线路，C=酒店，F=套票，H=演出，I=年卡套餐，G=餐饮，
+		switch (p_type) {
 
-		//如果一票一身份证
-		if (oData.needID == 2) {
-			if (this.touristIdcardList.getOkNum() != submitData.tnum) {
-				wx.showModal({
-					title: "提示",
-					content: "游客信息填写有误，请完善",
-					showCancel: false
-				})
-				return false;
-			} else {
-				submitData["idcards"] = this.touristIdcardList.getTouristIdArr();
-				submitData["tourists"] = this.touristIdcardList.getTouristNameArr();
+			case "A": {
+				submitData = Object.assign(
+					{},
+					comData, //通用数据
+					_this.qts_getBizData(), //景区类时间模块的数据
+					_this.tlist_getBizdata(), //票类列表
+					_this.tInfo_getBizData() //联系人数据
+				)
 			}
 		}
 
-		comContact.addContact({
-			name: ordername,
-			tel: contacttel,
-			id: sfz
-		});
+		console.log("未校验", submitData);
 
-		var link = {};
-		ticketList.forEach(function (item, index) {
-			if (index != 0) {
-				var pid = item.pid;
-				var value = item.value;
-				link[pid] = value;
-			}
-		});
+		//校验提交的数据
+		if (!this.biz_validSubmitData(submitData)) return false;
 
-		submitData["link"] = link;
+		return submitData;
 
 
-		Common.request({
-			url: "/r/Mall_Order/order/",
-			data: submitData,
-			loading: function () {
-				Common.showLoading();
-			},
-			complete: function () {
-				Common.hideLoading();
-			},
-			success: function (res) {
-				var code = res.code;
-				var msg = res.msg;
-				var data = res.data;
-				var ordernum = data.ordernum;
-				var paymode = data.paymode;
-				if (code == 200) {
-					if (paymode == 1) {
-						wx.navigateTo({ url: "../pay/pay?ordernum=" + ordernum });
-					} else if (paymode == 4) {
-						wx.navigateTo({ url: "../paysuccess/paysuccess?ordernum=" + ordernum });
-					} else {
-						Common.showError("paymode=" + paymode);
-					}
+		
+	},
 
-				} else {
-					Common.showError(msg);
+	/**
+	 * 校验提交的数据
+	 * 
+	 * @param {any} submitData 
+	 */
+	biz_validSubmitData: function (submitData) {
+		var p_type = this.data.p_type, allOk = true;
+
+
+		//通用校验
+
+		//1.校验联系人信息
+		if (!this._biz_validTouristInfo(submitData)) {
+			allOk = false;
+			return false;
+		};
+
+
+		//分类选择校验
+
+		// 产品类型：A=景点，B=线路，C=酒店，F=套票，H=演出，I=年卡套餐，G=餐饮，
+		switch (p_type) {
+
+			case "A": {
+				//校验开始时间
+				if (!submitData.begintime) {
+					this.biz_Error("请选择游玩时间");
+					allOk = false;
+					break;
 				}
+
 			}
+		}
+
+		return allOk;
+
+
+	},
+
+	_biz_validTouristInfo: function (submitData) {
+		var oData = this.data,
+			allOk = true,
+			needID = Number(oData.needID),
+			_this = this;
+		
+		
+		//校验取票人姓名手机号
+ 
+		
+	
+
+		
+		
+
+		switch (needID) {
+
+			//不需要身份证时
+			case 0: {
+				break;
+			}
+
+			//需要1张身份证时
+			case 1: {
+				if (!Common.validateIDCard(submitData.sfz)) {
+					_this.biz_Error("身份证填写有误，请重新填写");
+					allOk = false;
+				}
+				break;
+			}
+
+			//需要多张身份证时
+			case 2: {
+				if (this.touristIdcardList.getOkNum() != submitData.tnum) {
+					_this.biz_Error("游客信息填写有误，请完善");
+					allOk = false;
+				}
+				break;
+			}
+		}
+
+		console.log("联系人信息",allOk)
+
+		return allOk;
+		
+	},
+
+	biz_Error(text) {
+		wx.showModal({
+			title: "提示",
+			content: text,
+			showCancel: false
 		})
 	},
 

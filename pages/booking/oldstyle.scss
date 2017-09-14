@@ -37,22 +37,6 @@ page{
 .ticketListUl .countBox .btn.add{  border-left:1px solid #457ed8;}
 .ticketListUl .countBox .btn.minus{  border-right:1px solid #457ed8;}
 
-
-.userInfoBox{ margin:10px 0}
-.userInfoBox .line{ height:48px; display:flex; flex-direction:row; align-items:center; background:#fff}
-.userInfoBox .line .lt{width: 20%;padding-left: 20rpx;}
-.userInfoBox .line .rt{ flex:4; }
-.userInfoBox .add-contact{
-  line-height:30px;
-  text-align:center;
-  color:#457ed8;
-  font-size: 38rpx;
-  font-weight:700;
-  margin-right:20rpx;
-  padding:10rpx;
-}
-
-
 .totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;  }
 .totalBar .totalBarCon{  display:flex;  height:100%;  align-items:center;  justify-content:space-between;  }
 .totalBar .totalT{ margin-left:10px;}

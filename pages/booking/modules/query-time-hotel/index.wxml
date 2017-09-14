@@ -1,19 +1,24 @@
 <template name="queryTimeHotel">
     <view class="query-time-hotel">
         <view class="beginBox box item">
-            <viewp class="tit">入住</viewp>
-            <viewp>
-                <view id="beginTimeInp_hotel">09月08日 周五</view>
-            </viewp>
+            <picker class="time-picker" mode="date" value="{{beginDate}}" start="{{today}}" end="2100-09-01" bindchange="qth_beginTimeChange">
+                <view class="tit">入住</view>
+                <view>
+                    <view id="beginTimeInp_hotel">{{beginDate || today }}</view>
+                </view>
+            </picker>
+
         </view>
         <view class=" box item">
-            <text class="timeFlag">1晚</text>
+            <text class="timeFlag">{{diffDays}}晚</text>
         </view>
         <view class="endBox box item">
-            <view class="tit">离店</view>
-            <view>
-                <view id="endTimeInp_hotel">09月09日 周六</view>
-            </view>
+            <picker class="time-picker" mode="date" value="{{endDate}}" start="{{tomorrow}}" end="2100-09-01" bindchange="qth_endTimeChange">
+                <view class="tit">离店</view>
+                <view>
+                    <view id="endTimeInp_hotel">{{endDate || tomorrow}}</view>
+                </view>
+            </picker>
         </view>
     </view>
 </template>

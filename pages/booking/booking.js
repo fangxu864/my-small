@@ -4,6 +4,7 @@ var app = getApp();
 
 //----模块----
 var QueryTimeScenic_mode = require("./modules/qurey-time-scenic/index.js"); //景区类查询时间模块
+var QueryTimeHotel_mode = require("./modules/query-time-hotel/index.js"); //酒店类查询时间模块
 var BookingBiz_mode = require("./business.js"); //业务模块
 var SmallTips_mode = require("./modules/small-tips/index.js"); //小提示模块
 var TicketList_mode = require("./modules/ticket-list/index.js"); //票类列表
@@ -19,6 +20,7 @@ Page({
 		aid: "",
 		pid: "",
 		p_type: "", //产品类型
+		needID: 0, //是否需要填写身份证,0不需要,1需要填一个,2需要填多个
 		//和视图相关的数据
 		viewData: {
 
@@ -31,7 +33,7 @@ Page({
 				beginPrice: "", //开始日期对应的最低价格
 				endPrice: "", //结束日期对应的最低价格
 				endPrice: "", //结束日期对应的最低价格
-				diffDays: "", //开始时间和结束时间对应的天数
+				diffDays: "1", //开始时间和结束时间对应的天数
 				beginActive: "", //开始时间是否选中
 				isShowTwo: true, //是否显示两个日期
 				today: Common.getToday(),
@@ -56,7 +58,7 @@ Page({
 
 			//游客信息模块
 			touristInfo: {
-				needID:"", //是否需要填写身份证,0不需要,1需要填一个,2需要填多个
+				needID: "", //是否需要填写身份证,0不需要,1需要填一个,2需要填多个
 				contactDisplay: "none", // 常用联系人是否显示
 				simpleMsgPopDisplay: "none", // 简单显示信息是否显示
 				idcardListWrapDisplay: "none", //身份证列表是否显示
@@ -65,6 +67,13 @@ Page({
 				touristInfoTotalNum: 0,//共计需要身份证的数量
 				touristInfoAlreadyNum: 0,//已正确填写身份证的数量
 				touristInfoArr: [],//联系人数组
+
+				ordername: "", //取票人姓名
+				orderNameErrTipShow: false,//取票人姓名错误信息
+				contacttel: "", //取票人手机
+				contacttelErrTipShow: false, //取票人手机错误信息
+				sfz:"", //取票人id
+				needIDErrTipShow:false//取票人id错误信息
 			},
 
 			//底部总价模块
@@ -83,6 +92,7 @@ Page({
 	 */
 	pourIntoModules: function () {
 		Object.assign(this, QueryTimeScenic_mode); //景区类时间查询模块
+		Object.assign(this, QueryTimeHotel_mode); //酒店类时间查询模块
 		Object.assign(this, BookingBiz_mode); //业务模块
 		Object.assign(this, SmallTips_mode); //小tips模块
 		Object.assign(this, TicketList_mode); //票类列表
@@ -98,11 +108,6 @@ Page({
 		this.setData({
 			aid: option.aid || "3385",
 			pid: option.pid || "6698"
-		})
-
-		this.biz_updateData({
-			aid: option.aid ,
-			pid: option.pid 
 		})
 
 		//根据aid和pid获取初始化信息
@@ -148,7 +153,8 @@ Page({
 
 				//设置p_ytpe
 				_this.setData({
-					"p_type": data.p_type
+					"p_type": data.p_type,
+					"needID": data.needID
 				})
 
 				//设置标题

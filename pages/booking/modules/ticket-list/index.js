@@ -29,13 +29,18 @@ var ticketList = {
 	 */
 	tlist_dataChange: function (newListdata) {
 
+		var totalTicketNum = 0; //购票总数
+
 		//根据列表数据更新按钮状态
 		var newArr = newListdata.map(function (ticket) {
+
 			var store = Number(ticket.store);
 			var value = Number(ticket.value);
 			var buy_low = Number(ticket.buy_low);
 			var buy_up = Number(ticket.buy_up);
 			var max = 0;
+
+			totalTicketNum += value;
 
 			//不是主票，最低购票数为0
 			if (!ticket.ismain) {
@@ -77,22 +82,22 @@ var ticketList = {
 		//重新计算总价钱
 		this.tmoney_calTotalMoney();
 
-		//当票类列表变化时更新业务数据
-		this._tlist_changeBizData(newArr);
 
 		//刷新需要的身份证数量
-		// this.setData({
-		// 	touristInfoTotalNum: value
-		// })
+		this.setData({
+			"viewData.touristInfo.touristInfoTotalNum": totalTicketNum
+		})
 	},
 
 	/**
-	 * 当票类列表变化时更新业务数据
+	 * 获取业务数据
 	 * 
 	 */
-	_tlist_changeBizData: function (newArr) {
+	tlist_getBizdata: function () {
 		// tnum	int	2,主票购买张数
 		// link	object	联票, {"14624" : 2, "14625" : 3}
+
+		var newArr = this.data.viewData.ticketList.ticketList;
 		var tnum = '', link = {};
 		newArr.forEach(function (item) {
 			//不是主票，最低购票数为0
@@ -106,10 +111,10 @@ var ticketList = {
 		})
 
 		//更新业务数据
-		this.biz_updateData({
+		return {
 			"tnum": tnum,
 			"link": link
-		})
+		}
 
 	},
 

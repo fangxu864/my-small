@@ -83,32 +83,6 @@ page {
 .ticketListUl .countBox .btn.minus {
   border-right: 1px solid #457ed8; }
 
-.userInfoBox {
-  margin: 10px 0; }
-
-.userInfoBox .line {
-  height: 48px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: #fff; }
-
-.userInfoBox .line .lt {
-  width: 20%;
-  padding-left: 20rpx; }
-
-.userInfoBox .line .rt {
-  flex: 4; }
-
-.userInfoBox .add-contact {
-  line-height: 30px;
-  text-align: center;
-  color: #457ed8;
-  font-size: 38rpx;
-  font-weight: 700;
-  margin-right: 20rpx;
-  padding: 10rpx; }
-
 .totalBar {
   position: fixed;
   bottom: 0;
@@ -362,8 +336,8 @@ page {
       padding: 16rpx 12rpx;
       border: 1rpx solid #e5e5e5; }
       .qurey-time-scenic .mid .dateBox.selected {
-        border-color: #008fc2;
-        color: #008fc2; }
+        border-color: #457ed8;
+        color: #457ed8; }
       .qurey-time-scenic .mid .dateBox.disable {
         background: #d9d9d9;
         border-color: #cdcdcd;
@@ -417,6 +391,40 @@ page {
       border: 1px solid #008fc2;
       color: #008fc2;
       align-self: center; }
+
+.userInfoBox {
+  margin: 10px 0; }
+
+.userInfoBox .line {
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #fff;
+  justify-content: space-between; }
+
+.userInfoBox .line .lt {
+  width: 20%;
+  padding-left: 20rpx; }
+
+.userInfoBox .line .rt {
+  width: 20%;
+  display: flex;
+  align-items: center; }
+  .userInfoBox .line .rt.flex-end {
+    justify-content: flex-end; }
+
+.userInfoBox .line .mid {
+  flex-grow: 1; }
+
+.userInfoBox .add-contact {
+  line-height: 30px;
+  text-align: center;
+  color: #457ed8;
+  font-size: 38rpx;
+  font-weight: 700;
+  margin-right: 20rpx;
+  padding: 10rpx; }
 
 /* 简单消息弹出 */
 .pft-dialog .line {

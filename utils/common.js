@@ -6,7 +6,7 @@
 var Config = require("./config.js");
 var Common = {
 	appId: "wx5605b231e666f425",
-	REQUEST_HOST: "https://api.12301.cc/index.php",
+	REQUEST_HOST: "https://api.12301dev.com/index.php",
 	SESSION_STORAGE_KEY: "pft-session-storage",
 	SESSION_STORAGE_EXPIRE_KEY: "pft-session-storage-expire",  //session过期时长的key
 	SESSION_STORAGE_AT_TIME: "pft-session-storage-attime",
@@ -419,6 +419,7 @@ var Common = {
 		if (d < 10) d = "0" + d;
 		return y + "-" + m + "-" + d;
 	},
+
 
 	MinueToDayTime: function (daytime) {
 		var day = daytime / (24 * 60);

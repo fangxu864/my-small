@@ -1,6 +1,6 @@
 <template name="totalMoney">
     <!-- 底部的计价确认部分 -->
-    <view class="box totalBar">
+    <view class="box totalBar" style="z-index:3;">
         <view class="totalBarCon">
             <view>
                 <text class="totalT">总金额：</text>
@@ -9,7 +9,7 @@
                     <text class="totalNum">{{totalMoney}}</text>
                 </text>
             </view>
-            <view bindtap="onSubmit" data-cansubmit="{{canSubmit}}" class="submitBtn {{canSubmit ? '' : 'disable'}}">提交</view>
+            <view bindtap="tmoney_submit" data-cansubmit="{{canSubmit}}" class="submitBtn {{canSubmit ? '' : 'disable'}}">提交</view>
         </view>
     </view>
 </template>

@@ -57,14 +57,27 @@ var qureyTimeScenic = {
             'viewData.qureyTimeMode.beginDate': date,
             'viewData.qureyTimeMode.isShowTwo': isShowTwo
         })
-        //更新业务数据
-        this.biz_updateData({
-            "begintime": date
-        })
+        // //更新业务数据
+        // this.biz_updateData({
+        //     "begintime": date
+        // })
 
         //请求价格库存
         this.biz_queryPriceAndStore(date);
+    },
+
+    /**
+     * 获取本模块的业务数据
+     * 
+     */
+    qts_getBizData: function () {
+        
+        return {
+            "begintime": this.data.viewData.qureyTimeMode.beginDate
+        }
     }
+    
+    
 
 
 }
