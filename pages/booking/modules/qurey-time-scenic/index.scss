@@ -3,7 +3,8 @@
     display: flex;
     justify-content: space-between;
     padding: 20rpx 20rpx;
-    align-items: center;
+    align-items: baseline;
+    line-height:1.4;
     margin-top: 20rpx;
 
     .lt{
@@ -14,6 +15,9 @@
         flex-grow: 1;
         display: flex;
         justify-content: center;
+        align-items: baseline;
+        
+        
         .dateBox {
             margin: 10rpx;
             display: flex;
@@ -21,6 +25,7 @@
             text-align: center;
             padding: 16rpx 12rpx;
             border: 1rpx solid #e5e5e5;
+            align-items: baseline;
             &.selected {
                 border-color: #457ed8;
                 color: #457ed8;

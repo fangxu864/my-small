@@ -37,7 +37,8 @@ page{
 .ticketListUl .countBox .btn.add{  border-left:1px solid #457ed8;}
 .ticketListUl .countBox .btn.minus{  border-right:1px solid #457ed8;}
 
-.totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;  }
+.totalBar{  position:fixed;  bottom:0;  left:0;  right:0;  height:42px;  background:#ffffff;box-shadow:0px -1px 5px #e5e5e5;
+}
 .totalBar .totalBarCon{  display:flex;  height:100%;  align-items:center;  justify-content:space-between;  }
 .totalBar .totalT{ margin-left:10px;}
 .totalBar .totalBox{ color:#f95137; font-size:14px}

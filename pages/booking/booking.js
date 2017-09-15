@@ -167,26 +167,36 @@ Page({
 				Common.hideLoading();
 			},
 			success: function (res) {
-				var data = res.data;
-				_this.initBookInfoData = data;
 
-				//设置p_ytpe
-				_this.setData({
-					"p_type": data.p_type,
-					"needID": data.needID
-				})
-
-				//设置标题
-				wx.setNavigationBarTitle({
-					title: data.title
-				})
+				if (res.code == 200) {
+					var data = res.data;
+					_this.initBookInfoData = data;
+	
+					//设置p_ytpe
+					_this.setData({
+						"p_type": data.p_type,
+						"needID": data.needID
+					})
+	
+					//设置标题
+					wx.setNavigationBarTitle({
+						title: data.title
+					})
+					
+					_this.stips_init(data); //小tips初始化
+					_this.qts_init(data); //景点类时间初始化
+					_this.tpos_init(data); //线路集合地点初始化
+					_this.sinfo_init(data); //场次初始化
+					_this.tlist_init(data); //票类列表初始化
+					_this.tinfo_init(data); //游客信息初始化
+				} else {
+					wx.showModal({
+						title: "提示",
+						content: res.msg,
+						showCancel: false
+					})
+				}
 				
-				_this.stips_init(data); //小tips初始化
-				_this.qts_init(data); //景点类时间初始化
-				_this.tpos_init(data); //线路集合地点初始化
-				_this.sinfo_init(data); //场次初始化
-				_this.tlist_init(data); //票类列表初始化
-				_this.tinfo_init(data); //游客信息初始化
 			}
 		})
 	}

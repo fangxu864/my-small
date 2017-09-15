@@ -3,11 +3,14 @@
     background-color: #ffffff;
     margin-top: 1rpx;
     padding:20rpx 20rpx; 
+    align-items: baseline;
     .trip-postion__name{
        white-space: nowrap;
     }   
     .trip-postion__value{
         padding-left:20rpx; 
+        display: flex;
+        align-items: center;
         flex-grow: 1;
         &:active{
             color: orangered;

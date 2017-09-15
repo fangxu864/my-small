@@ -37,6 +37,7 @@
             <view class="mid">
                 <input type="text" value="{{memo}}" bindblur="tinfo_memoblur"  placeholder="订单备注(选填)" />
             </view>
+            <view class="rt"></view>
         </view>
 
         <!-- 取票人身份证 -->
