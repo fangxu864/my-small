@@ -4,7 +4,7 @@
             <picker class="time-picker" mode="date" value="{{beginDate}}" start="{{today}}" end="2100-09-01" bindchange="qth_beginTimeChange">
                 <view class="tit">入住</view>
                 <view>
-                    <view id="beginTimeInp_hotel">{{beginDate || today }}</view>
+                    <view id="beginTimeInp_hotel">{{beginDate || "请选择住店时间" }}</view>
                 </view>
             </picker>
 
@@ -16,7 +16,7 @@
             <picker class="time-picker" mode="date" value="{{endDate}}" start="{{tomorrow}}" end="2100-09-01" bindchange="qth_endTimeChange">
                 <view class="tit">离店</view>
                 <view>
-                    <view id="endTimeInp_hotel">{{endDate || tomorrow}}</view>
+                    <view id="endTimeInp_hotel">{{endDate || "请选择离店时间"}}</view>
                 </view>
             </picker>
         </view>

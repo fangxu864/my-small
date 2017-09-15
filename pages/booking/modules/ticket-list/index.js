@@ -29,6 +29,8 @@ var ticketList = {
 	 */
 	tlist_dataChange: function (newListdata) {
 
+		console.log(newListdata);
+
 		var totalTicketNum = 0; //购票总数
 
 		//根据列表数据更新按钮状态
@@ -71,6 +73,9 @@ var ticketList = {
 				ticket["adddisabled"] = true;
 				ticket["minusdisabled"] = true;
 				ticket["value"] = 0;
+			}
+			else if (store > 0 && value == 0) {
+				ticket["value"] = Math.min(buy_low, store);
 			}
 
 			return ticket;

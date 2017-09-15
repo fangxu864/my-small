@@ -5,13 +5,17 @@ var touristInfo = {
 
     tinfo_init: function (data) {
 
+        //清除之前填写的游客身份数据
+        this.touristIdcardList.clearListData();
+
+
         //初始化需要身份证的总个数
-        if (data.needID == 2) {
-            this.setData({
-                "viewData.touristInfo.touristInfoTotalNum": data.tickets[0]["buy_low"],
-                "viewData.touristInfo.needID": data.needID
-            })
-        }
+
+        this.setData({
+            "viewData.touristInfo.touristInfoTotalNum": data.tickets[0]["buy_low"],
+            "viewData.touristInfo.needID": data.needID
+        })
+
 
     },
 
@@ -38,6 +42,19 @@ var touristInfo = {
             this.setData({ "viewData.touristInfo.orderNameErrTipShow": false })
         }
     },
+
+    
+    /**
+     * 备注
+     * 
+     */
+    tinfo_memoblur: function (e) {
+        var detail = e.detail;
+        var value = detail.value;
+        this.setData({ "viewData.touristInfo.memo": value })
+    },
+
+
     onContacttelInpChange: function (e) {
         var detail = e.detail;
         var value = detail.value;
@@ -183,6 +200,10 @@ var touristInfo = {
         // ]
         _listData: [],
 
+        clearListData: function () {
+            this._listData = [];
+        },
+
 		/**
 		 * 获取游客信息数据
 		 * 输入游客个数，输出相同长度游客信息数组
@@ -305,8 +326,9 @@ var touristInfo = {
 
             //不需要身份证时
             case 0: {
-                resultData["contacttel"] = "12301";
-                resultData["ordername"] = "小程序购票";
+                resultData["contacttel"] = oData.viewData.touristInfo.contacttel || "12301";
+                resultData["ordername"] = oData.viewData.touristInfo.ordername || "小程序购票";
+                resultData["memo"] = oData.viewData.touristInfo.memo;
                 break;
             }
 
@@ -314,20 +336,22 @@ var touristInfo = {
             case 1: {
                 resultData["contacttel"] = oData.viewData.touristInfo.contacttel || "12301";
                 resultData["ordername"] = oData.viewData.touristInfo.ordername || "小程序购票";
+                resultData["memo"] = oData.viewData.touristInfo.memo;
                 resultData["sfz"] = oData.viewData.touristInfo.sfz;
                 break;
             }
-                
+
             //需要多张身份证时
             case 2: {
                 resultData["contacttel"] = oData.viewData.touristInfo.contacttel || "12301";
                 resultData["ordername"] = oData.viewData.touristInfo.ordername || "小程序购票";
+                resultData["memo"] = oData.viewData.touristInfo.memo;
                 resultData["idcards"] = this.touristIdcardList.getTouristIdArr();
                 resultData["tourists"] = this.touristIdcardList.getTouristNameArr();
                 break;
             }
         }
-        
+
         return resultData;
     }
 }

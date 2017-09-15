@@ -4,6 +4,13 @@
 <import src="modules/qurey-time-scenic/index.wxml" />
 <!-- 酒店类型询问时间模块 -->
 <import src="modules/query-time-hotel/index.wxml" />
+
+<!-- 集合地点（线路产品才会有） -->
+<import src="modules/trip-position/index.wxml" />
+<!-- 场次信息（演出产品才会有） -->
+<import src="modules/show-info/index.wxml" />
+
+
 <!-- 小标签模块 -->
 <import src="modules/small-tips/index.wxml" />
 <!-- 票类列表 -->
@@ -19,6 +26,12 @@
     <!-- 游玩时间 -->
     <template wx:if="{{p_type == 'C'}}" is="queryTimeHotel" data="{{...viewData.qureyTimeMode}}" />
     <template wx:else is="queryTimeScenic" data="{{...viewData.qureyTimeMode}}" />
+
+    <!-- 集合地点（线路产品才会有） -->
+    <template wx:if="{{p_type == 'B'}}" is="tripPosition" data="{{...viewData.tripPosition}}" />
+
+    <!-- 场次信息（演出产品才会有） -->
+    <template wx:if="{{p_type == 'H'}}" is="showInfo" data="{{...viewData.showInfo}}" />
 
     <!-- 退票规则等小标签 -->
     <template is="smallTips" data="{{...viewData.smallTips}}" />

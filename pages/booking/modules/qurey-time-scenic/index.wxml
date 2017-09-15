@@ -1,6 +1,6 @@
 <template name="queryTimeScenic">
   <view class="qurey-time-scenic">
-    <view class="lt">游玩时间</view>
+    <view class="lt">{{titleText}}</view>
     <view class="mid">
 
       <block wx:if="{{isShowTwo}}">

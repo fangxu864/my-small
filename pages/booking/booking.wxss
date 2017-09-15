@@ -392,6 +392,32 @@ page {
       color: #008fc2;
       align-self: center; }
 
+.trip-postion {
+  display: flex;
+  background-color: #ffffff;
+  margin-top: 1rpx;
+  padding: 20rpx 20rpx; }
+  .trip-postion .trip-postion__name {
+    white-space: nowrap; }
+  .trip-postion .trip-postion__value {
+    padding-left: 20rpx;
+    flex-grow: 1; }
+    .trip-postion .trip-postion__value:active {
+      color: orangered; }
+
+.show-info {
+  display: flex;
+  background-color: #ffffff;
+  margin-top: 1rpx;
+  padding: 20rpx 20rpx; }
+  .show-info .show-info__name {
+    white-space: nowrap; }
+  .show-info .show-info__value {
+    padding-left: 20rpx;
+    flex-grow: 1; }
+    .show-info .show-info__value:active {
+      color: orangered; }
+
 .userInfoBox {
   margin: 10px 0; }
 
@@ -408,7 +434,7 @@ page {
   padding-left: 20rpx; }
 
 .userInfoBox .line .rt {
-  width: 20%;
+  width: 30%;
   display: flex;
   align-items: center; }
   .userInfoBox .line .rt.flex-end {
@@ -433,3 +459,11 @@ page {
   line-height: 80rpx;
   border-top: 1px solid #e5e5e5;
   font-size: 24rpx; }
+
+.descFlag {
+  font-size: 12px;
+  padding: 2px 4px;
+  color: #457ed8;
+  border: 1px solid #457ed8;
+  margin: 10rpx 10rpx 10rpx 0;
+  white-space: nowrap; }

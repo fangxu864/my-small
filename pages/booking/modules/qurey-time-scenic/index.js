@@ -16,6 +16,16 @@ var Common = require("../../../../utils/common.js");
 var qureyTimeScenic = {
 
 
+    qts_init: function () {
+        if (this.data.p_type == "H") {
+            this.setData({
+                'viewData.qureyTimeMode.titleText': "观看时间"
+            })
+        }
+
+    },
+
+
     /**
      * 开始时间变化时
      * 
@@ -64,6 +74,13 @@ var qureyTimeScenic = {
 
         //请求价格库存
         this.biz_queryPriceAndStore(date);
+
+        //当产品为演出的时候更新场次
+        if (this.data.p_type == "H") {
+            this.sinfo_getShowInfoData(date);
+
+            // this.queryBookingInfo(this.data.pid, this.data.aid)
+        }
     },
 
     /**
@@ -71,13 +88,13 @@ var qureyTimeScenic = {
      * 
      */
     qts_getBizData: function () {
-        
+
         return {
             "begintime": this.data.viewData.qureyTimeMode.beginDate
         }
     }
-    
-    
+
+
 
 
 }

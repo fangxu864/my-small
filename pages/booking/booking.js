@@ -5,6 +5,8 @@ var app = getApp();
 //----模块----
 var QueryTimeScenic_mode = require("./modules/qurey-time-scenic/index.js"); //景区类查询时间模块
 var QueryTimeHotel_mode = require("./modules/query-time-hotel/index.js"); //酒店类查询时间模块
+var TripPosition_mode = require("./modules/trip-position/index.js"); //线路集合地点
+var ShowInfo_mode = require("./modules/show-info/index.js"); //演出场次信息
 var BookingBiz_mode = require("./business.js"); //业务模块
 var SmallTips_mode = require("./modules/small-tips/index.js"); //小提示模块
 var TicketList_mode = require("./modules/ticket-list/index.js"); //票类列表
@@ -37,7 +39,21 @@ Page({
 				beginActive: "", //开始时间是否选中
 				isShowTwo: true, //是否显示两个日期
 				today: Common.getToday(),
-				tomorrow: Common.getTomorrow()
+				tomorrow: Common.getTomorrow(),
+
+				titleText:"游玩时间"
+			},
+
+			//线路集合地点
+			tripPosition: {
+				list: [], //数据列表
+				curPos:"当前地点当前地点" //当前地点
+			},
+
+			//演出场次信息
+			showInfo: {
+				list: [],
+				curOpt:""
 			},
 
 			//小标签部分
@@ -67,6 +83,7 @@ Page({
 				touristInfoTotalNum: 0,//共计需要身份证的数量
 				touristInfoAlreadyNum: 0,//已正确填写身份证的数量
 				touristInfoArr: [],//联系人数组
+				memo:"",//备注
 
 				ordername: "", //取票人姓名
 				orderNameErrTipShow: false,//取票人姓名错误信息
@@ -93,6 +110,8 @@ Page({
 	pourIntoModules: function () {
 		Object.assign(this, QueryTimeScenic_mode); //景区类时间查询模块
 		Object.assign(this, QueryTimeHotel_mode); //酒店类时间查询模块
+		Object.assign(this, TripPosition_mode); //线路集合地点
+		Object.assign(this, ShowInfo_mode); //演出场次信息
 		Object.assign(this, BookingBiz_mode); //业务模块
 		Object.assign(this, SmallTips_mode); //小tips模块
 		Object.assign(this, TicketList_mode); //票类列表
@@ -161,8 +180,11 @@ Page({
 				wx.setNavigationBarTitle({
 					title: data.title
 				})
-
+				
 				_this.stips_init(data); //小tips初始化
+				_this.qts_init(data); //景点类时间初始化
+				_this.tpos_init(data); //线路集合地点初始化
+				_this.sinfo_init(data); //场次初始化
 				_this.tlist_init(data); //票类列表初始化
 				_this.tinfo_init(data); //游客信息初始化
 			}

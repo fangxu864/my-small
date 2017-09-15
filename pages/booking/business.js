@@ -126,7 +126,105 @@ var bookingBusiness = {
 		return ticket;
 	},
 
-   
+
+	/**
+	 * 请求酒店价格库存
+	 * 
+	 * @param {any} beginDate 住店开始时间
+	 * @param {any} endDate   离店时间
+	 */
+	biz_getHotelPriceAndStorage: function (beginDate, endDate) {
+		var _this = this, oData = this.data;
+
+		Common.request({
+			debug: false,
+			url: "/r/Mall_Product/getHotelPriceAndStorage/",
+			data: {
+				pid: oData.pid,
+				aid: oData.aid,
+				beginDate: beginDate,
+				endDate: endDate
+			},
+			loading: function () {
+				// Common.showLoading("请求库存价格..");
+			},
+			complete: function () {
+				Common.hideLoading();
+			},
+			success: function (res) {
+				var data = res.data;
+
+				var price = data.jsprice;
+
+				var store = (function () {
+					var storage = data.store;
+					var storeArray = [];
+					for (var i in storage) storeArray.push(storage[i]);
+					var daycount = storeArray.length;
+
+					var getStoreMin = function (array) {
+						if (array.length == 0) return null;
+						var no_limit_arr = [];
+						var limit_arr = [];
+						array.forEach(function (item, index) {
+							if (item == -1) no_limit_arr.push(item);
+							if (item != -1) limit_arr.push(item);
+						})
+						//都为-1
+						if (no_limit_arr.length == array.length) return -1;
+						return Math.min.apply({}, limit_arr);
+					};
+
+					var storeMin = getStoreMin(storeArray);
+
+					if (daycount == 1) { //预订1天
+						return {
+							daycount: daycount,
+							storeNum: storeArray[0],
+							storeText: ""
+						}
+					} else { //预订1天以上
+
+						//在多天中只要有一天库存为0(没有库存)，即视为用户选择的时间段内没有库存，无法下单
+						//有问题请 @产品-詹必魁
+						if (storeMin == 0) {
+							return {
+								daycount: daycount,
+								storeNum: 0,
+								storeText: "无"
+							}
+						} else { //如果选择的时间段内都有库存(包含不限库存)，库存取最小的那天
+							if (storeMin == -1) { //时间段内每一天库存都为不限(都为-1)
+								return {
+									daycount: daycount,
+									storeNum: -1,
+									storeText: ""
+								}
+							} else { //如果时间段内有不限的 也有 具体库存的，取具体库存最小值,但是页面上只要显示"有" 有问题请@产品-詹必魁
+								return {
+									daycount: daycount,
+									storeNum: storeMin,
+									storeText: "有"
+								}
+							}
+						}
+					}
+				})();
+
+
+				//酒店类产品永远只能下单票，不存在连票 
+				var newTicketList = _this.data.viewData.ticketList.ticketList.map(function (ticket) {
+					ticket["jsprice"] = price;
+					ticket["store"] = store.storeNum;
+					ticket["storeText"] = store.storeText;
+					return ticket;
+				})
+
+				_this.tlist_dataChange(newTicketList);
+			}
+		})
+
+	},
 
 	/**
 	 * 提交订单
@@ -136,10 +234,8 @@ var bookingBusiness = {
 
 		var submitData = this.biz_getSubmitData();
 
-		console.log(submitData)
-
 		if (!Common.judgeTrue(submitData)) {
-			this.biz_Error("未提交任何信息")
+			console.log("未提交任何信息")
 			return false
 		};
 
@@ -183,11 +279,11 @@ var bookingBusiness = {
 		})
 	},
 
-	 /**
-     * 根据不同的产品类型获取需要提交的数据
-     * 
-     * @returns 需要提交的数据
-     */
+	/**
+	* 根据不同的产品类型获取需要提交的数据
+	* 
+	* @returns 需要提交的数据
+	*/
 	biz_getSubmitData: function () {
 		var _this = this, oData = this.data, p_type = oData.p_type;
 
@@ -209,10 +305,52 @@ var bookingBusiness = {
 					_this.tlist_getBizdata(), //票类列表
 					_this.tInfo_getBizData() //联系人数据
 				)
+				break;
+			}
+			case "B": {
+				submitData = Object.assign(
+					{},
+					comData, //通用数据
+					_this.qts_getBizData(), //景区类时间模块的数据
+					_this.tlist_getBizdata(), //票类列表
+					_this.tInfo_getBizData() //联系人数据
+				)
+				break;
+			}
+			case "H": {
+				submitData = Object.assign(
+					{},
+					comData, //通用数据
+					_this.qts_getBizData(), //景区类时间模块的数据
+					_this.sinfo_getBizData(), //场次信息
+					_this.tlist_getBizdata(), //票类列表
+					_this.tInfo_getBizData() //联系人数据
+				)
+				break;
+			}
+			case "F": {
+				submitData = Object.assign(
+					{},
+					comData, //通用数据
+					_this.qts_getBizData(), //景区类时间模块的数据
+					_this.tlist_getBizdata(), //票类列表
+					_this.tInfo_getBizData() //联系人数据
+				)
+				break;
+			}
+			// C=酒店	
+			case "C": {
+				submitData = Object.assign(
+					{},
+					comData, //通用数据
+					_this.qth_getBizData(), //景区类时间模块的数据
+					_this.tlist_getBizdata(), //票类列表
+					_this.tInfo_getBizData() //联系人数据
+				)
+				break;
 			}
 		}
 
-		console.log("未校验", submitData);
 
 		//校验提交的数据
 		if (!this.biz_validSubmitData(submitData)) return false;
@@ -220,7 +358,7 @@ var bookingBusiness = {
 		return submitData;
 
 
-		
+
 	},
 
 	/**
@@ -230,15 +368,6 @@ var bookingBusiness = {
 	 */
 	biz_validSubmitData: function (submitData) {
 		var p_type = this.data.p_type, allOk = true;
-
-
-		//通用校验
-
-		//1.校验联系人信息
-		if (!this._biz_validTouristInfo(submitData)) {
-			allOk = false;
-			return false;
-		};
 
 
 		//分类选择校验
@@ -254,8 +383,72 @@ var bookingBusiness = {
 					break;
 				}
 
+				break;
+
+			}
+			case "B": {
+				//校验开始时间
+				if (!submitData.begintime) {
+					this.biz_Error("请选择游玩时间");
+					allOk = false;
+					break;
+				}
+
+				break;
+
+			}
+			case "H": {
+				//校验开始时间
+				if (!submitData.begintime) {
+					this.biz_Error("请选择观看时间");
+					allOk = false;
+					break;
+				}
+
+				break;
+
+			}
+			case "F": {
+				//校验开始时间
+				if (!submitData.begintime) {
+					this.biz_Error("请选择游玩时间");
+					allOk = false;
+					break;
+				}
+				break;
+
+			}
+			case "C": {
+
+				console.log("酒店", submitData.begintime, submitData.endtime)
+				//校验开始时间
+				if (!submitData.begintime) {
+					this.biz_Error("请选择住店时间");
+					allOk = false;
+					break;
+				}
+				//校验开始时间
+				if (!submitData.endtime) {
+					this.biz_Error("请选择离店时间");
+					allOk = false;
+					break;
+				}
+				break;
+
 			}
 		}
+
+		if(!allOk) return false;
+
+		//通用校验
+
+		//1.校验联系人信息
+		if (!this._biz_validTouristInfo(submitData)) {
+
+			console.log("校验联系人信息出错")
+			allOk = false;
+			return false;
+		};
 
 		return allOk;
 
@@ -263,19 +456,15 @@ var bookingBusiness = {
 	},
 
 	_biz_validTouristInfo: function (submitData) {
+
+		console.log("666666")
 		var oData = this.data,
 			allOk = true,
 			needID = Number(oData.needID),
 			_this = this;
-		
-		
-		//校验取票人姓名手机号
- 
-		
-	
 
-		
-		
+
+		//校验取票人姓名手机号
 
 		switch (needID) {
 
@@ -295,6 +484,9 @@ var bookingBusiness = {
 
 			//需要多张身份证时
 			case 2: {
+
+				console.log("shenfenzheng", this.touristIdcardList.getOkNum(), submitData)
+
 				if (this.touristIdcardList.getOkNum() != submitData.tnum) {
 					_this.biz_Error("游客信息填写有误，请完善");
 					allOk = false;
@@ -303,10 +495,9 @@ var bookingBusiness = {
 			}
 		}
 
-		console.log("联系人信息",allOk)
 
 		return allOk;
-		
+
 	},
 
 	biz_Error(text) {

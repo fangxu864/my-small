@@ -104,7 +104,7 @@ Page({
 				if (res.code == 200) {
 					wx.requestPayment(data);
 				} else {
-					showError(msg);
+					Common.showError(msg);
 				}
 			},
 			fail: function (res) {

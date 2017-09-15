@@ -1,28 +1,28 @@
 <template name="touristInfo">
     <!-- 联系人信息 -->
-    <view wx:if="{{needID==1 || needID==2 }}" class="box userInfoBox userInfo">
-    <!-- <view class="box userInfoBox userInfo"> -->
+    <!-- <view wx:if="{{needID==1 || needID==2 }}" class="box userInfoBox userInfo"> -->
+    <view class="box userInfoBox userInfo">
         <!-- 取票人姓名 -->
-        <view class="line" style="margin-bottom:1px">
+        <view class="line">
             <view class="lt">取票人</view>
             <view class="mid">
                 <input type="text" bindblur="onOrderNameInpBlur" bindinput="onOrderNameInpChange" name="" value="{{ordername}}" class="usernameInp"
-                    id="usernameInp" placeholder="取票人姓名" />
+                    id="usernameInp" placeholder="取票人姓名(选填)" />
             </view>
             <view class="rt flex-end">
                 <view class="errorTip" style="flex-grow:1;" wx:if="{{orderNameErrTipShow}}">
-                    <text style="color:red">!必填</text>
+                    <text style="color:red">!不能为空</text>
                 </view>
                 <icon class="icon-unie62a iconfont add-contact" bindtap="onAddContactTap"></icon>
             </view>
         </view>
 
         <!-- 取票人手机号 -->
-        <view class="line">
+        <view class="line" style="margin-top:1px">
             <view class="lt">手机号</view>
             <view class="mid">
                 <input type="number" bindblur="onContacttelInpBlur" bindinput="onContacttelInpChange" name="" value="{{contacttel}}" class="mobileInp"
-                    id="mobileInp" placeholder="取票人手机号" />
+                    id="mobileInp" placeholder="取票人手机号(选填)" />
             </view>
             <view class="rt">
                 <view class="errorTip" wx:if="{{contacttelErrTipShow}}" style="margin-right:5px">
@@ -31,8 +31,16 @@
             </view>
         </view>
 
+        <!-- 备注 -->
+        <view class="line" style="margin-top:1px">
+            <view class="lt">备注</view>
+            <view class="mid">
+                <input type="text" value="{{memo}}" bindblur="tinfo_memoblur"  placeholder="订单备注(选填)" />
+            </view>
+        </view>
+
         <!-- 取票人身份证 -->
-        <view style="margin-top:1px" class="line" wx:if="{{needID==1 }}">
+        <view style="margin-top:1px" class="line" wx:if="{{needID==1}}">
         <!-- <view style="margin-top:1px" class="line"> -->
             <view class="lt">身份证</view>
             <view class="mid">

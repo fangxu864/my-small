@@ -3,7 +3,7 @@
     <view class="box ticketListUl ticketListBox">
         <view class="item" wx:for="{{ticketList}}" wx:key="tid">
             <view class="minBox">
-                <view class="tit">{{item.title}}</view>
+                <view class="tit">{{item.zone_name ? "【" + item.zone_name + "】" : ""}}{{item.title}}</view>
                 <view class="bcon">
                     <view class="conBox price">单价：
                         <text class="yen">¥</text>

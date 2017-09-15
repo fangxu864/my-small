@@ -1,0 +1,10 @@
+<template name="tripPosition">
+    <view class="trip-postion">
+        <view class="trip-postion__name">集合地点</view>
+        <view class="trip-postion__value" bindtap="tpos_onPostap">{{curPos}}</view>
+        <view class="trip-postion__icon">
+            <iconfont class="icon-you iconfont "></iconfont>
+        </view>
+    </view>
+
+</template>

@@ -1,0 +1,10 @@
+<template name="showInfo">
+    <view class="show-info">
+        <view class="show-info__name">场次时间</view>
+        <view class="show-info__value" bindtap="sinfo_onOptTap">{{curOpt}}</view>
+        <view class="show-info__icon" bindtap="sinfo_onOptTap">
+            <iconfont class="icon-you iconfont "></iconfont>
+        </view>
+    </view>
+
+</template>

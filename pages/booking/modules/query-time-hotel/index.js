@@ -1,3 +1,5 @@
+
+var Common = require("../../../../utils/common.js");
 var qureyTimeHotel = {
 
     /**
@@ -14,7 +16,7 @@ var qureyTimeHotel = {
             'viewData.qureyTimeMode.beginDate': date
         })
 
-        if (date > endDate || endDate == "") {
+        if (date >= endDate || endDate == "") {
             //更新视图数据
             this.setData({
                 'viewData.qureyTimeMode.endDate': _this.qth_addDay(date, 1)
@@ -33,26 +35,27 @@ var qureyTimeHotel = {
         //用户选取的时间
         var endDate = e.detail.value, _this = this;
         var beginDate = this.data.viewData.qureyTimeMode.beginDate;
+        
+        //如果开始时间大于结束时间
+        if (beginDate == "") {
+            this.setData({
+                'viewData.qureyTimeMode.beginDate': Common.getToday()
+            })
+            beginDate = Common.getToday();
+        }
 
-        //更新视图数据
-        this.setData({
-            'viewData.qureyTimeMode.endDate': endDate
-        })
+        
 
-        // if (date < endDate || endDate == "") {
-        //     //更新视图数据
-        //     this.setData({
-        //         'viewData.qureyTimeMode.endDate': _this.qth_addDay(date, 1)
-        //     })
-        // }
-
-        // //如果开始时间大于结束时间
-        // if (beginDate > endDate) {
-
-        // }
-
-        this._qth_dateChange();
-
+        if (endDate <= beginDate) {
+            //更新视图数据
+            this.biz_Error("离店时间必须大于住店时间");
+        } else {
+            //更新视图数据
+            this.setData({
+                'viewData.qureyTimeMode.endDate': endDate
+            })
+            this._qth_dateChange();
+        }
     },
 
 
@@ -72,8 +75,8 @@ var qureyTimeHotel = {
         })
 
 
-        //请求价格库存
-        // this.biz_getHotelPriceAndStorage(beginDate,endDate);
+        //请求酒店价格库存
+        this.biz_getHotelPriceAndStorage(beginDate,endDate);
     },
 
     /**
@@ -84,7 +87,7 @@ var qureyTimeHotel = {
 
         return {
             "begintime": this.data.viewData.qureyTimeMode.beginDate,
-            "endDate": this.data.viewData.qureyTimeMode.endDate
+            "endtime": this.data.viewData.qureyTimeMode.endDate
         }
     },
 
