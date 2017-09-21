@@ -1,0 +1,181 @@
+page {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-color: #ffffff !important;
+    background-image: url("http://static.12301.cc/assets/build/images/park-samll-app/index_bg.jpg");
+    background-size: 100% auto;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.title-img {
+    width: 60%;
+    margin-top: 100px;
+}
+
+.park-input {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    padding: 10px;
+    /* line-height: 30px; */
+    height: 50px;
+    color: #999;
+    width: 80%;
+}
+
+.park-input .park-input__cursor {
+    display: none;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-name: cursor;
+}
+
+.park-input .park-input__val{
+    color: black;
+    display: none;
+}
+
+.park-input .park-input__search {
+    margin-right: 5px;
+}
+
+.park-input.park-input--active {
+    border: 1px solid #e84c19;
+}
+
+.park-input.park-input--active .park-input__search,
+.park-input.park-input--active .park-input__placeholder {
+    display: none;
+}
+
+.park-input.park-input--active .park-input__cursor,
+.park-input.park-input--active .park-input__val {
+    display: inline;
+}
+
+@keyframes cursor {
+    50% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
+
+.tips {
+    margin-top: 10px;
+    width: 80%;
+    line-height: 20px;
+}
+
+
+/* 光标 */
+
+
+/* 导航 */
+
+.remain-nav {
+    width: 60px;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+}
+
+.remain-nav image {
+    width: 100%;
+}
+
+
+/* 键盘 */
+
+.zan-dialog__mask {
+    background: rgba(0, 0, 0, 0);
+}
+
+.zan-dialog__container {
+    background-color: #eaf1f9;
+    padding: 10px 0;
+}
+
+.hanzi-box {
+    display: none;
+}
+
+.hanzi-box.hanzi-box--show {
+    display: block;
+}
+
+.hanzi-box .line {
+    display: flex;
+    justify-content: space-around;
+}
+
+.hanzi-box .line .btn {
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    flex-grow: 1;
+    text-align: center;
+    box-shadow: 2px 2px 5px #e5e5e5;
+    font-size: 18px;
+}
+
+.hanzi-box .line .btn:active {
+    background-color: #e5e5e5;
+}
+
+.word-num-box {
+    display: none;
+}
+
+.word-num-box--show {
+    display: block;
+}
+
+.word-num-box .line {
+    display: flex;
+    justify-content: space-around;
+}
+
+.word-num-box .line .btn {
+    background-color: #ffffff;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 2px 2px 5px #e5e5e5;
+    font-size: 18px;
+    width: 20px;
+    white-space: nowrap;
+}
+.word-num-box .line3 .btn:last-child {
+    /* background-color: #ff7149; */
+    /* color: #ffffff; */
+    background-image: url("http://static.12301.cc/assets/build/images/park-samll-app/delete.png");
+    background-size: 80% auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+.word-num-box .line4 .btn:last-child {
+    flex-grow: 2;
+    padding: 5px 10px;
+    letter-spacing: 3px;
+    background-color: #ff7149;
+    color: #ffffff;
+}
+
+.word-num-box .line .btn:active {
+    background-color: #e5e5e5;
+}

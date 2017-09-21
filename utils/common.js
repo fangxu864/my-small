@@ -6,7 +6,7 @@
 var Config = require("./config.js");
 var Common = {
 	appId: "wx2f45381cd36a6400",
-	REQUEST_HOST: "https://api.12301.cc/index.php",
+	REQUEST_HOST: "https://api.12301.local/index.php",
 	SESSION_STORAGE_KEY: "pft-session-storage",
 	SESSION_STORAGE_EXPIRE_KEY: "pft-session-storage-expire",  //session过期时长的key
 	SESSION_STORAGE_AT_TIME: "pft-session-storage-attime",
@@ -537,6 +537,146 @@ var Common = {
 			arr.push(key + '=' + obj[key]);
 		}
 		return arr.join("&");
+	},
+
+	getNowFormatDate() {
+        var now = new Date();
+
+        var year = now.getFullYear();       //年
+        var month = now.getMonth() + 1;     //月
+        var day = now.getDate();            //日
+
+        var hh = now.getHours();            //时
+        var mm = now.getMinutes();          //分
+        var ss = now.getSeconds();          //秒
+
+        var clock = year + "-";
+
+        if (month < 10)
+            clock += "0";
+
+        clock += month + "-";
+
+        if (day < 10)
+            clock += "0";
+
+        clock += day + " ";
+
+        if (hh < 10)
+            clock += "0";
+
+        clock += hh + ":";
+        if (mm < 10) clock += '0';
+        clock += mm + ":";
+
+        if (ss < 10) clock += '0';
+        clock += ss;
+        return (clock);
+	},
+	
+	    /**
+	 * 封装wx.request
+	 * 这里已为每个请求附带flag、account两个参数
+	 * 具体写业务时就不需要在每写一个request时都传这两个参数
+	 * opt中的url参数还是跟以前的方式一样: /r/c/a/
+	 * @param opt
+	 *
+	 * how to use:
+	 *
+	 * Common.ajax({
+	 * 		debug : true,                  //debug==true时 用于脱离后端开发，模拟假数据
+	 * 		url : "/r/c/a/",               //路径写法还是用微商城一样的写法，不需要写api.12301dev.com，这个方法已经为你做好路径转换
+	 * 		data : {                       //传给后端的数据
+	 * 			key : value
+	 * 		},
+	 *		loading : function(){},        //请求加载时
+	 *		complete : function(res){},    //请求完成时执行  不论成功或失败都会执行
+	 *		success : function(res){},     //服务器成功处理了请求 code==200
+	 * })
+	 *
+	 *
+	 */
+    ajax: function (opt) { 
+        var _this = this;
+
+		//默认参数
+		var defaults = {
+			debug: false,
+			url: "",
+			method: "POST",
+			dataType: "json",
+			data: {},
+			header: {},
+			loading: function () { },
+			success: function () { },
+            fail: function (res) {
+                console.log(111,res);
+				wx.showModal({
+					title: "提示",
+					content: _this.SERVER_ERROR_TEXT,
+					showCancel: false
+				})
+			},
+			complete: function () { }
+		};
+
+		//混合默认参数和新参数
+		var newOpt = {};
+		for (var i in defaults) {
+			if (typeof opt[i] == "undefined") {
+				newOpt[i] = defaults[i];
+			} else {
+				newOpt[i] = opt[i];
+			}
+		}
+
+		//设置header的small-app
+		// newOpt.header["Small-App"] = this.getAccount();
+
+		// 执行loading函数，显示动画
+		newOpt.loading();
+
+		//开发debug
+		if (newOpt.debug) return setTimeout(function () {
+			newOpt.complete();
+			newOpt.success();
+		}, 1000);
+
+		var url = newOpt.url;
+		if (!url) return false;
+		//index.php?c=Mall_Product&a=productList
+		var host = this.REQUEST_HOST;
+		var urlArray = [];
+		url.split("/").forEach(function (item) {
+			if (item) urlArray.push(item);
+		});
+		var c = "?c=" + urlArray[1];
+		var a = "&a=" + urlArray[2];
+		newOpt["url"] = host + c + a;
+
+
+		//complete中间件
+		var _complete = newOpt.complete;
+		newOpt["complete"] = function (res) {
+			_complete();
+		};
+
+		//success中间件
+		var _success = newOpt.success;
+		var _fail = newOpt.fail;
+		newOpt["success"] = function (res) {
+			var _res = res.data;
+			var statusCode = res.statusCode;
+			if (statusCode == 200) {
+				_success(_res);
+			} else {
+                _fail();
+                _complete();
+			}
+        };
+        
+        wx.request(newOpt);
+
 	}
 };
 

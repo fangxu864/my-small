@@ -1,0 +1,17 @@
+.pft-panel{
+    margin: 10px 15px 0 15px;
+    padding: 10px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+.bot-tips{
+    margin: 10px 15px 0 15px;
+}
+
+.main-info{
+    line-height: 30px;
+}
+.car-number{
+    letter-spacing:4px;    
+}

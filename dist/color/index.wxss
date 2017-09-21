@@ -1,0 +1,26 @@
+
+/* 颜色蓝 */
+.pft-c-blue{
+  color: #457ed8 !important;
+}
+
+/* 背景蓝 */
+.pft-bgc-blue{
+  background-color: #457ed8 !important;
+}
+
+/* 颜色橙 */
+.pft-c-orangered{
+  color: #e84c19 !important;
+}
+
+/* 背景橙 */
+.pft-bgc-orangered{
+  background-color: #ff7149 !important;
+}
+
+
+/* 颜色灰色 */
+.pft-c-dark{
+  color: #999999 !important;
+}

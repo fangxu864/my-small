@@ -1,4 +1,7 @@
 /**app.wxss**/
+
+@import "dist/index.wxss";
+
 page{
   height: 100%
 }

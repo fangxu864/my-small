@@ -1,0 +1,67 @@
+<image class="title-img" mode="widthFix" src="http://static.12301.cc/assets/build/images/park-samll-app/qurey-myfee.jpg"></image>
+ 
+<view class="park-input {{parkInpActive ? 'park-input--active' : ''}}" bindtap="parkInputTap">
+    <icon class="park-input__search" type="search" size="16" color="#999"></icon>
+    <text class="park-input__placeholder pft-font-16 pft-c-dark">点此输入车牌号</text>
+
+    <text class="park-input__val">{{inputVal}}</text>
+
+    <text class="park-input__cursor">|</text>
+</view>
+
+<view class="tips pft-c-dark pft-font-12">请确保您填写车牌号的准确性，以免后续误缴费给您造成不必要的麻烦</view>
+
+<navigator class="remain-nav" url="../remain/remain" hover-class="navigator-hover">
+    <image class="remain-place" mode="widthFix" src="http://static.12301.cc/assets/build/images/park-samll-app/remain-place.png"></image>
+</navigator>
+
+<view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
+    <view class="zan-dialog__mask" bindtap="parkInputTap"/>
+    <view class="zan-dialog__container" bindtap="onKeyboradTap" bindlongpress="deleteLongtap" >
+        <view class="hanzi-box {{hanziBoxSow ? 'hanzi-box--show': ''}}">
+            <view class="line">
+                <block wx:for="{{carText.line1}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+            <view class="line">
+                <block wx:for="{{carText.line2}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+            <view class="line">
+                <block wx:for="{{carText.line3}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+            <view class="line">
+                <block wx:for="{{carText.line4}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+        </view>
+
+        <view class="word-num-box {{wordNumBoxSow ? 'word-num-box--show': ''}}">
+            <view class="line line1">
+                <block wx:for="{{wordNum.line1}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+            <view class="line">
+                <block wx:for="{{wordNum.line2}}" wx:key="*this">
+                    <view class="btn" data-type="btn"  data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+            <view class="line line3">
+                <block wx:for="{{wordNum.line3}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item != 'delete' ? item : ''}}</view>
+                </block>
+            </view>
+            <view class="line line4">
+                <block wx:for="{{wordNum.line4}}" wx:key="*this">
+                    <view class="btn" data-type="btn" data-code="{{item}}">{{item}}</view>
+                </block>
+            </view>
+        </view>
+    </view>
+</view>

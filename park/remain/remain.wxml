@@ -1,0 +1,14 @@
+<view class="park-title pft-font-16 mb-10 pft-c-dark">
+    皇城相府智慧停车场</view>
+<view class="park-title pft-c-dark pft-font-20 pft-font-bold mb-10">当前剩余车位</view>
+
+<view class="number-box pft-center mb-10">
+    <view class="number-text pft-c-orangered pft-font-26 pft-font-bold">{{remainNum}}</view>
+</view>
+
+<view class="last-time pft-c-dark pft-font-12 mb-10">刷新时间：{{updateTime}}</view>
+<!-- <view class="last-time pft-c-dark pft-font-12 mb-10">当前时间：2017-09-18 08:33:55</view> -->
+
+<view class="zan-btns">
+    <button class="zan-btn zan-btn--primary" bindtap="getRemainData">刷新</button>
+</view>

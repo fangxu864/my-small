@@ -1,0 +1,33 @@
+page{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #ffffff !important;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+}
+
+.number-box{
+    align-items: center;
+    width: 150px;
+    height: 203px;
+    background-image: url(http://static.12301.cc/assets/build/images/park-samll-app/remain_bg.jpg);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+}
+
+.number-box .number-text{
+    margin-top: 60px;
+    display: inline-block;
+}
+
+.zan-btns{
+    align-self: stretch;
+}
