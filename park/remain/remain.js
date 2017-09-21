@@ -21,9 +21,12 @@ Page({
 
         code: 200,
         data: {
-            remainNum: function () { 
+            Surplus: function () { 
                 return (Math.random() * 10000).toFixed(0);
-            }
+            },
+            Message: "成功",
+            Stete: 1,
+            Account: "100014"
         },
         msg: ''
     },
@@ -41,32 +44,26 @@ Page({
 
         var _this = this;
 
-        Common.ajax({
-
+        Common.request({
             debug: true,
-
-            url: 'test.php', //仅为示例，并非真实的接口地址
-
-            data: {
-                x: '',
-                y: ''
-            },
-
+            url: "/r/AppCenter_HaboDockApi/getHaboParkSurplus/",
+            data: { sceneCode: App.globalData.curScenCode },
             loading: function () {
                 wx.showLoading({
                     title: "努力加载中..",
                     mask: true
                 })
             },
-
+            complete: function (res) {
+                wx.hideLoading();
+            },
             success: function (res) {
-
 
                 var res = _this.debug_data;
                 if (res.code == 200) {
 
                     _this.setData({
-                        "remainNum": res.data.remainNum(),
+                        "remainNum": res.data.Surplus(),
                         "updateTime": Common.getNowFormatDate()
                     })
 
@@ -77,12 +74,8 @@ Page({
                         showCancel: false
                     })
                 }
-
-            },
-            complete: function () {
-                wx.hideLoading();
             }
-        })
+        });
 
     }
 

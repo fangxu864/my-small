@@ -19,19 +19,28 @@ var indexBiz = {
     },
 
     biz_debugData: {
-
-        code: 200,
-        data: {
-            carNo: "豫S7D578",
-            bTime: "2017-09-18 08:33:55",
-            eTime: "2017-09-18 08:33:55",
-            stayHour: "1",
-            stayMinute: "39",
-            alreadyMoney: "0.00",
-            baseMoney: "12.00"
-        },
-        msg: ""
-
+        "code": 200,
+        "msg": "成功",
+        "data": {
+            "CarNo": "闽DRV500",
+            "State": 1,
+            "Message": "成功",
+            "Order": {
+                "CarNo": "闽DRV500",
+                "ParkId": "0B95306F-7AC2-4F70-BE20-F533A6829FC8",
+                "ParkName": "123624",
+                "Account": "123624",
+                "CarImg": "",
+                "Message": "外来车辆:闽DRV500|入场:09-07 14:32|停车:14天23分|应收费:66元",
+                "MemberType": "外来车辆",
+                "InTime": "2017-09-07 14:32:48",
+                "OutTime": "2017-09-21 14:55:45",
+                "Price": "71.00",
+                "Balance": "0.00",
+                "PayPrice": "5.00",
+                "NoPayPrice": "0.01"
+            }
+        }
     },
 
     /**
@@ -43,21 +52,20 @@ var indexBiz = {
 
         var _this = this;
 
-        Common.ajax({
+        Common.request({
             debug: true,
-            url: 'test.php', //仅为示例，并非真实的接口地址
-            data: {
-                x: '',
-                y: ''
-            },
+            url: "/r/AppCenter_HaboDockApi/getParkOrder/",
+            data: { carno: carNo },
             loading: function () {
                 wx.showLoading({
                     title: "努力加载中..",
                     mask: true
                 })
             },
+            complete: function (res) {
+                wx.hideLoading();
+            },
             success: function (res) {
-
 
                 var res = _this.biz_debugData;
                 if (res.code == 200) {
@@ -74,12 +82,8 @@ var indexBiz = {
                         showCancel: false
                     })
                 }
-
-            },
-            complete: function () {
-                wx.hideLoading();
             }
-        })
+        });
     }
 }
 

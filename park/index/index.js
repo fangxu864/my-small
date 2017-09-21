@@ -9,6 +9,7 @@
 
 
 var IndexBiz = require("./business.js");
+var Common = require("../../utils/common.js");
 var App = getApp();
 
 Page(Object.assign({}, IndexBiz, {
@@ -50,7 +51,11 @@ Page(Object.assign({}, IndexBiz, {
     },
 
     onLoad(opt) {
-        App.curParkId = this.parkId = decodeURIComponent(opt.parkId) || 666666;
+        console.log(decodeURIComponent(opt.scenCode))
+        //转发进来的会有scenCode参数
+        if (opt.scenCode) {
+            App.globalData.curScenCode = decodeURIComponent(opt.scenCode);
+        }
     },
 
     /**
@@ -130,6 +135,22 @@ Page(Object.assign({}, IndexBiz, {
                 hanziBoxSow: true, //汉字键盘
             })
         }
+    },
+
+
+    //当二维码点击时
+    onQrCodeTap: function () {
+        var _this = this;
+        var data = {
+            account: encodeURIComponent(Common.getAccount()),
+            scenCode: encodeURIComponent("park/index/index?scenCode=" + encodeURIComponent(App.globalData.curScenCode)),
+            page: encodeURIComponent("park/index/index"),
+            codeType: 1
+        };
+
+        wx.navigateTo({
+            url: '../../pages/qrcode/qrcode?' + Common.urlStringify(data)
+        });
     }
 
 }))

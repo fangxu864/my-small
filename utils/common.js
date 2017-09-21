@@ -6,7 +6,7 @@
 var Config = require("./config.js");
 var Common = {
 	appId: "wx2f45381cd36a6400",
-	REQUEST_HOST: "https://api.12301.local/index.php",
+	REQUEST_HOST: "https://api.12301.cc/index.php",
 	SESSION_STORAGE_KEY: "pft-session-storage",
 	SESSION_STORAGE_EXPIRE_KEY: "pft-session-storage-expire",  //session过期时长的key
 	SESSION_STORAGE_AT_TIME: "pft-session-storage-attime",
@@ -378,7 +378,7 @@ var Common = {
 			} else {
 				wx.showModal({
 					title: "提示",
-					content: SERVER_ERROR_TEXT,
+					content: that.SERVER_ERROR_TEXT,
 					showCancel: false
 				});
 			}
@@ -673,8 +673,7 @@ var Common = {
                 _fail();
                 _complete();
 			}
-        };
-        
+		};
         wx.request(newOpt);
 
 	}

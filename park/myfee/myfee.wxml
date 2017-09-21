@@ -1,16 +1,16 @@
 <view class="pft-panel-title">我的车牌</view>
-<view class="pft-panel pft-center pft-font-20 car-number">{{carNo}}</view>
+<view class="pft-panel pft-center pft-font-20 car-number">{{Order.CarNo}}</view>
 <view class="pft-panel pft-font-14 main-info">
-    <view class="line">算费时间：{{bTime}}</view>
-    <view class="line">进入时间：{{eTime}}</view>
-    <view class="line">停车时间：<text class="pft-c-blue">{{stayHour}}</text>小时<text class="pft-c-blue">{{stayMinute}}</text>分钟</view>
-    <view class="line">已付费用：<text class="pft-c-blue">{{alreadyMoney}}</text>元</view>
-    <view class="line">应付费用：<text class="pft-c-blue">{{baseMoney}}</text>元</view>
+    <view class="line">算费时间：{{Order.InTime}}</view>
+    <view class="line">进入时间：{{Order.OutTime}}</view>
+    <view class="line">停车时间：<text class="pft-c-blue">{{stayTime}}</text></view>
+    <view class="line">已付费用：<text class="pft-c-blue">{{Order.NoPayPrice}}</text>元</view>
+    <view class="line">应付费用：<text class="pft-c-blue">{{Order.PayPrice}}</text>元</view>
 </view>
 
 <view class="pft-panel-title">应付停车费</view>
 <view class="pft-panel pft-center pft-c-orangered">
-    <text class="pft-font-20">{{baseMoney}}</text>
+    <text class="pft-font-20">{{Order.PayPrice}}</text>
     <text class="pft-font-14">元</text>
 </view>
 
@@ -21,5 +21,5 @@
 
 
 <view class="zan-btns">
-    <button class="zan-btn zan-btn--primary">确认支付{{baseMoney}}元</button>
+    <button class="zan-btn zan-btn--primary">确认支付{{Order.PayPrice}}元</button>
 </view>

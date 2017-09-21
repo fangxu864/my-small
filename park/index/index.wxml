@@ -1,3 +1,7 @@
+<view class="shop-name">
+    <icon class="icon-erweima1 iconfont" catchtap="onQrCodeTap"></icon>
+</view>
+
 <image class="title-img" mode="widthFix" src="http://static.12301.cc/assets/build/images/park-samll-app/qurey-myfee.jpg"></image>
  
 <view class="park-input {{parkInpActive ? 'park-input--active' : ''}}" bindtap="parkInputTap">
