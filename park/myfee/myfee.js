@@ -40,8 +40,64 @@ Page({
     onLoad: function () {
         this.setData(App.myfeeCache);
         this.setData({
-            stayTime:  App.myfeeCache.Order.Message.split("|")[2].split(":")[1]
+            stayTime: App.myfeeCache.Order.Message.split("|")[2].split(":")[1]
         })
+    },
+
+    /**
+     * 点击支付按钮时
+     *
+     * 第一步：根据订单信息请求微信支付参数
+     * 第二步：根据返回的微信支付参数发起微信支付
+     *
+     */
+    onPay: function () {
+        var oData = this.data;
+        Common.request({
+            debug: false,
+            url: "/r/AppCenter_HaboDockPayApi/order/",
+            data: {
+                "scanCode": App.globalData.curScenCode,
+                "appid": Common.appId,
+                "subject": "停车场小程序支付",  //描述
+                "carNo": oData.Order.CarNo //车牌牌号码
+            },
+            loading: function () {
+                wx.showLoading({
+                    title: "努力加载中..",
+                    mask: true
+                })
+            },
+            complete: function (res) {
+                wx.hideLoading();
+            },
+            success: function (res) {
+
+                // var res = _this.debug_data;
+                if (res.code == 200) {
+                    console.log(res);
+
+                    // wx.requestPayment({
+                    //     'timeStamp': '',
+                    //     'nonceStr': '',
+                    //     'package': '',
+                    //     'signType': 'MD5',
+                    //     'paySign': '',
+                    //     'success':function(res){
+                    //     },
+                    //     'fail':function(res){
+                    //     }
+                    //  })
+
+                } else {
+                    wx.showModal({
+                        title: "提示",
+                        content: res.msg || "暂无数据",
+                        showCancel: false
+                    })
+                }
+            }
+        });
     }
 
 

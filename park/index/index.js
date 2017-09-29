@@ -86,7 +86,7 @@ Page(Object.assign({}, IndexBiz, {
 
         if (curCode == "完成") {
 
-            this.biz_query();
+            this.biz_query(this.data.inputVal);
 
         } else {
             if (curCode == "delete") {

@@ -40,7 +40,8 @@ var indexBiz = {
                 "PayPrice": "5.00",
                 "NoPayPrice": "0.01"
             }
-        }
+        },
+        aid:"94"
     },
 
     /**
@@ -53,9 +54,12 @@ var indexBiz = {
         var _this = this;
 
         Common.request({
-            debug: true,
+            debug: false,
             url: "/r/AppCenter_HaboDockApi/getParkOrder/",
-            data: { carno: carNo },
+            data: {
+                carno: carNo,
+                scanCode: App.globalData.curScenCode
+            },
             loading: function () {
                 wx.showLoading({
                     title: "努力加载中..",
@@ -67,7 +71,7 @@ var indexBiz = {
             },
             success: function (res) {
 
-                var res = _this.biz_debugData;
+                // var res = _this.biz_debugData;
                 if (res.code == 200) {
 
                     App.myfeeCache = res.data;
@@ -77,8 +81,8 @@ var indexBiz = {
 
                 } else {
                     wx.showModal({
-                        title: "提示",
-                        content: res.msg || "暂无数据",
+                        title: "未查询到" + carNo + "的车辆",
+                        content: res.msg || "请确认您输入的车牌号无误，且车辆停放本停车场或已支付",
                         showCancel: false
                     })
                 }

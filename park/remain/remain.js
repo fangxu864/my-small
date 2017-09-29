@@ -45,9 +45,9 @@ Page({
         var _this = this;
 
         Common.request({
-            debug: true,
+            debug: false,
             url: "/r/AppCenter_HaboDockApi/getHaboParkSurplus/",
-            data: { sceneCode: App.globalData.curScenCode },
+            data: { scanCode: App.globalData.curScenCode },
             loading: function () {
                 wx.showLoading({
                     title: "努力加载中..",
@@ -59,15 +59,19 @@ Page({
             },
             success: function (res) {
 
-                var res = _this.debug_data;
+                // var res = _this.debug_data;
                 if (res.code == 200) {
 
                     _this.setData({
-                        "remainNum": res.data.Surplus(),
+                        "remainNum": res.data.Surplus,
                         "updateTime": Common.getNowFormatDate()
                     })
 
                 } else {
+                    _this.setData({
+                        "remainNum": "未知",
+                        "updateTime": Common.getNowFormatDate()
+                    })
                     wx.showModal({
                         title: "提示",
                         content: res.msg || "暂无数据",
