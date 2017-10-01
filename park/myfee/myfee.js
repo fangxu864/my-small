@@ -59,6 +59,7 @@ Page({
             data: {
                 "scanCode": App.globalData.curScenCode,
                 "appid": Common.appId,
+                "PayAppid": Common.appId,
                 "subject": "停车场小程序支付",  //描述
                 "carNo": oData.Order.CarNo //车牌牌号码
             },
@@ -76,18 +77,28 @@ Page({
                 // var res = _this.debug_data;
                 if (res.code == 200) {
                     console.log(res);
+                    var oData = res.data.data;
 
-                    // wx.requestPayment({
-                    //     'timeStamp': '',
-                    //     'nonceStr': '',
-                    //     'package': '',
-                    //     'signType': 'MD5',
-                    //     'paySign': '',
-                    //     'success':function(res){
-                    //     },
-                    //     'fail':function(res){
-                    //     }
-                    //  })
+                    var requestObj = {};
+                    requestObj["timeStamp"] = oData["timeStamp"];
+                    requestObj["nonceStr"] = oData["nonceStr"];
+                    requestObj["package"] = oData["package"];
+                    requestObj["signType"] = oData["signType"];
+                    requestObj["paySign"] = oData["paySign"];
+                    requestObj["success"] = function (res) {
+                        if (res.errMsg == "requestPayment:ok") {
+                            wx.showModal({
+                                title: "提示",
+                                content: "支付成功",
+                                showCancel: false
+                            })
+                        }
+                    }
+                    requestObj["fail"] = function (res) {
+                        console.log(res);
+                    }
+
+                    wx.requestPayment(requestObj)
 
                 } else {
                     wx.showModal({

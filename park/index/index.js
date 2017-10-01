@@ -16,7 +16,7 @@ Page(Object.assign({}, IndexBiz, {
     data: {
         showDialog: false,
 
-        inputVal: "",
+        inputVal: "闽DRV500",
 
 
 

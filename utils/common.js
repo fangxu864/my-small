@@ -111,12 +111,12 @@ var Common = {
 		var atTimeKey = this.SESSION_STORAGE_AT_TIME;
 		var showError = this.showError;
 		var account = this.getAccount();
-		console.log("缓存过期，调用登录登录接口重新登录");
+		console.log("缓存过期，调用登录接口重新登录");
 		wx.login({
 			success: function (res) {
 				var code = res.code;
 
-				// console.log(code);
+				console.log(code);
 				// return fase;
 				if (code) {
 					wx.request({
@@ -580,7 +580,7 @@ var Common = {
         return (clock);
 	},
 	
-	    /**
+	/**
 	 * 封装wx.request
 	 * 这里已为每个请求附带flag、account两个参数
 	 * 具体写业务时就不需要在每写一个request时都传这两个参数
