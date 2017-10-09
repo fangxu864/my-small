@@ -52,6 +52,7 @@ Page({
      *
      */
     onPay: function () {
+        var _this = this;
         var oData = this.data;
         Common.request({
             debug: false,
@@ -87,11 +88,8 @@ Page({
                     requestObj["paySign"] = oData["paySign"];
                     requestObj["success"] = function (res) {
                         if (res.errMsg == "requestPayment:ok") {
-                            wx.showModal({
-                                title: "提示",
-                                content: "支付成功",
-                                showCancel: false
-                            })
+                            //进行支付成功校验
+                            _this.checkPaySuccess(oData["order_no"]);
                         }
                     }
                     requestObj["fail"] = function (res) {
@@ -109,6 +107,55 @@ Page({
                 }
             }
         });
+    },
+
+    /**
+     * 检查支付是否成功
+     * 
+     * @param {any} order_no 
+     */
+    checkPaySuccess: function (order_no) {
+        
+        if (!order_no) return console.log("校验-订单号没有");
+
+        Common.request({
+            debug: false,
+            url: "/r/AppCenter_HaboDockPayApi/payResultCheck/",
+            data: {
+                "order_no": order_no //订单号
+            },
+            loading: function () {
+                wx.showLoading({
+                    title: "支付检测中..",
+                    mask: true
+                })
+            },
+            complete: function (res) {
+                wx.hideLoading();
+            },
+            success: function (res) {
+
+                if (res.code == 200) {
+                    wx.showModal({
+                        title: "提示",
+                        content: "支付成功",
+                        showCancel: false
+                    })
+                } else if (res.code == 501) {
+                    _this.checkePayTimer = setTimeout(function () {
+                        _this.checkPaySuccess(order_no);
+                    },3000)
+                } else {
+                    wx.showModal({
+                        title: "提示",
+                        content: res.msg,
+                        showCancel: false
+                    })
+                }
+               
+            }
+        });
+
     }
 
 
