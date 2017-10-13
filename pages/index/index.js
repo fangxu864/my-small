@@ -54,6 +54,7 @@ Page({
      * @param {any} opt 
      */
     onLoad: function (opt) {
+        console.log("scene",opt);
         //如果用户是扫码进来的话,会有scenCode,则将scenCode缓存至app.globalData.curScenCode
         if (opt.scene) {
             app.globalData.curScenCode = decodeURIComponent(opt.scene);

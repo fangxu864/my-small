@@ -114,6 +114,8 @@ Page({
                
                 //如果用户拒绝了授权地理位置 'chooseLocation:fail auth deny'
                 if (/deny/g.test(e.errMsg)) {
+
+                    console.log("fsdf");
                   
                 }
 
