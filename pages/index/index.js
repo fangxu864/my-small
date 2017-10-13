@@ -245,6 +245,7 @@ Page({
     //当页面显示时
     onShow: function () {
         var that = this;
+        console.log("执行onshow");
         //重置下数据
         that.setData({
             plist: [],
@@ -263,6 +264,7 @@ Page({
 
         //如果有scenCode,获取数据；没有，跳到附近的店铺列表
         if (app.globalData.curScenCode) {
+            console.log("有scenecode，获取数据");
             this.getData({
                 keyword: '',
                 loading: function () {
@@ -272,6 +274,7 @@ Page({
                 complete: function (res) { },
 
                 success: function (res) {
+                    console.log("获取数据成功",res);
                     common.hideLoading();
 
                     that.setData({

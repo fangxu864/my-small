@@ -384,7 +384,7 @@ var Common = {
 			} else {
 				wx.showModal({
 					title: "提示",
-					content: that.SERVER_ERROR_TEXT,
+					content:  "服务器未成功处理请求",
 					showCancel: false
 				});
 			}
@@ -619,7 +619,7 @@ var Common = {
                 console.log(111,res);
 				wx.showModal({
 					title: "提示",
-					content: _this.SERVER_ERROR_TEXT,
+					content: "服务器未成功处理请求",
 					showCancel: false
 				})
 			},
