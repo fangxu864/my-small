@@ -80,6 +80,7 @@ Page({
                 if (res.code == 200) {
                     console.log(res);
                     var oData = res.data.data;
+                    var order_no = res.data.order_no;
 
                     var requestObj = {};
                     requestObj["timeStamp"] = oData["timeStamp"];
@@ -88,9 +89,12 @@ Page({
                     requestObj["signType"] = oData["signType"];
                     requestObj["paySign"] = oData["paySign"];
                     requestObj["success"] = function (res) {
+                        console.log(res);
                         if (res.errMsg == "requestPayment:ok") {
                             //进行支付成功校验
-                            _this.checkPaySuccess(oData["order_no"]);
+                            console.log("支付成功");
+                        
+                            _this.checkPaySuccess(order_no);
                         }
                     }
                     requestObj["fail"] = function (res) {
@@ -140,7 +144,15 @@ Page({
                     wx.showModal({
                         title: "提示",
                         content: "支付成功",
-                        showCancel: false
+                        showCancel: false,
+                        success: function (res) {
+                            //用户点击确认支付后，跳转至首页
+                            if (res.confirm) {
+                                wx.navigateTo({
+                                    url: '../index/index'
+                                });
+                            }
+                        }
                     })
                 } else if (res.code == 501) {
                     _this.checkePayTimer = setTimeout(function () {

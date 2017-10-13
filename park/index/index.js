@@ -16,7 +16,7 @@ Page(Object.assign({}, IndexBiz, {
     data: {
         showDialog: false,
 
-        inputVal: "闽DRV500",
+        inputVal: "",
 
 
 
@@ -72,6 +72,10 @@ Page(Object.assign({}, IndexBiz, {
         }
     },
 
+    /**
+     * 当点击输入框时
+     * 
+     */
     parkInputTap() {
         this.setData({
             showDialog: !this.data.showDialog,
@@ -79,6 +83,12 @@ Page(Object.assign({}, IndexBiz, {
         });
     },
 
+    /**
+     * 当点击键盘时
+     * 
+     * @param {any} e 
+     * @returns 
+     */
     onKeyboradTap(e) {
         var type = e.target.dataset.type;
         if (type !== "btn") return false;
@@ -138,7 +148,10 @@ Page(Object.assign({}, IndexBiz, {
     },
 
 
-    //当二维码点击时
+    /**
+     * 当二维码小图标点击时
+     * 
+     */
     onQrCodeTap: function () {
         var _this = this;
         var data = {
