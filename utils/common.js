@@ -8,8 +8,8 @@ var Common = {
 	// appId: "wx5605b231e666f425", //小飘旅游(测试用)
 	appId: "wx2f45381cd36a6400", //小飘智慧票房
 	// REQUEST_HOST: "http://api.12301.local/index.php", //local
-	// REQUEST_HOST: "https://api.12301.cc/index.php", //cc
-	REQUEST_HOST: "https://api.12301dev.com/index.php", //dev
+	REQUEST_HOST: "https://api.12301.cc/index.php", //cc
+	// REQUEST_HOST: "https://api.12301dev.com/index.php", //dev
 	SESSION_STORAGE_KEY: "pft-session-storage",
 	SESSION_STORAGE_EXPIRE_KEY: "pft-session-storage-expire",  //session过期时长的key
 	SESSION_STORAGE_AT_TIME: "pft-session-storage-attime",
