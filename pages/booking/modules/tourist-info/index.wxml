@@ -7,7 +7,7 @@
             <view class="lt">取票人</view>
             <view class="mid">
                 <input type="text" bindblur="onOrderNameInpBlur" bindinput="onOrderNameInpChange" name="" value="{{ordername}}" class="usernameInp"
-                    id="usernameInp" placeholder="取票人姓名(选填)" />
+                    id="usernameInp" placeholder="取票人姓名" />
             </view>
             <view class="rt flex-end">
                 <view class="errorTip" style="flex-grow:1;" wx:if="{{orderNameErrTipShow}}">
@@ -22,7 +22,7 @@
             <view class="lt">手机号</view>
             <view class="mid">
                 <input type="number" bindblur="onContacttelInpBlur" bindinput="onContacttelInpChange" name="" value="{{contacttel}}" class="mobileInp"
-                    id="mobileInp" placeholder="取票人手机号(选填)" />
+                    id="mobileInp" placeholder="取票人手机号" />
             </view>
             <view class="rt">
                 <view class="errorTip" wx:if="{{contacttelErrTipShow}}" style="margin-right:5px">

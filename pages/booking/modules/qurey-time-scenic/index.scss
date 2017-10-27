@@ -4,11 +4,12 @@
     justify-content: space-between;
     padding: 20rpx 20rpx;
     align-items: baseline;
-    line-height:1.4;
+    line-height:30px;
     margin-top: 20rpx;
 
     .lt{
-        white-space: nowrap
+        white-space: nowrap;
+        font-weight:bold;
     }
 
     .mid {
@@ -54,6 +55,7 @@
         justify-content: space-around;
         align-self: stretch;
         align-items: center;
+        height: 30px;
         .dot {
             position: relative;
             align-self: center;
@@ -74,5 +76,6 @@
         align-self:stretch;
         display:flex;
         align-items:center;
+        height: 30px;
     }
 }

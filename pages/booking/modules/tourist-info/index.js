@@ -43,7 +43,7 @@ var touristInfo = {
         }
     },
 
-    
+
     /**
      * 备注
      * 
@@ -322,6 +322,8 @@ var touristInfo = {
             resultData = {},
             oData = this.data;
 
+        var ticketList = this.data.viewData.ticketList.ticketList;
+
         switch (needID) {
 
             //不需要身份证时
@@ -334,20 +336,64 @@ var touristInfo = {
 
             //需要1张身份证时
             case 1: {
-                resultData["contacttel"] = oData.viewData.touristInfo.contacttel || "12301";
-                resultData["ordername"] = oData.viewData.touristInfo.ordername || "小程序购票";
+                resultData["contacttel"] = oData.viewData.touristInfo.contacttel;
+                resultData["ordername"] = oData.viewData.touristInfo.ordername;
                 resultData["memo"] = oData.viewData.touristInfo.memo;
                 resultData["sfz"] = oData.viewData.touristInfo.sfz;
+
+                //信息单元
+                var unitInfo = {
+                    name: resultData["ordername"],
+                    idcard: resultData["sfz"]
+                }
+                var idCardInfo = {};
+                var curNum = 0;
+
+                //遍历
+                ticketList.forEach(item => {
+                    curNum = Number(item.value);
+                    if (curNum > 0) {
+                        idCardInfo[item["tid"]] = [];
+                        // while (curNum--) {
+                        idCardInfo[item["tid"]].push(unitInfo);
+                        // }
+                    }
+                })
+                resultData["idCardInfo"] = idCardInfo;
+
                 break;
             }
 
             //需要多张身份证时
             case 2: {
-                resultData["contacttel"] = oData.viewData.touristInfo.contacttel || "12301";
-                resultData["ordername"] = oData.viewData.touristInfo.ordername || "小程序购票";
+                resultData["contacttel"] = oData.viewData.touristInfo.contacttel;
+                resultData["ordername"] = oData.viewData.touristInfo.ordername;
                 resultData["memo"] = oData.viewData.touristInfo.memo;
                 resultData["idcards"] = this.touristIdcardList.getTouristIdArr();
                 resultData["tourists"] = this.touristIdcardList.getTouristNameArr();
+
+
+                //信息单元
+                var idCardInfo = {};
+                var curNum = 0;
+                var posIndex = 0;
+
+                //遍历
+                ticketList.forEach(item => {
+                    curNum = Number(item.value);
+                    if (curNum > 0) {
+                        idCardInfo[item["tid"]] = [];
+                        while (curNum--) {
+                            idCardInfo[item["tid"]].push({
+                                name: resultData["tourists"][posIndex],
+                                idcard: resultData["idcards"][posIndex]
+                            });
+                            posIndex++
+                        }
+                    }
+                })
+                resultData["idCardInfo"] = idCardInfo;
+
                 break;
             }
         }

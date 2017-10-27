@@ -479,16 +479,31 @@ var bookingBusiness = {
 					_this.biz_Error("身份证填写有误，请重新填写");
 					allOk = false;
 				}
+				if (!/\d{11}/.test(submitData.contacttel)) {
+					_this.biz_Error("手机号填写有误，请重新填写");
+					allOk = false;
+				}
+				if (submitData.ordername == "") {
+					_this.biz_Error("取票人姓名不能为空，请重新填写");
+					allOk = false;
+				}
 				break;
 			}
 
 			//需要多张身份证时
 			case 2: {
 
-				console.log("shenfenzheng", this.touristIdcardList.getOkNum(), submitData)
-
-				if (this.touristIdcardList.getOkNum() != submitData.tnum) {
+				if (this.touristIdcardList.getOkNum() != submitData.front_totalNum) {
 					_this.biz_Error("游客信息填写有误，请完善");
+					allOk = false;
+				}
+
+				if (!/\d{11}/.test(submitData.contacttel)) {
+					_this.biz_Error("手机号填写有误，请重新填写");
+					allOk = false;
+				}
+				if (submitData.ordername == "") {
+					_this.biz_Error("取票人姓名不能为空，请重新填写");
 					allOk = false;
 				}
 				break;

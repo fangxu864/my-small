@@ -322,10 +322,11 @@ page {
   justify-content: space-between;
   padding: 20rpx 20rpx;
   align-items: baseline;
-  line-height: 1.4;
+  line-height: 30px;
   margin-top: 20rpx; }
   .qurey-time-scenic .lt {
-    white-space: nowrap; }
+    white-space: nowrap;
+    font-weight: bold; }
   .qurey-time-scenic .mid {
     flex-grow: 1;
     display: flex;
@@ -358,7 +359,8 @@ page {
     display: flex;
     justify-content: space-around;
     align-self: stretch;
-    align-items: center; }
+    align-items: center;
+    height: 30px; }
     .qurey-time-scenic .rt .dot {
       position: relative;
       align-self: center;
@@ -374,7 +376,8 @@ page {
   .qurey-time-scenic .time-picker {
     align-self: stretch;
     display: flex;
-    align-items: center; }
+    align-items: center;
+    height: 30px; }
 
 .query-time-hotel {
   padding: 10px 25px;

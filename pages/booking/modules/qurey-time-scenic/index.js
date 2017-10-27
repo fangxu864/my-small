@@ -60,7 +60,7 @@ var qureyTimeScenic = {
         var isShowTwo = false;
         //判断用户选取的时间是否是今天或明天
         if (date == Common.getToday() || date == Common.getTomorrow()) {
-            isShowTwo = true;
+            isShowTwo = false;
         }
         //更新视图数据
         this.setData({
@@ -90,7 +90,7 @@ var qureyTimeScenic = {
     qts_getBizData: function () {
 
         return {
-            "begintime": this.data.viewData.qureyTimeMode.beginDate
+            "begintime": this.data.viewData.qureyTimeMode.beginDate || Common.getToday()
         }
     }
 

@@ -82,7 +82,7 @@ var indexBiz = {
                 } else {
                     wx.showModal({
                         title: "未查询到" + carNo + "的车辆",
-                        content: res.msg || "请确认您输入的车牌号无误，且车辆停放本停车场或已支付",
+                        content: res.msg.Message || "请确认您输入的车牌号无误，且车辆停放本停车场或已支付",
                         showCancel: false
                     })
                 }

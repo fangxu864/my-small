@@ -37,7 +37,7 @@ Page({
 				endPrice: "", //结束日期对应的最低价格
 				diffDays: "1", //开始时间和结束时间对应的天数
 				beginActive: "", //开始时间是否选中
-				isShowTwo: true, //是否显示两个日期
+				isShowTwo: false, //是否显示两个日期
 				today: Common.getToday(),
 				tomorrow: Common.getTomorrow(),
 

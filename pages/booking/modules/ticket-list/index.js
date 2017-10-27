@@ -29,8 +29,6 @@ var ticketList = {
 	 */
 	tlist_dataChange: function (newListdata) {
 
-		console.log(newListdata);
-
 		var totalTicketNum = 0; //购票总数
 
 		//根据列表数据更新按钮状态
@@ -103,8 +101,11 @@ var ticketList = {
 		// link	object	联票, {"14624" : 2, "14625" : 3}
 
 		var newArr = this.data.viewData.ticketList.ticketList;
-		var tnum = '', link = {};
+		var tnum = '', link = {}, totalNum = 0;
 		newArr.forEach(function (item) {
+
+			totalNum += Number(item.value);
+
 			//不是主票，最低购票数为0
 			if (!item.ismain) {
 				if (item.value > 0) {
@@ -118,7 +119,8 @@ var ticketList = {
 		//更新业务数据
 		return {
 			"tnum": tnum,
-			"link": link
+			"link": link,
+			"front_totalNum": totalNum,
 		}
 
 	},

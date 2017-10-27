@@ -1,8 +1,8 @@
 <template name="queryTimeScenic">
   <view class="qurey-time-scenic">
     <view class="lt">{{titleText}}</view>
-    <view class="mid">
 
+    <view class="mid">
       <block wx:if="{{isShowTwo}}">
         <view class="dateBox {{beginDate == today ? 'selected' : '' }}" data-date="{{today}}" bindtap="qts_dateItemTap">
           <view class="flag">今天 </view>
@@ -13,16 +13,20 @@
           <view class="date">{{tomorrow || "--"}}</view>
         </view>
       </block>
-      <view wx:else class="single-date">{{beginDate || "--"}}</view>
+      <view wx:else class="single-date">{{beginDate || today }}</view>
     </view>
 
-    <view class="rt">
-      <picker class="time-picker" mode="date" value="{{beginDate}}" start="{{today}}" end="2100-09-01" bindchange="qts_beginTimeChange">
-        <view class="dot"></view>
-        <view class="dot"></view>
-        <view class="dot"></view>
-      </picker>
-    </view>
+    <picker class="time-picker" mode="date" value="{{beginDate}}" start="{{today}}" end="2100-09-01" bindchange="qts_beginTimeChange">
+      <label>
+        <view class="rt">
+
+          <view class="dot"></view>
+          <view class="dot"></view>
+          <view class="dot"></view>
+
+        </view>
+      </label>
+    </picker>
 
 
   </view>
